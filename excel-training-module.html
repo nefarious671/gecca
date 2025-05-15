@@ -1,0 +1,731 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Intermediate Excel Training for Child Care Business Owners</title>
+    <style>
+        :root {
+            --primary: #4A6FA5;
+            --secondary: #FFB347;
+            --light: #F8F9FA;
+            --dark: #343A40;
+            --success: #28A745;
+            --warning: #FFC107;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--dark);
+            background-color: #f5f7fa;
+            max-width: 1000px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary), #2c4c7c);
+            color: white;
+            padding: 30px 20px;
+            border-radius: 10px;
+            margin-bottom: 30px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+        
+        h1 {
+            margin: 0;
+            font-size: 2.5em;
+        }
+        
+        .tagline {
+            font-style: italic;
+            opacity: 0.9;
+            margin-top: 10px;
+        }
+        
+        section {
+            background: white;
+            border-radius: 8px;
+            padding: 20px;
+            margin-bottom: 25px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+        
+        .collapsible {
+            background-color: var(--light);
+            color: var(--dark);
+            cursor: pointer;
+            padding: 18px;
+            width: 100%;
+            border: none;
+            border-radius: 5px;
+            text-align: left;
+            outline: none;
+            font-size: 16px;
+            font-weight: bold;
+            transition: 0.3s;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 5px;
+        }
+        
+        .active, .collapsible:hover {
+            background-color: #e9ecef;
+        }
+        
+        .collapsible:after {
+            content: '\002B';
+            color: var(--primary);
+            font-weight: bold;
+            float: right;
+            margin-left: 5px;
+            font-size: 22px;
+        }
+        
+        .active:after {
+            content: "\2212";
+        }
+        
+        .content {
+            padding: 0 18px;
+            max-height: 0;
+            overflow-y: auto;
+            transition: max-height 0.2s ease-out;
+            background-color: white;
+            border-radius: 0 0 5px 5px;
+        }
+        
+        .module-icon {
+            font-size: 24px;
+            margin-right: 10px;
+        }
+        
+        .highlight-box {
+            background-color: #f8f9fa;
+            border-left: 4px solid var(--primary);
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .example {
+            background-color: #e8f4fd;
+            border-left: 4px solid #17a2b8;
+            padding: 15px;
+            margin: 20px 0;
+            border-radius: 0 5px 5px 0;
+        }
+        
+        .quiz-container {
+            background-color: #fff8e6;
+            border: 1px solid var(--warning);
+            border-radius: 8px;
+            padding: 20px;
+            margin: 25px 0;
+        }
+        
+        .quiz-options label {
+            display: block;
+            margin: 10px 0;
+            padding: 10px;
+            background-color: #f8f9fa;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 0.2s;
+        }
+        
+        .quiz-options label:hover {
+            background-color: #e9ecef;
+        }
+        
+        .quiz-feedback {
+            margin-top: 15px;
+            padding: 10px;
+            border-radius: 5px;
+            display: none;
+        }
+        
+        .correct {
+            background-color: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+        
+        .incorrect {
+            background-color: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+        
+        .btn {
+            background-color: var(--primary);
+            color: white;
+            border: none;
+            padding: 10px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 16px;
+            transition: background-color 0.3s;
+        }
+        
+        .btn:hover {
+            background-color: #3c5a84;
+        }
+        
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 20px 0;
+        }
+        
+        table, th, td {
+            border: 1px solid #ddd;
+        }
+        
+        th, td {
+            padding: 12px;
+            text-align: left;
+        }
+        
+        th {
+            background-color: var(--light);
+            color: var(--dark);
+        }
+        
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .formula-box {
+            font-family: 'Courier New', monospace;
+            background-color: #f5f5f5;
+            padding: 8px;
+            border-radius: 4px;
+            margin: 5px 0;
+            display: inline-block;
+        }
+        
+        .module-header {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+        }
+        
+        .progress-container {
+            width: 100%;
+            background-color: #e0e0e0;
+            margin: 30px 0;
+            height: 10px;
+            border-radius: 5px;
+        }
+        
+        .progress-bar {
+            width: 0%;
+            height: 10px;
+            background-color: var(--success);
+            border-radius: 5px;
+            transition: width 0.3s ease;
+        }
+        
+        footer {
+            text-align: center;
+            margin-top: 40px;
+            padding: 20px;
+            color: #6c757d;
+            font-size: 14px;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>📘 Intermediate Excel Training for Child Care Business Owners</h1>
+        <p class="tagline">Master the tools to streamline your financial tracking and reporting</p>
+    </header>
+    
+    <div class="progress-container">
+        <div class="progress-bar" id="progressBar"></div>
+    </div>
+    
+    <section id="intro">
+        <h2>Course Overview</h2>
+        <p><strong>Duration:</strong> 2 Hours<br>
+        <strong>Audience:</strong> Small business owners in the child care industry<br>
+        <strong>Goal:</strong> Learn intermediate Excel functions to automate financial tracking and build reports for licensing, budgeting, and compliance.</p>
+        
+        <p>Welcome to this interactive training module designed specifically for child care business owners! By the end of this training, you'll be able to:</p>
+        <ul>
+            <li>Create automated financial tracking systems</li>
+            <li>Build professional reports for licensing and compliance</li>
+            <li>Visualize your business data to make better decisions</li>
+            <li>Save time on administrative tasks</li>
+        </ul>
+        
+        <div class="highlight-box">
+            <p><strong>How to use this module:</strong></p>
+            <ul>
+                <li>Click on each section to expand/collapse content</li>
+                <li>Complete the practice activities to reinforce your learning</li>
+                <li>Try the quizzes to test your understanding</li>
+                <li>Your progress will be tracked at the top of the page</li>
+            </ul>
+        </div>
+    </section>
+    
+    <button class="collapsible"><span class="module-icon">📊</span> Module 1: Financial Tracking in Excel (55 minutes)</button>
+    <div class="content">
+        <div class="module-header">
+            <h3>Financial Tracking in Excel</h3>
+        </div>
+        
+        <p>Effective financial tracking is essential for any child care business. In this module, we'll learn how to use Excel to track expenses, revenue, and create automatic alerts for your financial data.</p>
+        
+        <h4>Key Skills You'll Learn:</h4>
+        <ul>
+            <li>Absolute & Relative References (`$`)</li>
+            <li>Conditional Summation (`SUMIFS`)</li>
+            <li>Logical Statements (`IF`)</li>
+        </ul>
+        
+        <button class="collapsible">Absolute & Relative References</button>
+        <div class="content">
+            <p>Understanding the difference between absolute and relative references is crucial for creating formulas that work correctly when copied to other cells.</p>
+            
+            <div class="example">
+                <h5>What's the difference?</h5>
+                <ul>
+                    <li><strong>Relative reference (A1):</strong> Changes when copied to another cell</li>
+                    <li><strong>Absolute reference ($A$1):</strong> Stays fixed when copied</li>
+                    <li><strong>Mixed reference ($A1 or A$1):</strong> One part stays fixed, the other changes</li>
+                </ul>
+                
+                <h5>Example:</h5>
+                <p>Let's say you have tuition rates in column B, and you want to calculate a 5% increase for next year:</p>
+                <table>
+                    <tr>
+                        <th>A</th>
+                        <th>B</th>
+                        <th>C</th>
+                    </tr>
+                    <tr>
+                        <td>Age Group</td>
+                        <td>Current Rate</td>
+                        <td>Next Year Rate</td>
+                    </tr>
+                    <tr>
+                        <td>Infant</td>
+                        <td>$250</td>
+                        <td>=B2*(1+$D$1)</td>
+                    </tr>
+                    <tr>
+                        <td>Toddler</td>
+                        <td>$225</td>
+                        <td>=B3*(1+$D$1)</td>
+                    </tr>
+                </table>
+                <p>Cell D1 (not shown) contains the value 0.05 (5% increase). The $D$1 is an absolute reference, so when you copy the formula down, it always refers to cell D1.</p>
+            </div>
+            
+            <div class="quiz-container">
+                <h5>Quick Quiz: References</h5>
+                <p>You want to create a formula that always refers to cell A1, even when copied elsewhere. Which reference type should you use?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q1" value="a"> A1 (relative reference)</label>
+                    <label><input type="radio" name="q1" value="b"> $A$1 (absolute reference)</label>
+                    <label><input type="radio" name="q1" value="c"> A$1 (mixed reference)</label>
+                </div>
+                <button class="btn" onclick="checkAnswer('q1', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="feedback-q1"></div>
+            </div>
+        </div>
+        
+        <button class="collapsible">Conditional Summation with SUMIFS</button>
+        <div class="content">
+            <p>SUMIFS is a powerful function that allows you to sum values that meet multiple criteria - perfect for analyzing your business data by categories or time periods.</p>
+            
+            <div class="highlight-box">
+                <h5>SUMIFS Syntax:</h5>
+                <div class="formula-box">
+                    =SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)
+                </div>
+                <ul>
+                    <li><strong>sum_range:</strong> The range of cells to sum</li>
+                    <li><strong>criteria_range1:</strong> The first range to evaluate against criteria1</li>
+                    <li><strong>criteria1:</strong> The condition that defines which cells to sum</li>
+                    <li><strong>criteria_range2, criteria2, ... (optional):</strong> Additional ranges and criteria</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5>Child Care Business Example:</h5>
+                <p>Let's say you have a spreadsheet tracking payments with columns for Date, Child Name, Classroom, and Payment Amount. You want to sum all payments for the Toddler classroom in March 2025:</p>
+                <div class="formula-box">
+                    =SUMIFS(D2:D100, C2:C100, "Toddler", A2:A100, ">=3/1/2025", A2:A100, "<=3/31/2025")
+                </div>
+                <p>This formula:</p>
+                <ul>
+                    <li>Sums values from column D (Payment Amount)</li>
+                    <li>Where column C contains "Toddler"</li>
+                    <li>AND column A date is >= March 1, 2025</li>
+                    <li>AND column A date is <= March 31, 2025</li>
+                </ul>
+            </div>
+            
+            <div class="quiz-container">
+                <h5>Quick Quiz: SUMIFS</h5>
+                <p>You want to sum all expenses from the "Supplies" category in Quarter 1 (January-March). What formula would you use if expenses are in column D, categories in column B, and dates in column A?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q2" value="a"> =SUMIF(B2:B100, "Supplies", D2:D100)</label>
+                    <label><input type="radio" name="q2" value="b"> =SUMIFS(D2:D100, B2:B100, "Supplies", A2:A100, ">=1/1/2025", A2:A100, "<=3/31/2025")</label>
+                    <label><input type="radio" name="q2" value="c"> =SUMIFS(D2:D100, B2:B100, "Supplies")</label>
+                </div>
+                <button class="btn" onclick="checkAnswer('q2', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="feedback-q2"></div>
+            </div>
+        </div>
+        
+        <button class="collapsible">Logical Statements with IF</button>
+        <div class="content">
+            <p>The IF function lets you make decisions in your spreadsheets, which is perfect for flagging important data or categorizing information automatically.</p>
+            
+            <div class="highlight-box">
+                <h5>IF Syntax:</h5>
+                <div class="formula-box">
+                    =IF(logical_test, value_if_true, value_if_false)
+                </div>
+                <ul>
+                    <li><strong>logical_test:</strong> A condition that evaluates to TRUE or FALSE</li>
+                    <li><strong>value_if_true:</strong> The result if the condition is TRUE</li>
+                    <li><strong>value_if_false:</strong> The result if the condition is FALSE</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5>Child Care Business Example:</h5>
+                <p>Let's say you want to flag expenses over $500 for review:</p>
+                <div class="formula-box">
+                    =IF(C2>500, "Review Required", "Approved")
+                </div>
+                <p>This formula checks if the value in cell C2 is greater than 500. If it is, it returns "Review Required"; otherwise, it returns "Approved".</p>
+                
+                <h5>Nested IF Example:</h5>
+                <p>You can categorize enrollment status based on payment amounts:</p>
+                <div class="formula-box">
+                    =IF(D2=0, "Not Enrolled", IF(D2<200, "Part-Time", "Full-Time"))
+                </div>
+                <p>This formula first checks if the payment is 0 ("Not Enrolled"). If not, it checks if payment is less than 200 ("Part-Time"). Otherwise, it assigns "Full-Time".</p>
+            </div>
+            
+            <div class="quiz-container">
+                <h5>Quick Quiz: IF Function</h5>
+                <p>You want to create a formula that displays "Under Ratio" if the number of children exceeds the staff ratio limit, and "Compliant" otherwise. If the child count is in cell B5 and the maximum allowed is in cell C5, what formula would you use?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q3" value="a"> =IF(B5>C5, "Under Ratio", "Compliant")</label>
+                    <label><input type="radio" name="q3" value="b"> =IF(B5<C5, "Under Ratio", "Compliant")</label>
+                    <label><input type="radio" name="q3" value="c"> =IF(B5=C5, "Under Ratio", "Compliant")</label>
+                </div>
+                <button class="btn" onclick="checkAnswer('q3', 'a')">Check Answer</button>
+                <div class="quiz-feedback" id="feedback-q3"></div>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h4>Real-World Applications:</h4>
+            <ul>
+                <li><strong>Expense Monitoring:</strong> Automatically flag expenses over budget or requiring review</li>
+                <li><strong>Revenue Analysis:</strong> Track tuition by age group or program</li>
+                <li><strong>Staff Management:</strong> Monitor staff-to-child ratios</li>
+                <li><strong>Subsidy Tracking:</strong> Separate and total different funding sources</li>
+            </ul>
+        </div>
+        
+        <h4>Practice Activity</h4>
+        <p>Apply what you've learned with this guided practice:</p>
+        <ol>
+            <li>Open your sample worksheet</li>
+            <li>In cell G2, create a formula that calculates the difference between actual income (column E) and projected income (column F)</li>
+            <li>In cell H2, create an IF statement that displays "Below Target" if actual income is less than projected, "On Target" if equal, and "Above Target" if greater</li>
+            <li>Use SUMIFS to calculate the total expense for "Supplies" category in January</li>
+        </ol>
+    </div>
+    
+    <button class="collapsible"><span class="module-icon">📈</span> Module 2: Reporting & Dashboards (55 minutes)</button>
+    <div class="content">
+        <div class="module-header">
+            <h3>Reporting & Dashboards</h3>
+        </div>
+        
+        <p>Creating professional reports and dashboards is essential for monitoring your business performance and meeting regulatory requirements. In this module, you'll learn how to transform your data into meaningful insights.</p>
+        
+        <h4>Key Skills You'll Learn:</h4>
+        <ul>
+            <li>PivotTables for summarizing data</li>
+            <li>Basic Charts (column, bar, pie)</li>
+            <li>Creating professional reports</li>
+        </ul>
+        
+        <button class="collapsible">PivotTables Basics</button>
+        <div class="content">
+            <p>PivotTables are powerful tools that allow you to summarize large amounts of data quickly. They're perfect for analyzing enrollment, attendance, and financial data.</p>
+            
+            <div class="highlight-box">
+                <h5>Creating a PivotTable:</h5>
+                <ol>
+                    <li>Select your data range (include headers)</li>
+                    <li>Go to Insert > PivotTable</li>
+                    <li>Choose where to place the PivotTable</li>
+                    <li>Drag fields to the appropriate areas (Rows, Columns, Values, Filters)</li>
+                </ol>
+            </div>
+            
+            <div class="example">
+                <h5>Child Care Business Example:</h5>
+                <p>Creating a monthly revenue summary by classroom:</p>
+                <ol>
+                    <li>Select data with columns for Date, Child Name, Classroom, and Payment Amount</li>
+                    <li>Create a PivotTable</li>
+                    <li>Drag "Date" field to Rows area and group by Month</li>
+                    <li>Drag "Classroom" field to Columns area</li>
+                    <li>Drag "Payment Amount" field to Values area (it should sum by default)</li>
+                </ol>
+                <p>Result: A table showing total payments for each classroom by month</p>
+            </div>
+            
+            <div class="quiz-container">
+                <h5>Quick Quiz: PivotTables</h5>
+                <p>Which PivotTable field area would you use to show different age groups as the rows of your report?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q4" value="a"> Values</label>
+                    <label><input type="radio" name="q4" value="b"> Columns</label>
+                    <label><input type="radio" name="q4" value="c"> Rows</label>
+                    <label><input type="radio" name="q4" value="d"> Filters</label>
+                </div>
+                <button class="btn" onclick="checkAnswer('q4', 'c')">Check Answer</button>
+                <div class="quiz-feedback" id="feedback-q4"></div>
+            </div>
+        </div>
+        
+        <button class="collapsible">Creating Effective Charts</button>
+        <div class="content">
+            <p>Visual representations of your data make it easier to identify trends and communicate information to stakeholders.</p>
+            
+            <div class="highlight-box">
+                <h5>Chart Types for Child Care Businesses:</h5>
+                <ul>
+                    <li><strong>Column Charts:</strong> Compare values across categories (e.g., monthly revenue by classroom)</li>
+                    <li><strong>Line Charts:</strong> Show trends over time (e.g., enrollment numbers throughout the year)</li>
+                    <li><strong>Pie Charts:</strong> Show proportions of a whole (e.g., expense breakdown by category)</li>
+                    <li><strong>Bar Charts:</strong> Compare values across categories, especially with longer category names</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5>Creating a Monthly Revenue Chart:</h5>
+                <ol>
+                    <li>Select your PivotTable data</li>
+                    <li>Go to Insert > Recommended Charts (or select a specific chart type)</li>
+                    <li>Customize the chart title, axes, and legend</li>
+                    <li>Consider adding data labels for clarity</li>
+                </ol>
+                <p>Pro Tip: Right-click on a chart element to format it specifically (e.g., change colors, fonts, or add data labels)</p>
+            </div>
+            
+            <div class="quiz-container">
+                <h5>Quick Quiz: Charts</h5>
+                <p>Which chart type would be best for showing how your monthly expenses are divided among different categories (staff, supplies, food, rent, etc.)?</p>
+                <div class="quiz-options">
+                    <label><input type="radio" name="q5" value="a"> Line chart</label>
+                    <label><input type="radio" name="q5" value="b"> Pie chart</label>
+                    <label><input type="radio" name="q5" value="c"> Scatter plot</label>
+                </div>
+                <button class="btn" onclick="checkAnswer('q5', 'b')">Check Answer</button>
+                <div class="quiz-feedback" id="feedback-q5"></div>
+            </div>
+        </div>
+        
+        <button class="collapsible">Building Professional Reports</button>
+        <div class="content">
+            <p>Creating professional reports helps you communicate effectively with stakeholders, including licensing agencies, partners, and staff.</p>
+            
+            <div class="highlight-box">
+                <h5>Report Elements:</h5>
+                <ul>
+                    <li><strong>Header:</strong> Include your business name, report title, and date range</li>
+                    <li><strong>Summary Data:</strong> Key metrics and totals</li>
+                    <li><strong>Visualizations:</strong> Charts that illustrate important trends</li>
+                    <li><strong>Detailed Tables:</strong> Organized data with clear headings</li>
+                    <li><strong>Footer:</strong> Page numbers and any necessary disclaimers</li>
+                </ul>
+            </div>
+            
+            <div class="example">
+                <h5>Child Care Licensing Report Example:</h5>
+                <p>Creating a quarterly attendance and ratio compliance report:</p>
+                <ol>
+                    <li>Use PivotTables to summarize attendance by classroom</li>
+                    <li>Create charts showing average daily attendance</li>
+                    <li>Use conditional formatting to highlight any ratio concerns</li>
+                    <li>Include staff qualification summary</li>
+                    <li>Set up print area and page setup for professional printing</li>
+                </ol>
+            </div>
+        </div>
+        
+        <div class="highlight-box">
+            <h4>Real-World Applications:</h4>
+            <ul>
+                <li><strong>Licensing Reports:</strong> Attendance, ratios, and compliance metrics</li>
+                <li><strong>Financial Reviews:</strong> Revenue vs. expenses, budget tracking</li>
+                <li><strong>Parent Communications:</strong> Visualizing program activities and outcomes</li>
+                <li><strong>Business Planning:</strong> Trend analysis and forecasting</li>
+            </ul>
+        </div>
+        
+        <h4>Practice Activity</h4>
+        <p>Let's apply what you've learned:</p>
+        <ol>
+            <li>Create a PivotTable summarizing monthly revenue by classroom</li>
+            <li>Build a column chart showing this information visually</li>
+            <li>Add a second chart showing the breakdown of expenses by category</li>
+            <li>Format both charts with appropriate titles and labels</li>
+            <li>Arrange these elements into a professional-looking report</li>
+        </ol>
+    </div>
+    
+    <button class="collapsible"><span class="module-icon">🧰</span> Resources & Materials</button>
+    <div class="content">
+        <h3>Resources & Materials</h3>
+        
+        <p>Below are resources to help you apply what you've learned in this training:</p>
+        
+        <h4>Excel Formula Cheat Sheet</h4>
+        <div class="highlight-box">
+            <h5>Absolute & Relative References:</h5>
+            <ul>
+                <li><strong>A1</strong> - Relative reference (changes when copied)</li>
+                <li><strong>$A$1</strong> - Absolute reference (stays fixed when copied)</li>
+                <li><strong>$A1</strong> - Column absolute, row relative</li>
+                <li><strong>A$1</strong> - Column relative, row absolute</li>
+                <li><strong>Keyboard shortcut:</strong> F4 key cycles through reference types</li>
+            </ul>
+            
+            <h5>SUMIFS Formula:</h5>
+            <div class="formula-box">
+                =SUMIFS(sum_range, criteria_range1, criteria1, [criteria_range2, criteria2], ...)
+            </div>
+            
+            <h5>Common SUMIFS Criteria Examples:</h5>
+            <ul>
+                <li><strong>Exact match:</strong> "Toddler"</li>
+                <li><strong>Greater than:</strong> ">250"</li>
+                <li><strong>Less than or equal:</strong> "<=100"</li>
+                <li><strong>Date range:</strong> ">=1/1/2025", "<=3/31/2025"</li>
+                <li><strong>Wildcard match:</strong> "*partial*" (contains "partial")</li>
+            </ul>
+            
+            <h5>IF Formula:</h5>
+            <div class="formula-box">
+                =IF(logical_test, value_if_true, value_if_false)
+            </div>
+            
+            <h5>Nested IF Example:</h5>
+            <div class="formula-box">
+                =IF(A1>90, "Excellent", IF(A1>75, "Good", IF(A1>60, "Satisfactory", "Needs Improvement")))
+            </div>
+            
+            <h5>PivotTable Tips:</h5>
+            <ul>
+                <li>Right-click on a value field for additional calculation options (Sum, Average, Count, etc.)</li>
+                <li>Group date fields by Month, Quarter, or Year</li>
+                <li>Use Filters to focus on specific data subsets</li>
+                <li>Refresh your PivotTable after updating source data (right-click > Refresh)</li>
+                <li>Create Slicers for interactive filtering (PivotTable Tools > Analyze > Insert Slicer)</li>
+            </ul>
+        </div>
+        
+        <h4>How to Choose the Right Formula</h4>
+        <div class="example">
+            <p>Use this decision tree to help select the right formula:</p>
+            <ul>
+                <li><strong>Need to add up values based on conditions?</strong> → Use SUMIFS</li>
+                <li><strong>Need to count items based on conditions?</strong> → Use COUNTIFS</li>
+                <li><strong>Need to make decisions or categorize data?</strong> → Use IF</li>
+                <li><strong>Need to look up a value from a table?</strong> → Use VLOOKUP or XLOOKUP</li>
+                <li><strong>Need to analyze trends over time?</strong> → Use PivotTable with dates grouped by month/quarter</li>
+                <li><strong>Need to find data that meets specific criteria?</strong> → Use Filter or Advanced Filter</li>
+            </ul>
+        </div>
+        
+<footer>
+    &copy; 2025 GECCA — All rights reserved.
+</footer>
+
+<!-- ▸▸ Added script ◂◂ -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  // Collapsible behaviour
+  const collapsibles = document.querySelectorAll('.collapsible');
+  collapsibles.forEach(btn => {
+    btn.addEventListener('click', () => {
+      btn.classList.toggle('active');
+      const panel = btn.nextElementSibling;
+      if (panel.style.maxHeight) {
+        panel.style.maxHeight = null;
+      } else {
+        panel.style.maxHeight = panel.scrollHeight + 'px';
+      }
+      updateProgress();
+    });
+  });
+
+  // Progress bar
+  function updateProgress() {
+    const total = collapsibles.length;
+    const open = [...collapsibles].filter(b => b.classList.contains('active')).length;
+    const percent = (open / total) * 100;
+    const bar = document.getElementById('progressBar');
+    if (bar) bar.style.width = percent + '%';
+  }
+
+// Adjust open panels height on window resize
+window.addEventListener('resize', () => {
+  collapsibles.forEach(btn => {
+    if (btn.classList.contains('active')) {
+      const panel = btn.nextElementSibling;
+      panel.style.maxHeight = panel.scrollHeight + 'px';
+    }
+  });
+});
+});
+
+// Quiz feedback
+function checkAnswer(questionId, correctValue) {
+  const options = document.querySelectorAll(`input[name="${questionId}"]`);
+  const chosen = [...options].find(o => o.checked)?.value;
+
+  const box = document.getElementById('feedback-' + questionId);
+  if (!box) return;
+
+  if (!chosen) {
+    box.textContent = 'Please choose an option.';
+    box.className = 'quiz-feedback incorrect';
+  } else if (chosen === correctValue) {
+    box.textContent = '✅ Correct!';
+    box.className = 'quiz-feedback correct';
+  } else {
+    box.textContent = '❌ Not quite – try again.';
+    box.className = 'quiz-feedback incorrect';
+  }
+  box.style.display = 'block';
+  // Adjust parent panel height after feedback is shown
+  const parentPanel = box.closest('.content');
+  if (parentPanel && parentPanel.style.maxHeight) {
+    parentPanel.style.maxHeight = parentPanel.scrollHeight + 'px';
+  }
+
+}
+</script>
+</body>
+</html>
