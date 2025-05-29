@@ -1,0 +1,1346 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Safety Training: Protecting Yourself from Corporate Surveillance</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .card-shadow { box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .section-border { border-left: 4px solid #667eea; }
+        .highlight-box { background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%); }
+        .warning-box { background: linear-gradient(135deg, #ffeaa7 0%, #fab1a0 100%); }
+        .success-box { background: linear-gradient(135deg, #74b9ff 0%, #0984e3 100%); }
+        .action-box { background: linear-gradient(135deg, #fd79a8 0%, #e84393 100%); }
+        .tool-card { transition: transform 0.3s ease; }
+        .tool-card:hover { transform: translateY(-5px); }
+        .progress-bar { width: 100%; height: 8px; background: #e0e7ff; border-radius: 4px; }
+        .progress-fill { height: 100%; background: linear-gradient(90deg, #667eea, #764ba2); border-radius: 4px; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800 leading-relaxed">
+    
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center">
+                <h1 class="text-4xl font-bold mb-4">
+                    <i class="fas fa-shield-alt mr-3"></i>
+                    Digital Safety Training
+                </h1>
+                <p class="text-xl mb-6">Protecting Yourself from Corporate Surveillance</p>
+                <div class="inline-flex items-center bg-white bg-opacity-20 rounded-full px-6 py-3">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span class="font-medium">Training Duration: 60 minutes</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Progress Tracker -->
+    <div class="bg-white border-b border-gray-200 py-4 sticky top-0 z-10">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="flex items-center justify-between mb-2">
+                <span class="text-sm font-medium text-gray-600">Training Progress</span>
+                <span class="text-sm font-medium text-gray-600">0% Complete</span>
+            </div>
+            <div class="progress-bar">
+                <div class="progress-fill" style="width: 0%" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <main class="max-w-6xl mx-auto px-6 py-8">
+
+        <!-- Module Overview -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-eye text-blue-600 mr-3"></i>
+                    Welcome to Digital Safety Training
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <p class="text-lg mb-6 text-gray-700">
+                            In today's digital landscape, the greatest threat to your privacy doesn't come from hackers or criminals—it comes from the corporations you interact with daily. This training will empower you to protect your digital identity and reclaim control over your personal data.
+                        </p>
+                        <div class="warning-box text-white p-4 rounded-lg mb-6">
+                            <i class="fas fa-exclamation-triangle mr-2"></i>
+                            <strong>Critical Reality:</strong> Your digital footprint is being tracked, analyzed, and monetized by corporations every second of every day.
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">What You'll Learn:</h3>
+                        <ul class="space-y-3">
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <span>How corporations track and profile your digital behavior</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <span>Techniques to protect your digital identity</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <span>Tools and strategies to prevent tracking</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <span>How to fight back and reclaim your digital agency</span>
+                            </li>
+                            <li class="flex items-start">
+                                <i class="fas fa-check-circle text-green-500 mr-3 mt-1"></i>
+                                <span>Practical steps to stop feeding the surveillance machine</span>
+                            </li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 1: Understanding Corporate Surveillance -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-search text-red-600 mr-3"></i>
+                    1. Understanding Corporate Surveillance
+                </h2>
+                
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-red-50 p-6 rounded-lg border-l-4 border-red-400">
+                        <h3 class="text-xl font-semibold mb-3 text-red-800">
+                            <i class="fas fa-database mr-2"></i>
+                            Data Collection
+                        </h3>
+                        <p class="text-red-700">Companies collect vast amounts of personal data including browsing habits, location data, purchase history, social connections, and even biometric information.</p>
+                    </div>
+                    <div class="bg-orange-50 p-6 rounded-lg border-l-4 border-orange-400">
+                        <h3 class="text-xl font-semibold mb-3 text-orange-800">
+                            <i class="fas fa-chart-line mr-2"></i>
+                            Behavioral Analysis
+                        </h3>
+                        <p class="text-orange-700">Sophisticated algorithms analyze your behavior patterns to predict your actions, preferences, and vulnerabilities for targeted manipulation.</p>
+                    </div>
+                    <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-400">
+                        <h3 class="text-xl font-semibold mb-3 text-purple-800">
+                            <i class="fas fa-dollar-sign mr-2"></i>
+                            Data Monetization
+                        </h3>
+                        <p class="text-purple-700">Your personal data is packaged and sold to advertisers, data brokers, and other third parties without your explicit consent or fair compensation.</p>
+                    </div>
+                </div>
+
+                <div class="highlight-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-lightbulb mr-2"></i>
+                        Key Insight: The Surveillance Capitalism Model
+                    </h3>
+                    <p class="mb-4">Your attention and personal data are the products being sold. You are not the customer—you are the commodity. Tech companies offer "free" services in exchange for unprecedented access to your personal information.</p>
+                    <ul class="space-y-2">
+                        <li><i class="fas fa-arrow-right mr-2"></i>Google processes over 8.5 billion searches per day</li>
+                        <li><i class="fas fa-arrow-right mr-2"></i>Facebook tracks users across 8.4 million websites</li>
+                        <li><i class="fas fa-arrow-right mr-2"></i>Data brokers maintain profiles on virtually every American adult</li>
+                    </ul>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-tasks mr-2"></i>
+                        Exercise 1: Personal Data Audit
+                    </h3>
+                    <p class="mb-4">Take 5 minutes to reflect on your digital footprint:</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Data You Voluntarily Share:</h4>
+                            <ul class="text-sm space-y-1 text-gray-700">
+                                <li>• Social media posts and interactions</li>
+                                <li>• Search queries and browsing history</li>
+                                <li>• Purchase history and payment data</li>
+                                <li>• Location check-ins and GPS data</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Data Collected Without Awareness:</h4>
+                            <ul class="text-sm space-y-1 text-gray-700">
+                                <li>• Mouse movements and scroll patterns</li>
+                                <li>• Time spent on specific content</li>
+                                <li>• Device fingerprinting data</li>
+                                <li>• Cross-device tracking correlation</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 2: Identity Protection Strategies -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-user-shield text-blue-600 mr-3"></i>
+                    2. Identity Protection Strategies
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-mask mr-2"></i>
+                            Digital Identity Compartmentalization
+                        </h3>
+                        <p class="mb-4 text-gray-700">Create separate digital identities for different aspects of your life to prevent comprehensive profiling.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded border-l-4 border-blue-400">
+                                <h4 class="font-semibold text-blue-800 mb-2">Professional Identity</h4>
+                                <p class="text-blue-700 text-sm">Use one set of accounts for work-related activities, LinkedIn, professional email.</p>
+                            </div>
+                            <div class="bg-green-50 p-4 rounded border-l-4 border-green-400">
+                                <h4 class="font-semibold text-green-800 mb-2">Personal Identity</h4>
+                                <p class="text-green-700 text-sm">Separate accounts for personal social media, shopping, entertainment.</p>
+                            </div>
+                            <div class="bg-purple-50 p-4 rounded border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-800 mb-2">Anonymous Identity</h4>
+                                <p class="text-purple-700 text-sm">Use for sensitive browsing, research, or activities requiring privacy.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-envelope mr-2"></i>
+                            Email Strategy & Aliases
+                        </h3>
+                        <p class="mb-4 text-gray-700">Your email address is a primary tracking identifier. Implement a strategic approach to email management.</p>
+                        
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Use email aliases</strong> for different services
+                                    <p class="text-sm text-gray-600">services like ProtonMail, Tutanota offer unlimited aliases</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Disposable emails</strong> for one-time registrations
+                                    <p class="text-sm text-gray-600">Use services like 10MinuteMail or Guerrilla Mail</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check text-green-500 mr-3 mt-1"></i>
+                                <div>
+                                    <strong>Encrypted email providers</strong> for sensitive communications
+                                    <p class="text-sm text-gray-600">ProtonMail, Tutanota, StartMail offer end-to-end encryption</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-key mr-2"></i>
+                        Password & Authentication Security
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Essential Practices:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Use a password manager (Bitwarden, 1Password)</li>
+                                <li>• Enable 2FA on all important accounts</li>
+                                <li>• Use unique passwords for every account</li>
+                                <li>• Regularly audit and update passwords</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Advanced Techniques:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Use hardware security keys (YubiKey)</li>
+                                <li>• Implement TOTP over SMS when possible</li>
+                                <li>• Consider passkeys for supported services</li>
+                                <li>• Use different security questions for each account</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-tasks mr-2"></i>
+                        Exercise 2: Identity Protection Checklist
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Immediate Actions (Next 7 Days):</h4>
+                            <ul class="text-sm space-y-1">
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Set up password manager</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Enable 2FA on primary accounts</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Create encrypted email account</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Audit existing accounts</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Short-term Goals (Next 30 Days):</h4>
+                            <ul class="text-sm space-y-1">
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Implement email aliases</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Separate digital identities</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Update all passwords</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Review privacy settings</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Long-term Strategy (Next 90 Days):</h4>
+                            <ul class="text-sm space-y-1">
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Migrate to privacy-focused services</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Implement compartmentalization</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Regular security audits</li>
+                                <li class="flex items-center"><input type="checkbox" class="mr-2"> Educate family/friends</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 3: Tracking Prevention Techniques -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-ban text-red-600 mr-3"></i>
+                    3. Tracking Prevention Techniques
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-globe mr-2"></i>
+                            Browser-Based Protection
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Privacy-Focused Browsers</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li><strong>Firefox:</strong> Enhanced tracking protection, customizable privacy settings</li>
+                                    <li><strong>Brave:</strong> Built-in ad/tracker blocking, privacy by default</li>
+                                    <li><strong>Tor Browser:</strong> Maximum anonymity, routes through Tor network</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">Essential Browser Extensions</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li><strong>uBlock Origin:</strong> Advanced ad and tracker blocking</li>
+                                    <li><strong>Privacy Badger:</strong> Learns and blocks trackers</li>
+                                    <li><strong>Ghostery:</strong> Real-time tracker visualization</li>
+                                    <li><strong>ClearURLs:</strong> Removes tracking parameters from URLs</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-network-wired mr-2"></i>
+                            Network-Level Protection
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">VPN Services</h4>
+                                <p class="text-sm text-purple-700 mb-2">Essential for hiding your IP address and location from trackers.</p>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li><strong>Recommended:</strong> Mullvad, ProtonVPN, IVPN</li>
+                                    <li><strong>Avoid:</strong> Free VPNs that often sell your data</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-orange-800 mb-2">DNS Protection</h4>
+                                <ul class="text-sm text-orange-700 space-y-1">
+                                    <li><strong>Quad9:</strong> 9.9.9.9 - Blocks malicious domains</li>
+                                    <li><strong>Cloudflare:</strong> 1.1.1.1 - Fast and privacy-focused</li>
+                                    <li><strong>NextDNS:</strong> Customizable blocking lists</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-mobile-alt mr-2"></i>
+                        Mobile Device Protection
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">iOS Protection:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Enable "Limit Ad Tracking" in Privacy settings</li>
+                                <li>• Turn off location services for unnecessary apps</li>
+                                <li>• Disable app tracking across other apps</li>
+                                <li>• Use private browsing mode by default</li>
+                                <li>• Review and limit app permissions regularly</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Android Protection:</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Disable "Ads Personalization" in Google settings</li>
+                                <li>• Turn off location history and web activity</li>
+                                <li>• Use alternative app stores (F-Droid)</li>
+                                <li>• Install privacy-focused apps</li>
+                                <li>• Consider custom ROMs (LineageOS)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-cogs mr-2"></i>
+                        Advanced Tracking Prevention Tools
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-4">
+                        <div class="tool-card bg-white p-4 rounded-lg border">
+                            <h4 class="font-semibold mb-2">
+                                <i class="fas fa-user-secret mr-2 text-blue-500"></i>
+                                Browser Profiles
+                            </h4>
+                            <p class="text-sm text-gray-600">Create separate browser profiles for different activities to prevent cross-contamination of tracking data.</p>
+                        </div>
+                        <div class="tool-card bg-white p-4 rounded-lg border">
+                            <h4 class="font-semibold mb-2">
+                                <i class="fas fa-random mr-2 text-green-500"></i>
+                                User Agent Spoofing
+                            </h4>
+                            <p class="text-sm text-gray-600">Randomize your browser fingerprint to make tracking more difficult through user agent rotation.</p>
+                        </div>
+                        <div class="tool-card bg-white p-4 rounded-lg border">
+                            <h4 class="font-semibold mb-2">
+                                <i class="fas fa-cookie-bite mr-2 text-red-500"></i>
+                                Cookie Management
+                            </h4>
+                            <p class="text-sm text-gray-600">Automatically delete cookies, use containers, and implement strict cookie policies.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 4: Behavioral Analysis & Manipulation -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-brain text-purple-600 mr-3"></i>
+                    4. Behavioral Analysis & Manipulation
+                </h2>
+                
+                <div class="highlight-box text-white p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-exclamation-triangle mr-2"></i>
+                        The Psychology of Digital Manipulation
+                    </h3>
+                    <p class="mb-4">Corporations use sophisticated psychological techniques to influence your behavior, purchasing decisions, and even political views. Understanding these methods is crucial for maintaining your autonomy.</p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-target mr-2"></i>
+                            Common Manipulation Techniques
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                                <h4 class="font-semibold text-red-800 mb-2">Algorithmic Curation</h4>
+                                <p class="text-red-700 text-sm">Content feeds are designed to maximize engagement, often promoting divisive or emotionally triggering content to keep you scrolling.</p>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-semibold text-orange-800 mb-2">Personalized Pricing</h4>
+                                <p class="text-orange-700 text-sm">Companies adjust prices based on your perceived willingness to pay, using your browsing history and personal data.</p>
+                            </div>
+                            
+                            <div class="bg-yellow-50 p-4 rounded-lg border-l-4 border-yellow-400">
+                                <h4 class="font-semibold text-yellow-800 mb-2">Filter Bubbles</h4>
+                                <p class="text-yellow-700 text-sm">Algorithms create echo chambers by showing you content that confirms your existing beliefs, limiting exposure to diverse perspectives.</p>
+                            </div>
+                            
+                            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-800 mb-2">Behavioral Addiction</h4>
+                                <p class="text-purple-700 text-sm">Variable reward schedules and notification systems are designed to create dependency and compulsive usage patterns.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-shield-alt mr-2"></i>
+                            Defense Strategies
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">Mindful Consumption</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li>• Set specific times for social media use</li>
+                                    <li>• Use website blockers during focused work</li>
+                                    <li>• Turn off non-essential notifications</li>
+                                    <li>• Practice digital detox periods</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">Critical Thinking</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li>• Question the source of recommended content</li>
+                                    <li>• Seek diverse perspectives on important topics</li>
+                                    <li>• Fact-check information before sharing</li>
+                                    <li>• Be aware of emotional manipulation tactics</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-purple-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-purple-800 mb-2">Alternative Platforms</h4>
+                                <ul class="text-sm text-purple-700 space-y-1">
+                                    <li>• Use decentralized social networks (Mastodon)</li>
+                                    <li>• Choose privacy-respecting search engines</li>
+                                    <li>• Support independent media sources</li>
+                                    <li>• Engage with local communities offline</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-microscope mr-2"></i>
+                        Exercise 3: Behavioral Analysis Awareness
+                    </h3>
+                    <p class="mb-4">Spend 10 minutes reflecting on how your digital behavior might be influenced:</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Self-Assessment Questions:</h4>
+                            <ul class="text-sm space-y-2 text-gray-700">
+                                <li>• How much time do you spend on social media daily?</li>
+                                <li>• Do you feel compelled to check notifications immediately?</li>
+                                <li>• Have you noticed ads for items you only thought about?</li>
+                                <li>• Do you find yourself scrolling mindlessly?</li>
+                                <li>• Have your opinions been influenced by social media?</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Action Planning:</h4>
+                            <ul class="text-sm space-y-2 text-gray-700">
+                                <li>• Identify 3 apps that consume most of your time</li>
+                                <li>• List notifications you can safely disable</li>
+                                <li>• Plan specific times for digital activities</li>
+                                <li>• Choose alternative sources for news/information</li>
+                                <li>• Set boundaries for online engagement</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 5: Corporate Ethics & Your Rights -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-balance-scale text-green-600 mr-3"></i>
+                    5. Corporate Ethics & Your Rights
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-gavel mr-2"></i>
+                            Your Legal Rights
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-blue-800 mb-2">GDPR Rights (EU)</h4>
+                                <ul class="text-sm text-blue-700 space-y-1">
+                                    <li><strong>Right to Access:</strong> Request all data collected about you</li>
+                                    <li><strong>Right to Rectification:</strong> Correct inaccurate personal data</li>
+                                    <li><strong>Right to Erasure:</strong> Request deletion of your data</li>
+                                    <li><strong>Right to Portability:</strong> Transfer data between services</li>
+                                    <li><strong>Right to Object:</strong> Opt-out of processing for marketing</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg">
+                                <h4 class="font-semibold text-green-800 mb-2">CCPA Rights (California)</h4>
+                                <ul class="text-sm text-green-700 space-y-1">
+                                    <li><strong>Right to Know:</strong> What personal info is collected</li>
+                                    <li><strong>Right to Delete:</strong> Request deletion of personal info</li>
+                                    <li><strong>Right to Opt-Out:</strong> Sale of personal information</li>
+                                    <li><strong>Right to Non-Discrimination:</strong> Equal service regardless of privacy choices</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-exclamation-circle mr-2"></i>
+                            Corporate Violations
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                                <h4 class="font-semibold text-red-800 mb-2">Dark Patterns</h4>
+                                <p class="text-red-700 text-sm mb-2">Deceptive user interfaces designed to trick users into unintended actions.</p>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Hidden costs and subscription traps</li>
+                                    <li>• Complicated cancellation processes</li>
+                                    <li>• Misleading privacy settings</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-semibold text-orange-800 mb-2">Data Misuse</h4>
+                                <p class="text-orange-700 text-sm mb-2">Companies often violate their own privacy policies.</p>
+                                <ul class="text-sm text-orange-700 space-y-1">
+                                    <li>• Sharing data without explicit consent</li>
+                                    <li>• Using data for purposes beyond stated use</li>
+                                    <li>• Retaining data longer than necessary</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-fist-raised mr-2"></i>
+                        How to Exercise Your Rights
+                    </h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Data Access Requests</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Submit formal data access requests</li>
+                                <li>• Use automated tools like DataViewer</li>
+                                <li>• Document all communications</li>
+                                <li>• Follow up if companies don't respond</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Deletion Requests</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Request complete data deletion</li>
+                                <li>• Verify deletion was completed</li>
+                                <li>• Check for data retention policies</li>
+                                <li>• Monitor for re-collection</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Legal Action</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• File complaints with regulators</li>
+                                <li>• Join class action lawsuits</li>
+                                <li>• Report violations to authorities</li>
+                                <li>• Support privacy advocacy groups</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-file-alt mr-2"></i>
+                        Privacy Policy Analysis Tool
+                    </h3>
+                    <p class="mb-4">Use this checklist when reviewing privacy policies:</p>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Red Flags to Watch For:</h4>
+                            <ul class="text-sm space-y-1">
+                                <li class="flex items-center"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Vague language about data use</li>
+                                <li class="flex items-center"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Broad data sharing permissions</li>
+                                <li class="flex items-center"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>No clear deletion procedures</li>
+                                <li class="flex items-center"><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Automatic consent assumptions</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Green Flags to Look For:</h4>
+                            <ul class="text-sm space-y-1">
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Clear, specific data use descriptions</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Easy opt-out mechanisms</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>Data minimization principles</li>
+                                <li class="flex items-center"><i class="fas fa-check-circle text-green-500 mr-2"></i>User control over data sharing</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 6: Fighting Back: Tools & Techniques -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-fist-raised text-red-600 mr-3"></i>
+                    6. Fighting Back: Tools & Techniques
+                </h2>
+                
+                <div class="highlight-box text-white p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-rocket mr-2"></i>
+                        Proactive Digital Resistance
+                    </h3>
+                    <p>Moving beyond defense to active resistance. These tools and techniques help you fight back against corporate surveillance and reclaim your digital sovereignty.</p>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="tool-card bg-gradient-to-br from-blue-50 to-blue-100 p-6 rounded-lg border border-blue-200">
+                        <h3 class="text-lg font-semibold mb-3 text-blue-800">
+                            <i class="fas fa-bug mr-2"></i>
+                            Data Poisoning
+                        </h3>
+                        <p class="text-blue-700 text-sm mb-3">Deliberately introduce noise into your data profile to make tracking less effective.</p>
+                        <ul class="text-xs text-blue-600 space-y-1">
+                            <li>• Use browser extensions like TrackMeNot</li>
+                            <li>• Perform random searches to confuse algorithms</li>
+                            <li>• Click on irrelevant ads occasionally</li>
+                            <li>• Use automation tools for fake activity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-card bg-gradient-to-br from-green-50 to-green-100 p-6 rounded-lg border border-green-200">
+                        <h3 class="text-lg font-semibold mb-3 text-green-800">
+                            <i class="fas fa-exchange-alt mr-2"></i>
+                            Platform Migration
+                        </h3>
+                        <p class="text-green-700 text-sm mb-3">Move from surveillance platforms to privacy-respecting alternatives.</p>
+                        <ul class="text-xs text-green-600 space-y-1">
+                            <li>• Google → Startpage, DuckDuckGo</li>
+                            <li>• Gmail → ProtonMail, Tutanota</li>
+                            <li>• WhatsApp → Signal, Element</li>
+                            <li>• YouTube → PeerTube, Odysee</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="tool-card bg-gradient-to-br from-purple-50 to-purple-100 p-6 rounded-lg border border-purple-200">
+                        <h3 class="text-lg font-semibold mb-3 text-purple-800">
+                            <i class="fas fa-users mr-2"></i>
+                            Community Action
+                        </h3>
+                        <p class="text-purple-700 text-sm mb-3">Organize collective action for greater impact against surveillance.</p>
+                        <ul class="text-xs text-purple-600 space-y-1">
+                            <li>• Join privacy advocacy groups</li>
+                            <li>• Organize data deletion campaigns</li>
+                            <li>• Support privacy legislation</li>
+                            <li>• Educate friends and family</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-tools mr-2"></i>
+                            Advanced Technical Tools
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold mb-2">
+                                    <i class="fas fa-code mr-2 text-blue-500"></i>
+                                    Browser Automation
+                                </h4>
+                                <p class="text-sm text-gray-700 mb-2">Use scripts to automate privacy-protecting behaviors:</p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Selenium scripts for automated GDPR requests</li>
+                                    <li>• Puppeteer for automated account deletion</li>
+                                    <li>• Custom user scripts for tracker blocking</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg border">
+                                <h4 class="font-semibold mb-2">
+                                    <i class="fas fa-server mr-2 text-green-500"></i>
+                                    Self-Hosting Solutions
+                                </h4>
+                                <p class="text-sm text-gray-700 mb-2">Take control by hosting your own services:</p>
+                                <ul class="text-xs text-gray-600 space-y-1">
+                                    <li>• Nextcloud for file storage and collaboration</li>
+                                    <li>• Matrix for messaging and communication</li>
+                                    <li>• Pi-hole for network-wide ad blocking</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-bullhorn mr-2"></i>
+                            Advocacy & Education
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-semibold text-orange-800 mb-2">Spread Awareness</h4>
+                                <ul class="text-sm text-orange-700 space-y-1">
+                                    <li>• Share privacy tips on social media</li>
+                                    <li>• Organize privacy workshops</li>
+                                    <li>• Create educational content</li>
+                                    <li>• Support journalism about surveillance</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-red-50 p-4 rounded-lg border-l-4 border-red-400">
+                                <h4 class="font-semibold text-red-800 mb-2">Political Action</h4>
+                                <ul class="text-sm text-red-700 space-y-1">
+                                    <li>• Contact representatives about privacy laws</li>
+                                    <li>• Vote for privacy-supporting candidates</li>
+                                    <li>• Support organizations like EFF, ACLU</li>
+                                    <li>• Participate in digital rights campaigns</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="success-box text-white p-6 rounded-lg">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-calendar-alt mr-2"></i>
+                        30-Day Digital Resistance Plan
+                    </h3>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Week 1: Assessment</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Audit current digital footprint</li>
+                                <li>• Identify worst privacy violators</li>
+                                <li>• Research alternative services</li>
+                                <li>• Set up basic protection tools</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Week 2: Migration</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Switch to privacy-focused browser</li>
+                                <li>• Create encrypted email account</li>
+                                <li>• Install essential extensions</li>
+                                <li>• Configure VPN service</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Week 3: Data Cleanup</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Submit data deletion requests</li>
+                                <li>• Close unnecessary accounts</li>
+                                <li>• Update privacy settings</li>
+                                <li>• Implement compartmentalization</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Week 4: Advanced Tactics</h4>
+                            <ul class="text-sm space-y-1">
+                                <li>• Set up data poisoning tools</li>
+                                <li>• Join advocacy organizations</li>
+                                <li>• Educate others about privacy</li>
+                                <li>• Plan long-term strategy</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 7: Reclaiming Digital Agency -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-crown text-yellow-600 mr-3"></i>
+                    7. Reclaiming Digital Agency
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-chess-king mr-2"></i>
+                            Digital Sovereignty Principles
+                        </h3>
+                        <p class="text-gray-700 mb-4">Digital agency means having meaningful control over your digital life, data, and online experiences.</p>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 p-4 rounded-lg border-l-4 border-blue-400">
+                                <h4 class="font-semibold text-blue-800 mb-2">Informed Consent</h4>
+                                <p class="text-blue-700 text-sm">You should understand exactly what data is collected and how it's used before agreeing to any service.</p>
+                            </div>
+                            
+                            <div class="bg-green-50 p-4 rounded-lg border-l-4 border-green-400">
+                                <h4 class="font-semibold text-green-800 mb-2">Data Ownership</h4>
+                                <p class="text-green-700 text-sm">Your personal data belongs to you, not to the companies that collect it.</p>
+                            </div>
+                            
+                            <div class="bg-purple-50 p-4 rounded-lg border-l-4 border-purple-400">
+                                <h4 class="font-semibold text-purple-800 mb-2">Algorithmic Transparency</h4>
+                                <p class="text-purple-700 text-sm">You have the right to understand how algorithms make decisions that affect you.</p>
+                            </div>
+                            
+                            <div class="bg-orange-50 p-4 rounded-lg border-l-4 border-orange-400">
+                                <h4 class="font-semibold text-orange-800 mb-2">Free Choice</h4>
+                                <p class="text-orange-700 text-sm">Your digital choices should be free from manipulation and coercion.</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-lightbulb mr-2"></i>
+                            Building Digital Literacy
+                        </h3>
+                        
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">
+                                    <i class="fas fa-book mr-2 text-blue-500"></i>
+                                    Continuous Learning
+                                </h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Stay informed about new surveillance techniques</li>
+                                    <li>• Learn about emerging privacy technologies</li>
+                                    <li>• Understand legal developments in privacy law</li>
+                                    <li>• Follow privacy researchers and advocates</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">
+                                    <i class="fas fa-cog mr-2 text-green-500"></i>
+                                    Technical Skills
+                                </h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Learn basic command line operations</li>
+                                    <li>• Understand how internet protocols work</li>
+                                    <li>• Practice with open-source tools</li>
+                                    <li>• Develop scripting skills for automation</li>
+                                </ul>
+                            </div>
+                            
+                            <div class="bg-gray-50 p-4 rounded-lg">
+                                <h4 class="font-semibold mb-2">
+                                    <i class="fas fa-users mr-2 text-purple-500"></i>
+                                    Community Building
+                                </h4>
+                                <ul class="text-sm text-gray-700 space-y-1">
+                                    <li>• Join local privacy meetups</li>
+                                    <li>• Participate in online privacy communities</li>
+                                    <li>• Share knowledge with others</li>
+                                    <li>• Mentor newcomers to digital privacy</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="action-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-map-marked-alt mr-2"></i>
+                        Your Personal Privacy Roadmap
+                    </h3>
+                    <p class="mb-4">Create a personalized plan for achieving digital sovereignty based on your specific needs and threat model.</p>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Immediate Priorities</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Identify your most sensitive data</li>
+                                <li>• Assess your current privacy gaps</li>
+                                <li>• Choose initial tools and services</li>
+                                <li>• Set realistic implementation timeline</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Medium-term Goals</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Complete platform migrations</li>
+                                <li>• Establish secure communication channels</li>
+                                <li>• Build technical skills progressively</li>
+                                <li>• Create backup and recovery plans</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Long-term Vision</h4>
+                            <ul class="space-y-1 text-sm">
+                                <li>• Achieve comprehensive digital sovereignty</li>
+                                <li>• Maintain cutting-edge privacy practices</li>
+                                <li>• Contribute to privacy community</li>
+                                <li>• Advocate for systemic change</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-clipboard-check mr-2"></i>
+                        Digital Agency Assessment Tool
+                    </h3>
+                    <p class="mb-4">Rate your current level of digital agency (1-5 scale, 5 being fully in control):</p>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Data Control</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span>I know what data companies have about me</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="data_knowledge" value="1" class="text-blue-600">
+                                        <input type="radio" name="data_knowledge" value="2" class="text-blue-600">
+                                        <input type="radio" name="data_knowledge" value="3" class="text-blue-600">
+                                        <input type="radio" name="data_knowledge" value="4" class="text-blue-600">
+                                        <input type="radio" name="data_knowledge" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>I can easily delete my data when I want</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="data_deletion" value="1" class="text-blue-600">
+                                        <input type="radio" name="data_deletion" value="2" class="text-blue-600">
+                                        <input type="radio" name="data_deletion" value="3" class="text-blue-600">
+                                        <input type="radio" name="data_deletion" value="4" class="text-blue-600">
+                                        <input type="radio" name="data_deletion" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>I control who has access to my information</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="access_control" value="1" class="text-blue-600">
+                                        <input type="radio" name="access_control" value="2" class="text-blue-600">
+                                        <input type="radio" name="access_control" value="3" class="text-blue-600">
+                                        <input type="radio" name="access_control" value="4" class="text-blue-600">
+                                        <input type="radio" name="access_control" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Digital Autonomy</h4>
+                            <div class="space-y-2 text-sm">
+                                <div class="flex items-center justify-between">
+                                    <span>I make conscious choices about technology use</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="conscious_choices" value="1" class="text-blue-600">
+                                        <input type="radio" name="conscious_choices" value="2" class="text-blue-600">
+                                        <input type="radio" name="conscious_choices" value="3" class="text-blue-600">
+                                        <input type="radio" name="conscious_choices" value="4" class="text-blue-600">
+                                        <input type="radio" name="conscious_choices" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>I'm not manipulated by algorithms</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="algorithm_resistance" value="1" class="text-blue-600">
+                                        <input type="radio" name="algorithm_resistance" value="2" class="text-blue-600">
+                                        <input type="radio" name="algorithm_resistance" value="3" class="text-blue-600">
+                                        <input type="radio" name="algorithm_resistance" value="4" class="text-blue-600">
+                                        <input type="radio" name="algorithm_resistance" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                                <div class="flex items-center justify-between">
+                                    <span>I can function without big tech platforms</span>
+                                    <div class="flex space-x-1">
+                                        <input type="radio" name="platform_independence" value="1" class="text-blue-600">
+                                        <input type="radio" name="platform_independence" value="2" class="text-blue-600">
+                                        <input type="radio" name="platform_independence" value="3" class="text-blue-600">
+                                        <input type="radio" name="platform_independence" value="4" class="text-blue-600">
+                                        <input type="radio" name="platform_independence" value="5" class="text-blue-600">
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Section 8: Action Plan & Next Steps -->
+        <section class="mb-12">
+            <div class="bg-white rounded-lg card-shadow p-8 section-border">
+                <h2 class="text-3xl font-bold mb-6 text-gray-800">
+                    <i class="fas fa-rocket text-green-600 mr-3"></i>
+                    8. Action Plan & Next Steps
+                </h2>
+                
+                <div class="highlight-box text-white p-6 rounded-lg mb-8">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-target mr-2"></i>
+                        Your Digital Privacy Mission
+                    </h3>
+                    <p class="mb-4">Knowledge without action is powerless. Transform what you've learned into concrete steps toward digital freedom.</p>
+                    <div class="text-center">
+                        <p class="text-lg font-semibold">"The best time to start protecting your privacy was 10 years ago. The second best time is now."</p>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-calendar-day mr-2"></i>
+                            Today's Action Items
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Install a password manager</strong>
+                                    <p class="text-sm text-gray-600">Download Bitwarden, 1Password, or KeePass and create your first secure password.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Switch to a privacy browser</strong>
+                                    <p class="text-sm text-gray-600">Install Firefox or Brave and make it your default browser.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Install essential extensions</strong>
+                                    <p class="text-sm text-gray-600">Add uBlock Origin and Privacy Badger to your browser.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Review mobile privacy settings</strong>
+                                    <p class="text-sm text-gray-600">Spend 10 minutes adjusting location, ad tracking, and app permissions.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Sign up for a VPN service</strong>
+                                    <p class="text-sm text-gray-600">Research and subscribe to a reputable VPN provider.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                            <i class="fas fa-calendar-week mr-2"></i>
+                            This Week's Goals
+                        </h3>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Create an encrypted email account</strong>
+                                    <p class="text-sm text-gray-600">Set up ProtonMail or Tutanota for secure communications.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Audit your existing accounts</strong>
+                                    <p class="text-sm text-gray-600">List all online accounts and identify unnecessary ones for deletion.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Configure 2FA on important accounts</strong>
+                                    <p class="text-sm text-gray-600">Enable two-factor authentication on banking, email, and social media.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Research alternative services</strong>
+                                    <p class="text-sm text-gray-600">Find privacy-respecting alternatives to your most-used apps and services.</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <input type="checkbox" class="mt-1 mr-3">
+                                <div>
+                                    <strong>Start data deletion requests</strong>
+                                    <p class="text-sm text-gray-600">Submit GDPR/CCPA deletion requests to major data collectors.</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6 mb-8">
+                    <div class="bg-blue-50 p-6 rounded-lg border-l-4 border-blue-400">
+                        <h3 class="text-lg font-semibold mb-3 text-blue-800">
+                            <i class="fas fa-user-graduate mr-2"></i>
+                            Beginner Path
+                        </h3>
+                        <p class="text-blue-700 text-sm mb-3">Start with basic privacy tools and gradually build your knowledge.</p>
+                        <ul class="text-sm text-blue-600 space-y-1">
+                            <li>• Focus on browser and mobile protection</li>
+                            <li>• Use mainstream privacy tools</li>
+                            <li>• Learn through hands-on practice</li>
+                            <li>• Join privacy communities for support</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-green-50 p-6 rounded-lg border-l-4 border-green-400">
+                        <h3 class="text-lg font-semibold mb-3 text-green-800">
+                            <i class="fas fa-user-cog mr-2"></i>
+                            Intermediate Path
+                        </h3>
+                        <p class="text-green-700 text-sm mb-3">Implement comprehensive privacy strategies and explore advanced tools.</p>
+                        <ul class="text-sm text-green-600 space-y-1">
+                            <li>• Complete platform migrations</li>
+                            <li>• Set up self-hosted services</li>
+                            <li>• Develop technical skills</li>
+                            <li>• Begin advocacy activities</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-purple-50 p-6 rounded-lg border-l-4 border-purple-400">
+                        <h3 class="text-lg font-semibold mb-3 text-purple-800">
+                            <i class="fas fa-user-ninja mr-2"></i>
+                            Advanced Path
+                        </h3>
+                        <p class="text-purple-700 text-sm mb-3">Achieve digital sovereignty and help others do the same.</p>
+                        <ul class="text-sm text-purple-600 space-y-1">
+                            <li>• Build custom privacy tools</li>
+                            <li>• Contribute to open source projects</li>
+                            <li>• Educate and mentor others</li>
+                            <li>• Participate in policy advocacy</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="success-box text-white p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-bold mb-3">
+                        <i class="fas fa-chart-line mr-2"></i>
+                        Measuring Your Progress
+                    </h3>
+                    <p class="mb-4">Track your journey toward digital privacy with these key metrics:</p>
+                    <div class="grid md:grid-cols-4 gap-4">
+                        <div>
+                            <h4 class="font-semibold mb-2">Data Control Score</h4>
+                            <p class="text-sm">Percentage of personal data you can access, modify, or delete on demand</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Tracking Reduction</h4>
+                            <p class="text-sm">Number of trackers blocked per day (use browser analytics)</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Platform Independence</h4>
+                            <p class="text-sm">Ability to function without major surveillance platforms</p>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Knowledge Growth</h4>
+                            <p class="text-sm">Privacy concepts learned and tools mastered over time</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gray-100 p-6 rounded-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">
+                        <i class="fas fa-handshake mr-2"></i>
+                        Building Your Privacy Network
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="font-semibold mb-2">Connect with Privacy Community:</h4>
+                            <ul class="text-sm space-y-1 text-gray-700">
+                                <li>• r/privacy subreddit for discussions and tips</li>
+                                <li>• Electronic Frontier Foundation (EFF) for advocacy</li>
+                                <li>• Local CryptoParties for hands-on learning</li>
+                                <li>• Tor Project community for anonymity tools</li>
+                                <li>• Privacy-focused podcasts and newsletters</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold mb-2">Share Knowledge Responsibly:</h4>
+                            <ul class="text-sm space-y-1 text-gray-700">
+                                <li>• Help friends and family improve their privacy</li>
+                                <li>• Share non-technical privacy tips on social media</li>
+                                <li>• Organize privacy workshops at work or school</li>
+                                <li>• Support privacy-respecting businesses</li>
+                                <li>• Vote for politicians who support digital rights</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+<!-- ========================================================= -->
+<!-- Section 9 : Conclusion  |  append after Section 8         -->
+<!-- ========================================================= -->
+<section class="mb-12">
+  <div class="bg-white rounded-lg card-shadow p-8 section-border">
+    <h2 class="text-3xl font-bold mb-6 text-gray-800">
+      <i class="fas fa-flag-checkered text-indigo-600 mr-3"></i>
+      9. Conclusion & Key Takeaways
+    </h2>
+
+    <div class="success-box text-white p-6 rounded-lg mb-8">
+      <h3 class="text-xl font-bold mb-3">
+        <i class="fas fa-lightbulb mr-2"></i>
+        Final Thoughts
+      </h3>
+      <p class="mb-4">
+        Digital privacy is not a one-time fix but an ongoing practice.  
+        By completing this training you’ve moved from <em>awareness</em>
+        to <em>action</em>—and every small step you take chips away at the
+        surveillance economy.
+      </p>
+      <ul class="list-disc pl-6 space-y-1 text-sm">
+        <li>Stay curious: new tracking methods appear every month.</li>
+        <li>Stay consistent: schedule periodic privacy check-ups.</li>
+        <li>Stay connected: share tools & victories with your community.</li>
+      </ul>
+    </div>
+
+    <div class="text-center">
+      <p class="text-lg font-semibold mb-4">
+        “Privacy is power.  Use it wisely, guard it fiercely.”
+      </p>
+      <a href="#top" class="inline-block bg-indigo-600 hover:bg-indigo-700 text-white font-medium py-3 px-6 rounded-lg shadow transition">
+        <i class="fas fa-arrow-up mr-2"></i>Back to Top
+      </a>
+    </div>
+  </div>
+</section>
+
+<!-- ========================================================= -->
+<!-- Progress-bar scroll script  |  fixes 0 % issue            -->
+<!-- (safe to include even if another script is added later)   -->
+<!-- ========================================================= -->
+<script>
+document.addEventListener('DOMContentLoaded', () => {
+  const progressBar = document.getElementById('progressBar');
+  const percentLabel = progressBar
+    .closest('.progress-bar')
+    .previousElementSibling
+    .querySelectorAll('span')[1];
+
+  function updateProgress() {
+    const docHeight = document.body.scrollHeight - window.innerHeight;
+    const scrolled = window.scrollY;
+    const pct = Math.min(100, (scrolled / docHeight) * 100);
+    progressBar.style.width = pct + '%';
+    if (percentLabel) percentLabel.textContent = Math.round(pct) + '% Complete';
+  }
+
+  updateProgress();                   // set initial value
+  window.addEventListener('scroll', updateProgress, { passive: true });
+});
+</script>
+
+<!-- If your file currently has no closing tags, leave these in; -->
+<!-- otherwise, omit them to avoid duplicates.                   -->
+</main>
+</body>
+</html>
