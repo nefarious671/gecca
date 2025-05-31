@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile App Surveillance: What You Don't Know Can Hurt You</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .warning-bg { background: linear-gradient(135deg, #ff6b6b 0%, #ffa500 100%); }
+        .info-card { transition: all 0.3s ease; border-left: 4px solid #3b82f6; }
+        .warning-card { transition: all 0.3s ease; border-left: 4px solid #ef4444; }
+        .success-card { transition: all 0.3s ease; border-left: 4px solid #10b981; }
+        .print-break { page-break-inside: avoid; }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-16">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center">
+                <i class="fas fa-shield-alt text-6xl mb-6 opacity-90"></i>
+                <h1 class="text-4xl md:text-5xl font-bold mb-4">Mobile App Surveillance</h1>
+                <p class="text-xl md:text-2xl mb-2 opacity-90">What You Don't Know Can Hurt You</p>
+                <p class="text-lg opacity-80">Digital Safety Training & Awareness Guide</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Introduction -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        <div class="warning-bg text-white rounded-xl p-8 mb-12 print-break">
+            <div class="flex items-center mb-4">
+                <i class="fas fa-exclamation-triangle text-3xl mr-4"></i>
+                <h2 class="text-2xl font-bold">Critical Privacy Alert</h2>
+            </div>
+            <p class="text-lg leading-relaxed">Your smartphone apps are collecting far more data than you realize. From listening to conversations to analyzing facial expressions, modern mobile applications employ sophisticated surveillance techniques that operate largely in the shadows of user awareness. This guide exposes documented practices and helps you protect your digital privacy.</p>
+        </div>
+
+        <!-- Popular Apps and Their Surveillance Practices -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-mobile-alt mr-3 text-blue-600"></i>
+                Popular Apps: Hidden Surveillance Practices
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <!-- Facebook/Meta -->
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-facebook text-3xl text-blue-600 mr-4"></i>
+                        <h3 class="text-xl font-semibold">Facebook/Meta Apps</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-microphone text-red-500 mr-2"></i><strong>Audio Analysis:</strong> Patents for analyzing speech patterns and emotional states</li>
+                        <li><i class="fas fa-camera text-red-500 mr-2"></i><strong>Facial Recognition:</strong> Real-time emotion detection through camera access</li>
+                        <li><i class="fas fa-map-marker-alt text-red-500 mr-2"></i><strong>Location Tracking:</strong> Continuous GPS monitoring even when app is closed</li>
+                        <li><i class="fas fa-wifi text-red-500 mr-2"></i><strong>Network Analysis:</strong> Scanning WiFi networks to infer location and relationships</li>
+                        <li><i class="fas fa-phone text-red-500 mr-2"></i><strong>Contact Mining:</strong> Analyzing call logs and message metadata</li>
+                    </ul>
+                </div>
+
+                <!-- TikTok -->
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-tiktok text-3xl text-black mr-4"></i>
+                        <h3 class="text-xl font-semibold">TikTok</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-keyboard text-red-500 mr-2"></i><strong>Keystroke Logging:</strong> Documented capability to track all typed content</li>
+                        <li><i class="fas fa-clipboard text-red-500 mr-2"></i><strong>Clipboard Access:</strong> Reading copied text including passwords and sensitive data</li>
+                        <li><i class="fas fa-eye text-red-500 mr-2"></i><strong>Screen Recording:</strong> Ability to capture screen content and user interactions</li>
+                        <li><i class="fas fa-brain text-red-500 mr-2"></i><strong>Behavioral Analysis:</strong> AI-powered user behavior prediction and manipulation</li>
+                        <li><i class="fas fa-globe text-red-500 mr-2"></i><strong>Cross-Platform Tracking:</strong> Linking activity across multiple apps and websites</li>
+                    </ul>
+                </div>
+
+                <!-- Google Apps -->
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-google text-3xl text-red-500 mr-4"></i>
+                        <h3 class="text-xl font-semibold">Google Apps Ecosystem</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-volume-up text-red-500 mr-2"></i><strong>Always Listening:</strong> "OK Google" triggers constant audio monitoring</li>
+                        <li><i class="fas fa-route text-red-500 mr-2"></i><strong>Movement Prediction:</strong> AI predicting where you'll go before you decide</li>
+                        <li><i class="fas fa-search text-red-500 mr-2"></i><strong>Search Profiling:</strong> Building psychological profiles from search patterns</li>
+                        <li><i class="fas fa-envelope text-red-500 mr-2"></i><strong>Email Scanning:</strong> Reading Gmail content for advertising and data collection</li>
+                        <li><i class="fas fa-shopping-cart text-red-500 mr-2"></i><strong>Purchase Tracking:</strong> Monitoring shopping behavior across platforms</li>
+                    </ul>
+                </div>
+
+                <!-- Instagram -->
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <div class="flex items-center mb-4">
+                        <i class="fab fa-instagram text-3xl text-purple-600 mr-4"></i>
+                        <h3 class="text-xl font-semibold">Instagram</h3>
+                    </div>
+                    <ul class="space-y-2 text-sm">
+                        <li><i class="fas fa-camera text-red-500 mr-2"></i><strong>Photo Analysis:</strong> AI scanning for faces, objects, and locations in images</li>
+                        <li><i class="fas fa-clock text-red-500 mr-2"></i><strong>Usage Patterns:</strong> Detailed tracking of when and how you use the app</li>
+                        <li><i class="fas fa-heart text-red-500 mr-2"></i><strong>Emotion Detection:</strong> Analyzing facial expressions in photos and videos</li>
+                        <li><i class="fas fa-users text-red-500 mr-2"></i><strong>Social Mapping:</strong> Building detailed relationship networks</li>
+                        <li><i class="fas fa-shopping-bag text-red-500 mr-2"></i><strong>Purchase Intent:</strong> Predicting what you want to buy based on images viewed</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Surveillance Techniques -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-spy mr-3 text-red-600"></i>
+                Documented Surveillance Techniques
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-6">
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-microphone-alt text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Audio Surveillance</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Background audio recording</li>
+                        <li>• Voice pattern analysis</li>
+                        <li>• Emotional state detection</li>
+                        <li>• Conversation transcription</li>
+                        <li>• Ambient noise profiling</li>
+                    </ul>
+                </div>
+
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-camera text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Visual Monitoring</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Facial recognition scanning</li>
+                        <li>• Eye movement tracking</li>
+                        <li>• Screen time analysis</li>
+                        <li>• Photo metadata extraction</li>
+                        <li>• Object identification</li>
+                    </ul>
+                </div>
+
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-map-marked-alt text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Location Intelligence</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• GPS coordinate logging</li>
+                        <li>• WiFi network mapping</li>
+                        <li>• Bluetooth beacon tracking</li>
+                        <li>• Movement pattern analysis</li>
+                        <li>• Location-based profiling</li>
+                    </ul>
+                </div>
+
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-keyboard text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Input Monitoring</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Keystroke pattern analysis</li>
+                        <li>• Touch gesture tracking</li>
+                        <li>• Typing speed profiling</li>
+                        <li>• App usage timing</li>
+                        <li>• Text input logging</li>
+                    </ul>
+                </div>
+
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-network-wired text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Network Analysis</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Traffic pattern monitoring</li>
+                        <li>• Device fingerprinting</li>
+                        <li>• Cross-app data sharing</li>
+                        <li>• Network topology mapping</li>
+                        <li>• Connection profiling</li>
+                    </ul>
+                </div>
+
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <i class="fas fa-brain text-4xl text-red-500 mb-4"></i>
+                    <h3 class="text-lg font-semibold mb-3">Behavioral AI</h3>
+                    <ul class="text-sm space-y-1">
+                        <li>• Predictive modeling</li>
+                        <li>• Psychological profiling</li>
+                        <li>• Habit pattern detection</li>
+                        <li>• Preference learning</li>
+                        <li>• Manipulation targeting</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Concerning Patents and Capabilities -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-file-contract mr-3 text-orange-600"></i>
+                Concerning Patents & Emerging Capabilities
+            </h2>
+            
+            <div class="space-y-6">
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-red-600">
+                        <i class="fas fa-brain mr-2"></i>
+                        Emotion Detection & Manipulation
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-2">Facebook Patents:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Real-time facial emotion analysis</li>
+                                <li>• Voice stress level detection</li>
+                                <li>• Mood-based content targeting</li>
+                                <li>• Psychological state prediction</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-2">Implications:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Targeting vulnerable emotional states</li>
+                                <li>• Manipulating mood through content</li>
+                                <li>• Exploiting psychological weaknesses</li>
+                                <li>• Creating emotional dependencies</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-red-600">
+                        <i class="fas fa-microphone-slash mr-2"></i>
+                        Always-On Audio Analysis
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-2">Documented Capabilities:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Background conversation analysis</li>
+                                <li>• TV show and music identification</li>
+                                <li>• Environmental sound profiling</li>
+                                <li>• Ultrasonic beacon detection</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-2">Privacy Violations:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Recording without explicit consent</li>
+                                <li>• Inferring private conversations</li>
+                                <li>• Building behavior profiles</li>
+                                <li>• Cross-device tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="warning-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-red-600">
+                        <i class="fas fa-eye mr-2"></i>
+                        Advanced Visual Surveillance
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-4">
+                        <div>
+                            <p class="font-medium mb-2">Emerging Technologies:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Gait analysis and identification</li>
+                                <li>• Micro-expression detection</li>
+                                <li>• Biometric health monitoring</li>
+                                <li>• 3D body mapping</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <p class="font-medium mb-2">Potential Misuse:</p>
+                            <ul class="text-sm space-y-1">
+                                <li>• Medical condition inference</li>
+                                <li>• Identity tracking across locations</li>
+                                <li>• Behavioral anomaly detection</li>
+                                <li>• Social credit scoring</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Protection Strategies -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-shield-alt mr-3 text-green-600"></i>
+                Protection Strategies & Best Practices
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="success-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600">
+                        <i class="fas fa-cog mr-2"></i>
+                        App Permission Management
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Audit Permissions:</strong> Regularly review and revoke unnecessary permissions for microphone, camera, and location access</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Location Services:</strong> Set to "While Using App" instead of "Always" for most applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Background Refresh:</strong> Disable background app refresh for social media and entertainment apps</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Advertising ID:</strong> Reset or disable advertising identifiers in your device settings</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="success-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600">
+                        <i class="fas fa-user-secret mr-2"></i>
+                        Privacy-Focused Alternatives
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Messaging:</strong> Signal, Element, or Wire instead of WhatsApp/Messenger</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Search:</strong> DuckDuckGo or Brave Search instead of Google</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Email:</strong> ProtonMail or Tutanota instead of Gmail</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Social Media:</strong> Mastodon or Diaspora for decentralized networking</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="success-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600">
+                        <i class="fas fa-network-wired mr-2"></i>
+                        Network & Device Security
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>VPN Usage:</strong> Use a reputable VPN service to encrypt internet traffic and mask location</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>DNS Settings:</strong> Configure secure DNS (1.1.1.1 or 9.9.9.9) to prevent tracking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>App Isolation:</strong> Use separate user profiles or work profiles for sensitive applications</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Regular Updates:</strong> Keep OS and apps updated for latest security patches</span>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="success-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4 text-green-600">
+                        <i class="fas fa-user-shield mr-2"></i>
+                        Behavioral Protection
+                    </h3>
+                    <ul class="space-y-3 text-sm">
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Data Minimization:</strong> Share as little personal information as possible on social platforms</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Multiple Accounts:</strong> Use different accounts for different purposes to prevent cross-linking</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>False Information:</strong> Consider providing false information for non-essential fields</span>
+                        </li>
+                        <li class="flex items-start">
+                            <i class="fas fa-check-circle text-green-500 mr-2 mt-1"></i>
+                            <span><strong>Digital Detox:</strong> Regularly take breaks from social media and surveillance-heavy apps</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!-- Red Flags and Warning Signs -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-flag mr-3 text-red-600"></i>
+                Red Flags: Warning Signs of Excessive Surveillance
+            </h2>
+            
+            <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-lg">
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-red-700">App Behavior Red Flags</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>App requests permissions unrelated to core functionality</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Frequent location access requests</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Microphone indicator appears when not actively using voice features</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Battery drain from apps running in background</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Unusually large data usage from specific apps</li>
+                        </ul>
+                    </div>
+                    <div>
+                        <h3 class="text-lg font-semibold mb-3 text-red-700">Privacy Policy Red Flags</h3>
+                        <ul class="space-y-2 text-sm">
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Vague language about data collection</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Broad permissions for data sharing with "partners"</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>No clear data retention policies</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Lack of user control options</li>
+                            <li><i class="fas fa-exclamation-triangle text-red-500 mr-2"></i>Frequent policy changes without clear notification</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Action Plan -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-tasks mr-3 text-blue-600"></i>
+                Your 30-Day Privacy Action Plan
+            </h2>
+            
+            <div class="bg-blue-50 rounded-xl p-8">
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="text-center">
+                        <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-xl font-bold">1</div>
+                        <h3 class="text-lg font-semibold mb-3">Week 1: Audit & Assessment</h3>
+                        <ul class="text-sm space-y-2 text-left">
+                            <li>• Review all app permissions</li>
+                            <li>• Check privacy settings on social media</li>
+                            <li>• Identify apps with excessive permissions</li>
+                            <li>• Download your data from major platforms</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-xl font-bold">2</div>
+                        <h3 class="text-lg font-semibold mb-3">Week 2: Cleanup & Configure</h3>
+                        <ul class="text-sm space-y-2 text-left">
+                            <li>• Revoke unnecessary permissions</li>
+                            <li>• Delete unused surveillance-heavy apps</li>
+                            <li>• Configure VPN and secure DNS</li>
+                            <li>• Update privacy settings across devices</li>
+                        </ul>
+                    </div>
+                    <div class="text-center">
+                        <div class="bg-blue-600 text-white rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4 text-xl font-bold">3</div>
+                        <h3 class="text-lg font-semibold mb-3">Week 3-4: Implement Alternatives</h3>
+                        <ul class="text-sm space-y-2 text-left">
+                            <li>• Install privacy-focused alternatives</li>
+                            <li>• Set up secure communication channels</li>
+                            <li>• Create separate user profiles</li>
+                            <li>• Establish regular privacy audits</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!-- Legal Information -->
+        <section class="mb-16 print-break">
+            <h2 class="text-3xl font-bold mb-8 text-center">
+                <i class="fas fa-balance-scale mr-3 text-purple-600"></i>
+                Legal Framework & Your Rights
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Global Privacy Regulations</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong>GDPR (EU):</strong> Right to access, delete, and portability of personal data</li>
+                        <li><strong>CCPA (California):</strong> Right to know what data is collected and sold</li>
+                        <li><strong>LGPD (Brazil):</strong> Consent requirements and data protection rights</li>
+                        <li><strong>PIPEDA (Canada):</strong> Privacy protection in commercial activities</li>
+                    </ul>
+                </div>
+                <div class="info-card bg-white rounded-lg p-6 shadow-lg">
+                    <h3 class="text-xl font-semibold mb-4">Your Rights & How to Exercise Them</h3>
+                    <ul class="space-y-2 text-sm">
+                        <li><strong>Data Access:</strong> Request copies of all data collected about you</li>
+                        <li><strong>Data Deletion:</strong> Demand removal of personal information</li>
+                        <li><strong>Opt-Out:</strong> Refuse data sales to third parties</li>
+                        <li><strong>Rectification:</strong> Correct inaccurate personal data</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="mb-4">
+                <i class="fas fa-shield-alt text-3xl text-blue-400 mb-2"></i>
+                <p class="text-lg font-semibold">Digital Privacy Education Initiative</p>
+            </div>
+            <p class="text-sm opacity-75 mb-4">This educational resource is designed to raise awareness about mobile app surveillance practices and promote digital privacy literacy.</p>
+            <div class="text-xs opacity-60">
+                <p>Stay informed. Stay protected. Take control of your digital privacy.</p>
+                <p class="mt-2">For the latest privacy tools and techniques, research reputable cybersecurity sources and privacy advocacy organizations.</p>
+            </div>
+        </div>
+    </footer>
+</body>
+</html>
