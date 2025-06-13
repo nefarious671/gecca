@@ -1,42 +1,90 @@
-<script>
-  async function unlockAccess() {
-    const email = document.getElementById("email-input").value.trim().toLowerCase();
-    const [usersRes, coursesRes] = await Promise.all([
-      fetch("users.json"),
-      fetch("courses.json")
-    ]);
-    const users = await usersRes.json();
-    const courses = await coursesRes.json();
-
-    const user = users.find(u => u.email.toLowerCase() === email);
-
-    if (!user) {
-      document.getElementById("error").textContent = "Email not recognized. Please contact support.";
-      return;
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8">
+  <title>GECCA Training Materials</title>
+  <style>
+    body {
+      font-family: sans-serif;
+      background-color: #f8f8f8;
+      padding: 40px;
     }
+    h1, h2, h3 {
+      color: #333;
+    }
+    ul {
+      line-height: 1.8;
+      padding-left: 20px;
+    }
+    a {
+      text-decoration: none;
+      color: #0066cc;
+    }
+    a:hover {
+      text-decoration: underline;
+    }
+    #main-content, #error {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div id="email-gate">
+    <h2>Welcome to GECCA Training</h2>
+    <p>Please enter your email to access your training materials:</p>
+    <input type="email" id="email-input" placeholder="you@example.com" />
+    <button onclick="unlockAccess()">Submit</button>
+    <p id="error" style="color:red;"></p>
+  </div>
 
-    const list = document.getElementById("materials-list");
-    list.innerHTML = "";
+  <div id="main-content">
+    <h1>GECCA AI Training Materials</h1>
+    <div id="materials-list"></div>
+  </div>
 
-    user.courses.forEach(courseName => {
-      const courseGroup = courses[courseName];
-      if (courseGroup && courseGroup.length > 0) {
-        const courseHeader = document.createElement("h3");
-        courseHeader.textContent = courseName;
-        list.appendChild(courseHeader);
+  <script>
+    async function unlockAccess() {
+      const email = document.getElementById("email-input").value.trim().toLowerCase();
+      const [usersRes, coursesRes] = await Promise.all([
+        fetch("users.json"),
+        fetch("courses.json")
+      ]);
+      const users = await usersRes.json();
+      const courses = await coursesRes.json();
 
-        courseGroup.forEach(item => {
-          const li = document.createElement("li");
-          const link = document.createElement("a");
-          link.href = item.file;
-          link.textContent = item.title;
-          li.appendChild(link);
-          list.appendChild(li);
-        });
+      const user = users.find(u => u.email.toLowerCase() === email);
+
+      if (!user) {
+        document.getElementById("error").textContent = "Email not recognized. Please contact support.";
+        return;
       }
-    });
 
-    document.getElementById("email-gate").style.display = "none";
-    document.getElementById("main-content").style.display = "block";
-  }
-</script>
+      const container = document.getElementById("materials-list");
+      container.innerHTML = "";
+
+      user.courses.forEach(courseName => {
+        const courseGroup = courses[courseName];
+        if (courseGroup && courseGroup.length > 0) {
+          const header = document.createElement("h3");
+          header.textContent = courseName;
+          container.appendChild(header);
+
+          const ul = document.createElement("ul");
+          courseGroup.forEach(item => {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = item.file;
+            link.textContent = item.title;
+            li.appendChild(link);
+            ul.appendChild(li);
+          });
+          container.appendChild(ul);
+        }
+      });
+
+      document.getElementById("email-gate").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }
+  </script>
+</body>
+</html>
