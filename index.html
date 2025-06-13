@@ -1,38 +1,42 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="UTF-8">
-  <title>GECCA Training Materials</title>
-  <style>
-    body {
-      font-family: sans-serif;
-      background-color: #f8f8f8;
-      padding: 40px;
+<script>
+  async function unlockAccess() {
+    const email = document.getElementById("email-input").value.trim().toLowerCase();
+    const [usersRes, coursesRes] = await Promise.all([
+      fetch("users.json"),
+      fetch("courses.json")
+    ]);
+    const users = await usersRes.json();
+    const courses = await coursesRes.json();
+
+    const user = users.find(u => u.email.toLowerCase() === email);
+
+    if (!user) {
+      document.getElementById("error").textContent = "Email not recognized. Please contact support.";
+      return;
     }
-    h1 {
-      color: #333;
-    }
-    ul {
-      line-height: 1.8;
-    }
-    a {
-      text-decoration: none;
-      color: #0066cc;
-    }
-    a:hover {
-      text-decoration: underline;
-    }
-  </style>
-</head>
-<body>
-  <h1>GECCA AI Training Materials</h1>
-  <ul>
-    <li><a href="chatgpt-ai-tools.html">ChatGPT AI Tools</a></li>
-    <li><a href="chatgpt-ai-training.html">ChatGPT AI Training</a></li>
-    <li><a href="excel-training-module.html">Intermediate Excel Training</a></li>
-    <li><a href="ultimate-song-writing-guide.html">Ultimate Song Writing Guide</a></li>
-    <li><a href="digital-safety-training-2.html">Digital Safety Training (Part 2)</a></li>
-    <li><a href="mobile-app-safety.html">Digital Safety Training (Mobile Apps)</a></li>
-  </ul>
-</body>
-</html>
+
+    const list = document.getElementById("materials-list");
+    list.innerHTML = "";
+
+    user.courses.forEach(courseName => {
+      const courseGroup = courses[courseName];
+      if (courseGroup && courseGroup.length > 0) {
+        const courseHeader = document.createElement("h3");
+        courseHeader.textContent = courseName;
+        list.appendChild(courseHeader);
+
+        courseGroup.forEach(item => {
+          const li = document.createElement("li");
+          const link = document.createElement("a");
+          link.href = item.file;
+          link.textContent = item.title;
+          li.appendChild(link);
+          list.appendChild(li);
+        });
+      }
+    });
+
+    document.getElementById("email-gate").style.display = "none";
+    document.getElementById("main-content").style.display = "block";
+  }
+</script>
