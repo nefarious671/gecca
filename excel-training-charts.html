@@ -1,0 +1,1245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Charts Training Module for Daycare Professionals</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        body { font-family: 'Inter', sans-serif; }
+        .gradient-bg { background: linear-gradient(135deg, #667eea 0%, #764ba2 100%); }
+        .chart-container { width: 100%; max-width: 700px; height: 280px; margin: 0 auto; }
+        .step-box { transition: all 0.3s ease; }
+        .step-box:hover { transform: translateY(-2px); box-shadow: 0 10px 25px rgba(0,0,0,0.1); }
+        .chart-type-card { transition: all 0.3s ease; }
+        .chart-type-card:hover { transform: scale(1.02); }
+        @media print {
+            body { font-size: 12px; }
+            .no-print { display: none; }
+        }
+    
+/* Chart sizing tweaks */
+.chart-wrapper {
+    width: 100%;
+    max-width: 600px;
+    margin: 0 auto 24px;
+}
+.chart-wrapper canvas {
+    width: 100% !important;
+    height: 260px !important;
+}
+
+</style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <!-- Header -->
+    <header class="gradient-bg text-white py-12">
+        <div class="container mx-auto px-6 text-center">
+            <i class="fas fa-chart-pie text-6xl mb-4"></i>
+            <h1 class="text-4xl font-bold mb-4">Excel Charts Mastery</h1>
+            <h2 class="text-2xl font-light mb-2">Training Module for Daycare Professionals</h2>
+            <p class="text-lg opacity-90">Transform your data into compelling visual stories</p>
+        </div>
+    </header>
+
+    <!-- Introduction -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">
+                    <i class="fas fa-rocket text-blue-600 mr-3"></i>Welcome to Excel Charts Training
+                </h2>
+                <div class="grid md:grid-cols-2 gap-8 items-center">
+                    <div>
+                        <p class="text-lg mb-6 leading-relaxed">
+                            As a daycare professional, you collect vast amounts of data daily - enrollment numbers, attendance rates, financial metrics, and child development progress. This training module will empower you to transform this raw data into powerful visual insights using Excel charts.
+                        </p>
+                        <div class="bg-blue-50 border-l-4 border-blue-500 p-4 rounded">
+                            <h3 class="font-semibold text-blue-800 mb-2">What You'll Learn:</h3>
+                            <ul class="text-blue-700 space-y-1">
+                                <li><i class="fas fa-check-circle mr-2"></i>Master 6+ essential chart types</li>
+                                <li><i class="fas fa-check-circle mr-2"></i>Apply charts to real daycare scenarios</li>
+                                <li><i class="fas fa-check-circle mr-2"></i>Create professional presentations</li>
+                                <li><i class="fas fa-check-circle mr-2"></i>Make data-driven decisions</li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="bg-gradient-to-r from-blue-500 to-purple-600 p-6 rounded-lg text-white">
+                        <h3 class="text-xl font-semibold mb-4">Course Overview</h3>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <i class="fas fa-clock mr-3"></i>
+                                <span>Duration: 45-60 minutes</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-users mr-3"></i>
+                                <span>Level: Intermediate</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-baby mr-3"></i>
+                                <span>Focus: Daycare Management</span>
+                            </div>
+                            <div class="flex items-center">
+                                <i class="fas fa-certificate mr-3"></i>
+                                <span>Hands-on Examples</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Chart Types Overview -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                <i class="fas fa-chart-line text-green-600 mr-3"></i>Chart Types We'll Master
+            </h2>
+            <div class="grid md:grid-cols-3 lg:grid-cols-4 gap-6">
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-chart-bar text-4xl text-blue-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Column Charts</h3>
+                    <p class="text-sm text-gray-600">Compare values across categories</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-chart-pie text-4xl text-green-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Pie Charts</h3>
+                    <p class="text-sm text-gray-600">Show parts of a whole</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-chart-line text-4xl text-purple-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Line Charts</h3>
+                    <p class="text-sm text-gray-600">Track trends over time</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-chart-area text-4xl text-red-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Area Charts</h3>
+                    <p class="text-sm text-gray-600">Show cumulative values</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-bars text-4xl text-yellow-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Bar Charts</h3>
+                    <p class="text-sm text-gray-600">Horizontal comparisons</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-dot-circle text-4xl text-indigo-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Scatter Plots</h3>
+                    <p class="text-sm text-gray-600">Show relationships</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-layer-group text-4xl text-pink-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Stacked Charts</h3>
+                    <p class="text-sm text-gray-600">Compare components</p>
+                </div>
+                <div class="chart-type-card bg-white rounded-lg p-6 shadow-md text-center">
+                    <i class="fas fa-chart-column text-4xl text-teal-500 mb-4"></i>
+                    <h3 class="font-semibold text-lg mb-2">Combo Charts</h3>
+                    <p class="text-sm text-gray-600">Multiple data types</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Column Charts Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-chart-bar text-blue-600 mr-3"></i>1. Column Charts - Comparing Categories
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-700">When to Use Column Charts</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Compare enrollment across different age groups</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Show monthly revenue comparisons</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Compare staff performance metrics</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Analyze attendance by classroom</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-2">Best Practices:</h4>
+                            <ul class="text-blue-700 text-sm space-y-1">
+                                <li>• Keep categories to 7 or fewer for clarity</li>
+                                <li>• Use consistent colors for similar data</li>
+                                <li>• Start Y-axis at zero for accurate comparison</li>
+                                <li>• Add data labels for precise values</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-blue-700">Example: Monthly Enrollment by Age Group</h3>
+                        <div class="chart-wrapper"><canvas id="columnChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <!-- Step-by-step instructions -->
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Step-by-Step: Creating Column Charts in Excel</h3>
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-4">
+                        <div class="step-box bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-blue-600 mb-2">1</div>
+                            <h4 class="font-semibold mb-2">Select Data</h4>
+                            <p class="text-sm text-gray-600">Highlight your data range including headers</p>
+                        </div>
+                        <div class="step-box bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-blue-600 mb-2">2</div>
+                            <h4 class="font-semibold mb-2">Insert Chart</h4>
+                            <p class="text-sm text-gray-600">Go to Insert → Charts → Column Chart</p>
+                        </div>
+                        <div class="step-box bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-blue-600 mb-2">3</div>
+                            <h4 class="font-semibold mb-2">Choose Type</h4>
+                            <p class="text-sm text-gray-600">Select Clustered Column for basic comparison</p>
+                        </div>
+                        <div class="step-box bg-white p-4 rounded-lg shadow-sm">
+                            <div class="text-2xl font-bold text-blue-600 mb-2">4</div>
+                            <h4 class="font-semibold mb-2">Format Chart</h4>
+                            <p class="text-sm text-gray-600">Add titles, adjust colors, and format axes</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Pie Charts Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-chart-pie text-green-600 mr-3"></i>2. Pie Charts - Parts of a Whole
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-700">Perfect for Daycare Analysis</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-green-500 mr-2"></i>Show budget allocation across departments</li>
+                            <li><i class="fas fa-arrow-right text-green-500 mr-2"></i>Display student distribution by program</li>
+                            <li><i class="fas fa-arrow-right text-green-500 mr-2"></i>Visualize time spent on different activities</li>
+                            <li><i class="fas fa-arrow-right text-green-500 mr-2"></i>Break down revenue sources</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-green-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-green-800 mb-2">Pro Tips:</h4>
+                            <ul class="text-green-700 text-sm space-y-1">
+                                <li>• Limit to 5-7 slices maximum</li>
+                                <li>• Order slices by size (largest first)</li>
+                                <li>• Use data labels with percentages</li>
+                                <li>• Consider donut charts for modern look</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-green-700">Example: Annual Budget Distribution</h3>
+                        <div class="chart-wrapper"><canvas id="pieChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Excel Steps for Pie Charts</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-table text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Prepare Data</h4>
+                            <p class="text-sm text-gray-600">Two columns: categories and values. Ensure values sum to meaningful total.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-mouse-pointer text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Insert & Select</h4>
+                            <p class="text-sm text-gray-600">Insert → Charts → Pie. Choose 2D or 3D based on preference.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-3">
+                                <i class="fas fa-palette text-green-600 text-xl"></i>
+                            </div>
+                            <h4 class="font-semibold mb-2">Customize</h4>
+                            <p class="text-sm text-gray-600">Add data labels, adjust colors, and position legend appropriately.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Line Charts Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-chart-line text-purple-600 mr-3"></i>3. Line Charts - Tracking Trends Over Time
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-purple-700">Essential for Time-Based Data</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-purple-500 mr-2"></i>Track enrollment trends throughout the year</li>
+                            <li><i class="fas fa-arrow-right text-purple-500 mr-2"></i>Monitor monthly revenue patterns</li>
+                            <li><i class="fas fa-arrow-right text-purple-500 mr-2"></i>Analyze attendance rate changes</li>
+                            <li><i class="fas fa-arrow-right text-purple-500 mr-2"></i>Show child development progress</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-purple-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-purple-800 mb-2">Key Advantages:</h4>
+                            <ul class="text-purple-700 text-sm space-y-1">
+                                <li>• Clearly shows trends and patterns</li>
+                                <li>• Easy to compare multiple data series</li>
+                                <li>• Effective for forecasting</li>
+                                <li>• Works well with continuous data</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-purple-700">Example: Quarterly Enrollment Trends</h3>
+                        <div class="chart-wrapper"><canvas id="lineChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-gray-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold mb-4 text-gray-800">Excel Implementation</h3>
+                        <ol class="space-y-3 text-gray-700">
+                            <li class="flex items-start">
+                                <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">1</span>
+                                <span>Arrange data with time periods in first column</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">2</span>
+                                <span>Select all data including headers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">3</span>
+                                <span>Insert → Charts → Line → Line with Markers</span>
+                            </li>
+                            <li class="flex items-start">
+                                <span class="bg-purple-600 text-white rounded-full w-6 h-6 flex items-center justify-center text-sm mr-3 mt-0.5">4</span>
+                                <span>Format axes and add trend lines if needed</span>
+                            </li>
+                        </ol>
+                    </div>
+                    
+                    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded">
+                        <h3 class="text-lg font-semibold mb-3 text-yellow-800">
+                            <i class="fas fa-lightbulb mr-2"></i>Advanced Tip
+                        </h3>
+                        <p class="text-yellow-700 mb-3">
+                            Use multiple line series to compare different metrics simultaneously. For example, compare enrollment vs. revenue trends to identify correlations.
+                        </p>
+                        <div class="text-yellow-700 text-sm">
+                            <strong>Try this:</strong> Add a secondary axis for different scales (e.g., enrollment count vs. percentage attendance).
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Bar Charts Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-bars text-orange-600 mr-3"></i>4. Bar Charts - Horizontal Comparisons
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-orange-700">When Bar Charts Excel</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-orange-500 mr-2"></i>Long category names (staff member names)</li>
+                            <li><i class="fas fa-arrow-right text-orange-500 mr-2"></i>Ranking data (top performing classrooms)</li>
+                            <li><i class="fas fa-arrow-right text-orange-500 mr-2"></i>Survey results with text responses</li>
+                            <li><i class="fas fa-arrow-right text-orange-500 mr-2"></i>Comparing many categories (10+)</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-orange-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-orange-800 mb-2">Bar vs Column:</h4>
+                            <div class="text-orange-700 text-sm space-y-2">
+                                <div><span class="font-semibold">Use Bars when:</span> Category names are long</div>
+                                <div><span class="font-semibold">Use Columns when:</span> Showing time progression</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-orange-700">Example: Staff Performance Rankings</h3>
+                        <div class="chart-wrapper"><canvas id="barChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Creating Effective Bar Charts</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold text-orange-700 mb-3">Setup Process:</h4>
+                            <div class="space-y-3">
+                                <div class="flex items-center">
+                                    <div class="bg-orange-100 rounded-full p-2 mr-3">
+                                        <i class="fas fa-sort text-orange-600"></i>
+                                    </div>
+                                    <span class="text-gray-700">Sort data by value for ranking effect</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-orange-100 rounded-full p-2 mr-3">
+                                        <i class="fas fa-chart-bar text-orange-600"></i>
+                                    </div>
+                                    <span class="text-gray-700">Insert → Charts → Bar Chart</span>
+                                </div>
+                                <div class="flex items-center">
+                                    <div class="bg-orange-100 rounded-full p-2 mr-3">
+                                        <i class="fas fa-paint-brush text-orange-600"></i>
+                                    </div>
+                                    <span class="text-gray-700">Format with consistent colors</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-orange-700 mb-3">Daycare Applications:</h4>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Staff certification completion rates</li>
+                                <li>• Parent satisfaction survey results</li>
+                                <li>• Classroom utilization rates</li>
+                                <li>• Program popularity rankings</li>
+                                <li>• Monthly expense categories</li>
+                                <li>• Safety incident frequency by area</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Area Charts Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-chart-area text-teal-600 mr-3"></i>5. Area Charts - Cumulative Values Over Time
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-teal-700">Ideal for Showing Volume</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-teal-500 mr-2"></i>Cumulative enrollment over months</li>
+                            <li><i class="fas fa-arrow-right text-teal-500 mr-2"></i>Total program hours delivered</li>
+                            <li><i class="fas fa-arrow-right text-teal-500 mr-2"></i>Stacked: Multiple program contributions</li>
+                            <li><i class="fas fa-arrow-right text-teal-500 mr-2"></i>Revenue accumulation tracking</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-teal-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-teal-800 mb-2">When to Choose Area:</h4>
+                            <ul class="text-teal-700 text-sm space-y-1">
+                                <li>• Emphasize the magnitude of change</li>
+                                <li>• Show contribution of parts to whole</li>
+                                <li>• Display continuous data over time</li>
+                                <li>• Highlight cumulative effects</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-teal-700">Example: Cumulative Program Enrollment</h3>
+                        <div class="chart-wrapper"><canvas id="areaChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Area Chart Variations</h3>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-teal-700 mb-2">Standard Area</h4>
+                            <p class="text-sm text-gray-600 mb-3">Single data series showing trend magnitude</p>
+                            <div class="text-xs text-gray-500">Best for: Individual metric tracking</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-teal-700 mb-2">Stacked Area</h4>
+                            <p class="text-sm text-gray-600 mb-3">Multiple series stacked to show total</p>
+                            <div class="text-xs text-gray-500">Best for: Program contribution analysis</div>
+                        </div>
+                        <div class="bg-white p-4 rounded-lg shadow-sm">
+                            <h4 class="font-semibold text-teal-700 mb-2">100% Stacked</h4>
+                            <p class="text-sm text-gray-600 mb-3">Shows proportional contribution</p>
+                            <div class="text-xs text-gray-500">Best for: Percentage breakdowns</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Scatter Plot Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-braille text-indigo-600 mr-3"></i>6. Scatter Plots - Finding Relationships
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Discover Hidden Patterns</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-indigo-500 mr-2"></i>Class size vs. learning outcomes</li>
+                            <li><i class="fas fa-arrow-right text-indigo-500 mr-2"></i>Staff experience vs. parent ratings</li>
+                            <li><i class="fas fa-arrow-right text-indigo-500 mr-2"></i>Age vs. activity participation</li>
+                            <li><i class="fas fa-arrow-right text-indigo-500 mr-2"></i>Budget spent vs. enrollment growth</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-indigo-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-indigo-800 mb-2">Correlation Analysis:</h4>
+                            <ul class="text-indigo-700 text-sm space-y-1">
+                                <li>• Positive: Values increase together</li>
+                                <li>• Negative: One increases, other decreases</li>
+                                <li>• No correlation: Random scatter</li>
+                                <li>• Add trend line to quantify relationship</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-indigo-700">Example: Class Size vs. Satisfaction</h3>
+                        <div class="chart-wrapper"><canvas id="scatterChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg p-6 shadow-sm">
+                    <h3 class="text-xl font-semibold mb-4 text-gray-800">Creating Insightful Scatter Plots</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold text-indigo-700 mb-3">Excel Setup:</h4>
+                            <ol class="space-y-2 text-gray-700 text-sm">
+                                <li>1. Arrange data: X-values in first column, Y-values in second</li>
+                                <li>2. Insert → Charts → Scatter → Scatter with Markers</li>
+                                <li>3. Right-click data points → Add Trendline</li>
+                                <li>4. Display R-squared value to show correlation strength</li>
+                                <li>5. Format markers for visibility and add axis labels</li>
+                            </ol>
+                        </div>
+                        <div class="bg-blue-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-blue-800 mb-3">
+                                <i class="fas fa-chart-line mr-2"></i>Advanced Analysis
+                            </h4>
+                            <p class="text-blue-700 text-sm mb-3">
+                                Use scatter plots to identify outliers in your daycare data. Points far from the trend line may indicate:
+                            </p>
+                            <ul class="text-blue-700 text-sm space-y-1">
+                                <li>• Exceptional performance cases</li>
+                                <li>• Data entry errors</li>
+                                <li>• Special circumstances requiring attention</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Combo Charts Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold mb-8 text-gray-800">
+                    <i class="fas fa-layer-group text-red-600 mr-3"></i>7. Combination Charts - Multiple Data Types
+                </h2>
+                
+                <div class="grid lg:grid-cols-2 gap-8 mb-8">
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-red-700">Perfect for Complex Analysis</h3>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-red-500 mr-2"></i>Enrollment numbers + revenue on same chart</li>
+                            <li><i class="fas fa-arrow-right text-red-500 mr-2"></i>Staff count vs. satisfaction percentage</li>
+                            <li><i class="fas fa-arrow-right text-red-500 mr-2"></i>Budget amounts with percentage utilization</li>
+                            <li><i class="fas fa-arrow-right text-red-500 mr-2"></i>Attendance count vs. attendance rate</li>
+                        </ul>
+                        
+                        <div class="mt-6 bg-red-50 p-4 rounded-lg">
+                            <h4 class="font-semibold text-red-800 mb-2">Key Benefits:</h4>
+                            <ul class="text-red-700 text-sm space-y-1">
+                                <li>• Show relationships between different metrics</li>
+                                <li>• Save space by combining related data</li>
+                                <li>• Use different scales with secondary axis</li>
+                                <li>• Create compelling presentations</li>
+                            </ul>
+                        </div>
+                    </div>
+                    
+                    <div>
+                        <h3 class="text-xl font-semibold mb-4 text-red-700">Example: Enrollment & Revenue Trends</h3>
+                        <div class="chart-wrapper"><canvas id="comboChart" ></div></canvas>
+                    </div>
+                </div>
+
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <h3 class="text-xl font-semibold mb-6 text-gray-800">Mastering Combination Charts</h3>
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="font-semibold text-red-700 mb-3">Creation Steps:</h4>
+                            <div class="space-y-3 text-sm">
+                                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                                    <strong>Step 1:</strong> Create a basic column or line chart
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                                    <strong>Step 2:</strong> Right-click one data series
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                                    <strong>Step 3:</strong> Choose "Change Series Chart Type"
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                                    <strong>Step 4:</strong> Set different chart types per series
+                                </div>
+                                <div class="bg-white p-3 rounded border-l-4 border-red-500">
+                                    <strong>Step 5:</strong> Add secondary axis if scales differ greatly
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="font-semibold text-red-700 mb-3">Common Combinations:</h4>
+                            <div class="space-y-4">
+                                <div class="bg-white p-4 rounded-lg border">
+                                    <div class="font-semibold text-gray-800">Column + Line</div>
+                                    <div class="text-sm text-gray-600">Bars show quantities, line shows rates/percentages</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border">
+                                    <div class="font-semibold text-gray-800">Area + Line</div>
+                                    <div class="text-sm text-gray-600">Area shows volume, line shows efficiency</div>
+                                </div>
+                                <div class="bg-white p-4 rounded-lg border">
+                                    <div class="font-semibold text-gray-800">Multiple Lines</div>
+                                    <div class="text-sm text-gray-600">Different metrics on separate axes</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Best Practices Section -->
+    <section class="py-12 bg-gradient-to-r from-blue-600 to-purple-700 text-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12">
+                    <i class="fas fa-star text-yellow-300 mr-3"></i>Chart Design Best Practices
+                </h2>
+                
+                <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-palette text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Color Strategy</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Use consistent color schemes</li>
+                            <li>• Ensure accessibility (colorblind-friendly)</li>
+                            <li>• Highlight key data with accent colors</li>
+                            <li>• Avoid too many bright colors</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-font text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Typography</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Clear, readable fonts (Arial, Calibri)</li>
+                            <li>• Consistent font sizes</li>
+                            <li>• Descriptive titles and axis labels</li>
+                            <li>• Legend positioning for clarity</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-ruler text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Layout & Spacing</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Adequate white space around elements</li>
+                            <li>• Proper chart sizing for context</li>
+                            <li>• Logical axis scaling</li>
+                            <li>• Clear data label positioning</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-bullseye text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Data Integrity</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Start axes at zero when appropriate</li>
+                            <li>• Avoid misleading scales</li>
+                            <li>• Include data sources</li>
+                            <li>• Show sample sizes when relevant</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-users text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Audience Focus</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Match complexity to audience knowledge</li>
+                            <li>• Use familiar terminology</li>
+                            <li>• Provide context and interpretation</li>
+                            <li>• Include actionable insights</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-mobile-alt text-3xl text-yellow-300 mb-4"></i>
+                        <h3 class="text-xl font-semibold mb-3">Presentation Ready</h3>
+                        <ul class="text-sm space-y-2 opacity-90">
+                            <li>• Test readability at display size</li>
+                            <li>• Consider printing requirements</li>
+                            <li>• Export in appropriate formats</li>
+                            <li>• Backup with data tables</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Practical Exercises Section -->
+    <section class="py-12 bg-gray-100">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                    <i class="fas fa-hands-helping text-green-600 mr-3"></i>Practice Scenarios for Your Daycare
+                </h2>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <div class="bg-blue-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-bar text-blue-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">Monthly Performance Dashboard</h3>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                            <p><strong>Challenge:</strong> Create a comprehensive monthly report showing:</p>
+                            <ul class="space-y-1 ml-4">
+                                <li>• Enrollment by age group (Column Chart)</li>
+                                <li>• Budget allocation (Pie Chart)</li>
+                                <li>• Attendance trends (Line Chart)</li>
+                                <li>• Staff performance rankings (Bar Chart)</li>
+                            </ul>
+                            <div class="bg-blue-50 p-3 rounded mt-4">
+                                <strong>Goal:</strong> Build a single-page dashboard that tells your daycare's monthly story
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <div class="bg-green-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">Growth Analysis Report</h3>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                            <p><strong>Challenge:</strong> Analyze your daycare's growth patterns:</p>
+                            <ul class="space-y-1 ml-4">
+                                <li>• Year-over-year enrollment (Area Chart)</li>
+                                <li>• Revenue vs. expenses (Combo Chart)</li>
+                                <li>• Parent satisfaction trends (Line Chart)</li>
+                                <li>• Program popularity (Scatter Plot)</li>
+                            </ul>
+                            <div class="bg-green-50 p-3 rounded mt-4">
+                                <strong>Goal:</strong> Identify growth opportunities and areas for improvement
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <div class="bg-purple-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-presentation text-purple-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">Board Presentation Package</h3>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                            <p><strong>Challenge:</strong> Prepare charts for your board meeting:</p>
+                            <ul class="space-y-1 ml-4">
+                                <li>• Financial performance overview</li>
+                                <li>• Operational efficiency metrics</li>
+                                <li>• Quality indicators and outcomes</li>
+                                <li>• Future projections and goals</li>
+                            </ul>
+                            <div class="bg-purple-50 p-3 rounded mt-4">
+                                <strong>Goal:</strong> Create professional, impactful visualizations for stakeholders
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white rounded-lg p-6 shadow-lg">
+                        <div class="bg-orange-100 rounded-full w-16 h-16 flex items-center justify-center mx-auto mb-4">
+                            <i class="fas fa-clipboard-check text-orange-600 text-2xl"></i>
+                        </div>
+                        <h3 class="text-xl font-semibold text-center mb-4 text-gray-800">Regulatory Compliance Report</h3>
+                        <div class="space-y-3 text-gray-700 text-sm">
+                            <p><strong>Challenge:</strong> Document compliance metrics:</p>
+                            <ul class="space-y-1 ml-4">
+                                <li>• Staff certification status</li>
+                                <li>• Safety incident tracking</li>
+                                <li>• Child-to-staff ratios by room</li>
+                                <li>• Training completion rates</li>
+                            </ul>
+                            <div class="bg-orange-50 p-3 rounded mt-4">
+                                <strong>Goal:</strong> Maintain regulatory compliance with clear documentation
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="mt-12 bg-yellow-50 border-l-4 border-yellow-500 p-6 rounded">
+                    <h3 class="text-lg font-semibold text-yellow-800 mb-3">
+                        <i class="fas fa-lightbulb mr-2"></i>Getting Started Tips
+                    </h3>
+                    <div class="grid md:grid-cols-2 gap-6 text-yellow-700">
+                        <ul class="space-y-2">
+                            <li><strong>Start Small:</strong> Begin with one chart type you'll use most frequently</li>
+                            <li><strong>Use Real Data:</strong> Practice with your actual daycare data for immediate value</li>
+                            <li><strong>Focus on Insights:</strong> Ask "What story does this data tell?"</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li><strong>Iterate and Improve:</strong> Refine your charts based on feedback</li>
+                            <li><strong>Create Templates:</strong> Save chart formats for consistent reporting</li>
+                            <li><strong>Share and Discuss:</strong> Use charts to facilitate data-driven conversations</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Quick Reference Section -->
+    <section class="py-12 bg-white">
+        <div class="container mx-auto px-6">
+            <div class="max-w-6xl mx-auto">
+                <h2 class="text-3xl font-bold text-center mb-12 text-gray-800">
+                    <i class="fas fa-bookmark text-blue-600 mr-3"></i>Quick Reference Guide
+                </h2>
+                
+                <div class="bg-gradient-to-r from-gray-50 to-gray-100 rounded-lg p-8">
+                    <div class="grid md:grid-cols-2 lg:grid-cols-4 gap-6">
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h3 class="font-semibold text-blue-700 mb-3 text-center">Column Charts</h3>
+                            <div class="text-xs space-y-1">
+                                <div><strong>Best for:</strong> Comparing categories</div>
+                                <div><strong>Excel Path:</strong> Insert → Charts → Column</div>
+                                <div><strong>Daycare Use:</strong> Enrollment by age group</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h3 class="font-semibold text-green-700 mb-3 text-center">Pie Charts</h3>
+                            <div class="text-xs space-y-1">
+                                <div><strong>Best for:</strong> Parts of whole</div>
+                                <div><strong>Excel Path:</strong> Insert → Charts → Pie</div>
+                                <div><strong>Daycare Use:</strong> Budget distribution</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h3 class="font-semibold text-purple-700 mb-3 text-center">Line Charts</h3>
+                            <div class="text-xs space-y-1">
+                                <div><strong>Best for:</strong> Trends over time</div>
+                                <div><strong>Excel Path:</strong> Insert → Charts → Line</div>
+                                <div><strong>Daycare Use:</strong> Enrollment trends</div>
+                            </div>
+                        </div>
+                        
+                        <div class="bg-white rounded-lg p-4 shadow-sm">
+                            <h3 class="font-semibold text-orange-700 mb-3 text-center">Bar Charts</h3>
+                            <div class="text-xs space-y-1">
+                                <div><strong>Best for:</strong> Long category names</div>
+                                <div><strong>Excel Path:</strong> Insert → Charts → Bar</div>
+                                <div><strong>Daycare Use:</strong> Staff rankings</div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="mt-8 bg-blue-50 rounded-lg p-6">
+                        <h3 class="text-lg font-semibold text-blue-800 mb-4 text-center">Universal Excel Chart Shortcuts</h3>
+                        <div class="grid md:grid-cols-3 gap-4 text-sm">
+                            <div class="text-center">
+                                <div class="bg-blue-100 rounded-lg p-3 mb-2">
+                                    <strong>F11</strong>
+                                </div>
+                                <div class="text-blue-700">Create chart from selected data</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-blue-100 rounded-lg p-3 mb-2">
+                                    <strong>Alt + F1</strong>
+                                </div>
+                                <div class="text-blue-700">Insert default chart</div>
+                            </div>
+                            <div class="text-center">
+                                <div class="bg-blue-100 rounded-lg p-3 mb-2">
+                                    <strong>Ctrl + 1</strong>
+                                </div>
+                                <div class="text-blue-700">Format selected chart element</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Conclusion -->
+    <section class="py-12 gradient-bg text-white">
+        <div class="container mx-auto px-6 text-center">
+            <div class="max-w-4xl mx-auto">
+                <h2 class="text-3xl font-bold mb-6">
+                    <i class="fas fa-graduation-cap mr-3"></i>Congratulations! You've Mastered Excel Charts
+                </h2>
+                <p class="text-xl mb-8 opacity-90">
+                    You now have the skills to transform your daycare data into compelling visual stories that drive better decisions and engage your stakeholders.
+                </p>
+                
+                <div class="grid md:grid-cols-3 gap-8 mb-8">
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-chart-bar text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2">7 Chart Types</h3>
+                        <p class="text-sm opacity-90">Master essential visualizations for every scenario</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-baby text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2">Daycare-Focused</h3>
+                        <p class="text-sm opacity-90">Practical examples from your daily operations</p>
+                    </div>
+                    <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                        <i class="fas fa-rocket text-4xl mb-4"></i>
+                        <h3 class="text-lg font-semibold mb-2">Ready to Apply</h3>
+                        <p class="text-sm opacity-90">Immediate implementation with step-by-step guidance</p>
+                    </div>
+                </div>
+                
+                <div class="bg-white bg-opacity-10 rounded-lg p-6 backdrop-blur-sm">
+                    <h3 class="text-xl font-semibold mb-4">Next Steps for Your Journey</h3>
+                    <div class="grid md:grid-cols-2 gap-6 text-left">
+                        <ul class="space-y-2">
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Practice with your actual daycare data</li>
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Create monthly reporting templates</li>
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Share insights with your team</li>
+                        </ul>
+                        <ul class="space-y-2">
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Build presentation-ready dashboards</li>
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Explore advanced Excel features</li>
+                            <li><i class="fas fa-check-circle text-green-300 mr-2"></i>Mentor others in data visualization</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer class="bg-gray-800 text-white py-8">
+        <div class="container mx-auto px-6 text-center">
+            <p class="text-lg mb-2">Excel Charts Training Module for Daycare Professionals</p>
+            <p class="text-sm opacity-75">Transform your data into actionable insights</p>
+            <div class="mt-4 text-xs opacity-50">
+                Created for intermediate Excel users in daycare management
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Chart.js configurations and data
+        const chartOptions = {
+            responsive: true, animations: false,
+            maintainAspectRatio: false,
+                animation: false,
+            plugins: {
+                legend: {
+                    position: 'top',
+                },
+            },
+            scales: {
+                y: {
+                    beginAtZero: true
+                }
+            }
+        };
+
+        // Column Chart
+        Chart.defaults.devicePixelRatio = 1;
+new Chart(document.getElementById('columnChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Infants (0-1)', 'Toddlers (1-2)', 'Preschool (3-4)', 'Pre-K (4-5)', 'School Age (5+)'],
+                datasets: [{
+                    label: 'Current Enrollment',
+                    data: [15, 22, 35, 28, 18],
+                    backgroundColor: ['#3B82F6', '#10B981', '#F59E0B', '#EF4444', '#8B5CF6'],
+                    borderColor: ['#1D4ED8', '#059669', '#D97706', '#DC2626', '#7C3AED'],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Monthly Enrollment by Age Group'
+                    }
+                }
+            }
+        });
+
+        // Pie Chart
+        new Chart(document.getElementById('pieChart'), {
+            type: 'pie',
+            data: {
+                labels: ['Staff Salaries', 'Facility Rent', 'Food & Supplies', 'Insurance', 'Utilities', 'Other'],
+                datasets: [{
+                    data: [45, 20, 15, 8, 7, 5],
+                    backgroundColor: ['#10B981', '#3B82F6', '#F59E0B', '#EF4444', '#8B5CF6', '#6B7280'],
+                    borderWidth: 2,
+                    borderColor: '#FFFFFF'
+                }]
+            },
+            options: {
+                responsive: true, animations: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        position: 'right',
+                    },
+                    title: {
+                        display: true,
+                        text: 'Annual Budget Distribution (%)'
+                    }
+                }
+            }
+        });
+
+        // Line Chart
+        new Chart(document.getElementById('lineChart'), {
+            type: 'line',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    label: 'Total Enrollment',
+                    data: [95, 102, 108, 115, 118, 125],
+                    borderColor: '#8B5CF6',
+                    backgroundColor: 'rgba(139, 92, 246, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }, {
+                    label: 'Waitlist',
+                    data: [12, 8, 15, 22, 18, 25],
+                    borderColor: '#F59E0B',
+                    backgroundColor: 'rgba(245, 158, 11, 0.1)',
+                    fill: true,
+                    tension: 0.4
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Quarterly Enrollment Trends'
+                    }
+                }
+            }
+        });
+
+        // Bar Chart
+        new Chart(document.getElementById('barChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Sarah Johnson', 'Mike Chen', 'Lisa Rodriguez', 'David Kim', 'Emma Wilson'],
+                datasets: [{
+                    label: 'Performance Score',
+                    data: [92, 88, 95, 85, 90],
+                    backgroundColor: '#F59E0B',
+                    borderColor: '#D97706',
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                indexAxis: 'y',
+                responsive: true, animations: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    legend: {
+                        display: false
+                    },
+                    title: {
+                        display: true,
+                        text: 'Staff Performance Rankings'
+                    }
+                },
+                scales: {
+                    x: {
+                        beginAtZero: true,
+                        max: 100
+                    }
+                }
+            }
+        });
+
+        // Area Chart
+        new Chart(document.getElementById('areaChart'), {
+            type: 'line',
+            data: {
+                labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                datasets: [{
+                    label: 'Full-Time Program',
+                    data: [45, 52, 58, 62],
+                    backgroundColor: 'rgba(16, 185, 129, 0.6)',
+                    borderColor: '#10B981',
+                    fill: true
+                }, {
+                    label: 'Part-Time Program',
+                    data: [25, 28, 32, 35],
+                    backgroundColor: 'rgba(59, 130, 246, 0.6)',
+                    borderColor: '#3B82F6',
+                    fill: true
+                }, {
+                    label: 'Drop-in Care',
+                    data: [15, 18, 22, 25],
+                    backgroundColor: 'rgba(245, 158, 11, 0.6)',
+                    borderColor: '#F59E0B',
+                    fill: true
+                }]
+            },
+            options: {
+                ...chartOptions,
+                plugins: {
+                    ...chartOptions.plugins,
+                    title: {
+                        display: true,
+                        text: 'Cumulative Program Enrollment'
+                    }
+                },
+                scales: {
+                    y: {
+                        stacked: true,
+                        beginAtZero: true
+                    }
+                }
+            }
+        });
+
+        // Scatter Chart
+        new Chart(document.getElementById('scatterChart'), {
+            type: 'scatter',
+            data: {
+                datasets: [{
+                    label: 'Classroom Data',
+                    data: [
+                        {x: 12, y: 4.2},
+                        {x: 15, y: 3.8},
+                        {x: 18, y: 3.5},
+                        {x: 20, y: 3.2},
+                        {x: 22, y: 2.9},
+                        {x: 16, y: 4.0},
+                        {x: 14, y: 4.1},
+                        {x: 19, y: 3.4}
+                    ],
+                    backgroundColor: '#8B5CF6',
+                    borderColor: '#7C3AED',
+                    pointRadius: 6
+                }]
+            },
+            options: {
+                responsive: true, animations: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Class Size vs. Parent Satisfaction'
+                    }
+                },
+                scales: {
+                    x: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Class Size (students)'
+                        }
+                    },
+                    y: {
+                        display: true,
+                        title: {
+                            display: true,
+                            text: 'Satisfaction Rating (1-5)'
+                        },
+                        min: 2,
+                        max: 5
+                    }
+                }
+            }
+        });
+
+        // Combo Chart
+        new Chart(document.getElementById('comboChart'), {
+            type: 'bar',
+            data: {
+                labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                datasets: [{
+                    type: 'bar',
+                    label: 'Monthly Revenue ($)',
+                    data: [28000, 32000, 35000, 38000, 41000, 44000],
+                    backgroundColor: '#3B82F6',
+                    borderColor: '#1D4ED8',
+                    yAxisID: 'y'
+                }, {
+                    type: 'line',
+                    label: 'Enrollment Count',
+                    data: [95, 102, 108, 115, 118, 125],
+                    borderColor: '#EF4444',
+                    backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                    yAxisID: 'y1',
+                    tension: 0.4
+                }]
+            },
+            options: {
+                responsive: true, animations: false,
+                maintainAspectRatio: false,
+                plugins: {
+                    title: {
+                        display: true,
+                        text: 'Enrollment & Revenue Trends'
+                    }
+                },
+                scales: {
+                    y: {
+                        type: 'linear',
+                        display: true,
+                        position: 'left',
+                        title: {
+                            display: true,
+                            text: 'Revenue ($)'
+                        }
+                    },
+                    y1: {
+                        type: 'linear',
+                        display: true,
+                        position: 'right',
+                        title: {
+                            display: true,
+                            text: 'Enrollment Count'
+                        },
+                        grid: {
+                            drawOnChartArea: false,
+                        },
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+</html>
