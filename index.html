@@ -112,40 +112,58 @@
     &copy; 2025 GECCA | Guam Early Childhood & Caregivers Academy
   </footer>
 
+  
   <script>
     async function unlockAccess() {
-      const email = document.getElementById("email-input").value.trim().toLowerCase();
-      const [usersRes, coursesRes] = await Promise.all([
-        fetch("users.json"),
-        fetch("courses.json")
-      ]);
-      const users = await usersRes.json();
-      const courses = await coursesRes.json();
-
-      const user = users.find(u => u.email.toLowerCase() === email);
-
-      if (!user) {
-        document.getElementById("error").textContent = "Email not recognized. Please contact support.";
+      const emailInput = document.getElementById("email-input");
+      const errorEl    = document.getElementById("error");
+      const email      = emailInput.value.trim().toLowerCase();
+      if (!email) {
+        errorEl.textContent = "Please enter a valid email.";
         return;
       }
+      try {
+        const [usersRes, coursesRes] = await Promise.all([
+          fetch("users.json"),
+          fetch("courses.json")
+        ]);
+        if (!usersRes.ok || !coursesRes.ok) throw new Error("File not found (are you running via a local server?)");
 
+        const users   = await usersRes.json();
+        const courses = await coursesRes.json();
+
+        const user = users.find(u => u.email.toLowerCase() === email);
+        if (!user) {
+          errorEl.textContent = "Email not recognized. Please contact support.";
+          return;
+        }
+
+        renderCourses(user, courses);
+
+      } catch (err) {
+        console.error(err);
+        errorEl.textContent = "Oops! Something went wrong. Check the console for details.";
+      }
+    }
+
+    function renderCourses(user, courses) {
       const container = document.getElementById("materials-list");
       container.innerHTML = "";
 
       user.courses.forEach(courseName => {
         const courseGroup = courses[courseName];
-        if (courseGroup && courseGroup.length > 0) {
+        if (Array.isArray(courseGroup) && courseGroup.length) {
           const header = document.createElement("h3");
           header.textContent = courseName;
           container.appendChild(header);
 
           const ul = document.createElement("ul");
           courseGroup.forEach(item => {
-            const li = document.createElement("li");
+            const li   = document.createElement("li");
             const link = document.createElement("a");
-            link.href = item.file;
+            link.href        = item.file;
             link.textContent = item.title;
-            link.target = "_blank"; // open in new tab
+            link.target      = "_blank";
             li.appendChild(link);
             ul.appendChild(li);
           });
@@ -157,5 +175,6 @@
       document.getElementById("main-content").style.display = "block";
     }
   </script>
+
 </body>
 </html>
