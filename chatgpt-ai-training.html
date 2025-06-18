@@ -126,7 +126,7 @@
     </style>
 
 <style>
-.toggle-btn {
+.toggle-btn { z-index: 1000;
   transition: left 0.3s ease, opacity 0.3s ease, background-color 0.3s ease;
 }
 .toggle-btn.collapsed {
@@ -2231,42 +2231,72 @@
 
 
 
+
+
+
 <script>
 (function () {
   const toggleBtn = document.getElementById('toggleSidebar');
   const sidebar   = document.querySelector('.sidebar');
   const main      = document.querySelector('.main-content') || document.querySelector('main, .content, #content');
-  const defaultLeft = 16; // px (left-4)
-  const SIDEBAR_WIDTH = sidebar ? sidebar.offsetWidth || 300 : 300;
+  const defaultLeft = 16; // px
+  let sidebarWidth = sidebar ? sidebar.offsetWidth : 256;
+
+  function calcSidebarWidth() {
+    if (!sidebar) return 0;
+    // get computed width (includes scrollbar)
+    const rect = sidebar.getBoundingClientRect();
+    return rect.width;
+  }
 
   function applyLayout() {
     const hidden = sidebar.classList.contains('hidden');
     if (hidden) {
-      // sidebar collapsed
       toggleBtn.classList.add('collapsed');
       toggleBtn.style.left = defaultLeft + 'px';
       if (main) main.style.marginLeft = '0';
     } else {
+      sidebarWidth = calcSidebarWidth();
       toggleBtn.classList.remove('collapsed');
-      toggleBtn.style.left = (SIDEBAR_WIDTH + defaultLeft) + 'px';
-      if (main) main.style.marginLeft = SIDEBAR_WIDTH + 'px';
+      toggleBtn.style.left = (sidebarWidth + defaultLeft) + 'px';
+      if (main) main.style.marginLeft = sidebarWidth + 'px';
     }
   }
 
-  function toggleSidebar() {
-    if (!sidebar) return;
-    sidebar.classList.toggle('hidden');
-    applyLayout();
+  function hideSidebar() {
+    if (!sidebar.classList.contains('hidden')) {
+      sidebar.classList.add('hidden');
+      applyLayout();
+    }
   }
 
-  // initial state based on viewport
+  // hide on small screens initially
   if (sidebar && window.innerWidth < 1024) sidebar.classList.add('hidden');
   applyLayout();
 
-  toggleBtn.addEventListener('click', toggleSidebar);
+  toggleBtn.addEventListener('click', () => {
+    if (!sidebar) return;
+    sidebar.classList.toggle('hidden');
+    applyLayout();
+  });
 
-  window.addEventListener('resize', () => {
-    // if transitioning from mobile width to desktop width, recompute width
+  // Recalculate on resize
+  window.addEventListener('resize', applyLayout);
+
+  // When any anchor link inside the sidebar is clicked, auto-hide the sidebar
+  if (sidebar) {
+    sidebar.addEventListener('click', (e) => {
+      const link = e.target.closest('a');
+      if (link && link.getAttribute('href')?.startsWith('#')) {
+        // Give the browser time to scroll, then hide
+        setTimeout(hideSidebar, 100);
+      }
+    });
+  }
+
+  // Also listen for hashchange (if links outside sidebar cause navigation)
+  window.addEventListener('hashchange', () => {
+    // Ensure button is visible & correctly positioned
     applyLayout();
   });
 })();
