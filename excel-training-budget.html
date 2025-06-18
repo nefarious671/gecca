@@ -1,0 +1,1868 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel Budgeting Mastery: Advanced Budget Management Techniques</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <style>
+        .excel-table {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            border-collapse: collapse;
+            width: 100%;
+            font-size: 12px;
+        }
+        .excel-table th, .excel-table td {
+            border: 1px solid #d1d5db;
+            padding: 8px 12px;
+            text-align: left;
+        }
+        .excel-table th {
+            background-color: #f3f4f6;
+            font-weight: 600;
+        }
+        .excel-table .number {
+            text-align: right;
+            font-family: 'Courier New', monospace;
+        }
+        .formula-box {
+            background-color: #f0f9ff;
+            border-left: 4px solid #0284c7;
+            padding: 12px;
+            font-family: 'Courier New', monospace;
+            font-size: 14px;
+        }
+        .positive-variance {
+            color: #059669;
+            font-weight: 600;
+        }
+        .negative-variance {
+            color: #dc2626;
+            font-weight: 600;
+        }
+        .section-divider {
+            background: linear-gradient(90deg, #1e40af 0%, #3b82f6 50%, #60a5fa 100%);
+            height: 3px;
+            margin: 2rem 0;
+            border-radius: 2px;
+        }
+        .interactive-element {
+            transition: all 0.3s ease;
+            cursor: pointer;
+        }
+        .interactive-element:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        .tip-box {
+            background: linear-gradient(135deg, #fef3c7 0%, #fbbf24 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .warning-box {
+            background: linear-gradient(135deg, #fee2e2 0%, #f87171 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+        .best-practice {
+            background: linear-gradient(135deg, #d1fae5 0%, #34d399 100%);
+            border-radius: 8px;
+            padding: 16px;
+            margin: 16px 0;
+        }
+    </style>
+</head>
+<body class="bg-gray-50 text-gray-800">
+    <div class="max-w-6xl mx-auto bg-white shadow-2xl">
+        <!-- Header -->
+        <header class="bg-gradient-to-r from-blue-600 to-blue-800 text-white p-8">
+            <div class="text-center">
+                <i class="fas fa-chart-line text-4xl mb-4"></i>
+                <h1 class="text-4xl font-bold mb-2">Excel Budgeting Mastery</h1>
+                <p class="text-xl text-blue-100">Advanced Budget Management Techniques</p>
+                <div class="mt-4 flex justify-center space-x-6 text-sm">
+                    <span><i class="fas fa-clock mr-2"></i>15-30 minutes</span>
+                    <span><i class="fas fa-signal mr-2"></i>Intermediate Level</span>
+                    <span><i class="fas fa-users mr-2"></i>Excel Training Module</span>
+                </div>
+            </div>
+        </header>
+
+        <!-- Table of Contents -->
+        <nav class="bg-blue-50 p-6 border-b">
+            <h2 class="text-2xl font-bold text-blue-800 mb-4"><i class="fas fa-list mr-2"></i>Learning Path</h2>
+            <div class="grid grid-cols-2 md:grid-cols-3 gap-4 text-sm">
+                <a href="#intro" class="hover:text-blue-600 transition-colors"><i class="fas fa-play-circle mr-2"></i>Introduction</a>
+                <a href="#structure" class="hover:text-blue-600 transition-colors"><i class="fas fa-building mr-2"></i>Budget Structure</a>
+                <a href="#formatting" class="hover:text-blue-600 transition-colors"><i class="fas fa-paint-brush mr-2"></i>Table Formatting</a>
+                <a href="#revenue" class="hover:text-blue-600 transition-colors"><i class="fas fa-dollar-sign mr-2"></i>Revenue Tracking</a>
+                <a href="#expenses" class="hover:text-blue-600 transition-colors"><i class="fas fa-receipt mr-2"></i>Expense Management</a>
+                <a href="#variance" class="hover:text-blue-600 transition-colors"><i class="fas fa-balance-scale mr-2"></i>Variance Analysis</a>
+                <a href="#projections" class="hover:text-blue-600 transition-colors"><i class="fas fa-crystal-ball mr-2"></i>Projections</a>
+                <a href="#advanced" class="hover:text-blue-600 transition-colors"><i class="fas fa-cogs mr-2"></i>Advanced Techniques</a>
+                <a href="#dashboard" class="hover:text-blue-600 transition-colors"><i class="fas fa-tachometer-alt mr-2"></i>Dashboards</a>
+                <a href="#best-practices" class="hover:text-blue-600 transition-colors"><i class="fas fa-star mr-2"></i>Best Practices</a>
+                <a href="#exercises" class="hover:text-blue-600 transition-colors"><i class="fas fa-dumbbell mr-2"></i>Exercises</a>
+                <a href="#summary" class="hover:text-blue-600 transition-colors"><i class="fas fa-check-circle mr-2"></i>Summary</a>
+            </div>
+        </nav>
+
+        <div class="p-8">
+            <!-- Section 1: Introduction and Learning Objectives -->
+            <section id="intro" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-rocket mr-3"></i>Introduction & Learning Objectives</h2>
+                
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 p-6 rounded-lg mb-6">
+                    <h3 class="text-xl font-semibold mb-4">Welcome to Excel Budgeting Mastery!</h3>
+                    <p class="text-gray-700 mb-4">
+                        Budgeting is one of the most critical financial management skills, and Excel provides powerful tools to create, monitor, and analyze budgets effectively. This module will transform your approach to budget management from basic spreadsheet use to professional-grade financial analysis.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="interactive-element bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-target mr-2"></i>Learning Objectives</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Design professional budget table structures</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Implement effective variance analysis</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Master projection and forecasting techniques</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Create dynamic budget dashboards</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Apply advanced Excel formulas for budgeting</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="interactive-element bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-3"><i class="fas fa-lightbulb mr-2"></i>What You'll Master</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Professional budget formatting techniques</li>
+                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Revenue and expense categorization systems</li>
+                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Advanced variance analysis methods</li>
+                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Dynamic forecasting models</li>
+                            <li><i class="fas fa-star text-yellow-500 mr-2"></i>Visual dashboard creation</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 2: Budget Structure Fundamentals -->
+            <section id="structure" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-building mr-3"></i>Budget Structure Fundamentals</h2>
+                
+                <div class="best-practice">
+                    <h4 class="font-semibold text-green-800 mb-2"><i class="fas fa-trophy mr-2"></i>Core Budget Components</h4>
+                    <p class="text-green-700">Every professional budget should include: Revenue sections, Operating expenses, Capital expenditures, Cash flow projections, and Variance analysis columns.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Essential Budget Framework</h3>
+                
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Master Budget Template Structure</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Account</th>
+                                <th>Budget (Annual)</th>
+                                <th>Q1 Budget</th>
+                                <th>Q1 Actual</th>
+                                <th>Variance</th>
+                                <th>Variance %</th>
+                                <th>Forecast</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-blue-50">
+                                <td rowspan="4" class="font-semibold">REVENUE</td>
+                                <td>Product Sales</td>
+                                <td class="number">$500,000</td>
+                                <td class="number">$125,000</td>
+                                <td class="number">$132,000</td>
+                                <td class="number positive-variance">$7,000</td>
+                                <td class="number positive-variance">5.6%</td>
+                                <td class="number">$528,000</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td>Service Revenue</td>
+                                <td class="number">$200,000</td>
+                                <td class="number">$50,000</td>
+                                <td class="number">$48,500</td>
+                                <td class="number negative-variance">($1,500)</td>
+                                <td class="number negative-variance">-3.0%</td>
+                                <td class="number">$194,000</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td>Consulting</td>
+                                <td class="number">$150,000</td>
+                                <td class="number">$37,500</td>
+                                <td class="number">$41,200</td>
+                                <td class="number positive-variance">$3,700</td>
+                                <td class="number positive-variance">9.9%</td>
+                                <td class="number">$164,800</td>
+                            </tr>
+                            <tr class="bg-blue-100 font-semibold">
+                                <td>TOTAL REVENUE</td>
+                                <td class="number">$850,000</td>
+                                <td class="number">$212,500</td>
+                                <td class="number">$221,700</td>
+                                <td class="number positive-variance">$9,200</td>
+                                <td class="number positive-variance">4.3%</td>
+                                <td class="number">$886,800</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-layer-group mr-2"></i>Hierarchical Structure</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Level 1:</strong> Major Categories (Revenue, COGS, OpEx)</li>
+                            <li><strong>Level 2:</strong> Sub-categories (Sales, Marketing, Admin)</li>
+                            <li><strong>Level 3:</strong> Account Details (Salaries, Rent, Utilities)</li>
+                            <li><strong>Level 4:</strong> Monthly/Quarterly Breakdowns</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-3"><i class="fas fa-calendar-alt mr-2"></i>Time Periods</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Annual:</strong> Strategic planning and goal setting</li>
+                            <li><strong>Quarterly:</strong> Performance review and adjustments</li>
+                            <li><strong>Monthly:</strong> Operational tracking and control</li>
+                            <li><strong>Weekly:</strong> Cash flow and immediate decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 3: Table Design and Formatting Best Practices -->
+            <section id="formatting" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-paint-brush mr-3"></i>Table Design & Formatting Best Practices</h2>
+                
+                <div class="tip-box">
+                    <h4 class="font-semibold text-yellow-800 mb-2"><i class="fas fa-info-circle mr-2"></i>Professional Formatting Tip</h4>
+                    <p class="text-yellow-700">Consistent formatting isn't just about aesthetics—it improves readability, reduces errors, and creates professional credibility with stakeholders.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Essential Formatting Elements</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-indigo-600 mb-4"><i class="fas fa-palette mr-2"></i>Color Coding System</h4>
+                        <div class="space-y-3">
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-blue-200 border rounded mr-3"></div>
+                                <span>Revenue sections - Light blue backgrounds</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-red-200 border rounded mr-3"></div>
+                                <span>Expense sections - Light red backgrounds</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-green-200 border rounded mr-3"></div>
+                                <span>Positive variances - Green text</span>
+                            </div>
+                            <div class="flex items-center">
+                                <div class="w-6 h-6 bg-yellow-200 border rounded mr-3"></div>
+                                <span>Total rows - Yellow highlighting</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-4"><i class="fas fa-text-height mr-2"></i>Typography Standards</h4>
+                        <ul class="space-y-2 text-gray-700">
+                            <li><strong>Headers:</strong> Bold, 12-14pt, Consistent case</li>
+                            <li><strong>Numbers:</strong> Right-aligned, consistent decimals</li>
+                            <li><strong>Categories:</strong> Bold, left-aligned</li>
+                            <li><strong>Formulas:</strong> Protected and clearly marked</li>
+                            <li><strong>Notes:</strong> Smaller font, italicized</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Advanced Conditional Formatting</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Variance Analysis Formatting Rules</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Condition</th>
+                                <th>Format Rule</th>
+                                <th>Visual Result</th>
+                                <th>Business Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Variance > 10%</td>
+                                <td>Red background, bold text</td>
+                                <td class="bg-red-200 font-bold">Critical Alert</td>
+                                <td>Immediate attention required</td>
+                            </tr>
+                            <tr>
+                                <td>Variance 5-10%</td>
+                                <td>Yellow background</td>
+                                <td class="bg-yellow-200">Caution Zone</td>
+                                <td>Monitor closely</td>
+                            </tr>
+                            <tr>
+                                <td>Variance < 5%</td>
+                                <td>Green background</td>
+                                <td class="bg-green-200">On Target</td>
+                                <td>Performance acceptable</td>
+                            </tr>
+                            <tr>
+                                <td>Negative variance</td>
+                                <td>Red text with parentheses</td>
+                                <td class="text-red-600">($2,500)</td>
+                                <td>Clearly show unfavorable results</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="formula-box mb-6">
+                    <h4 class="font-semibold mb-2"><i class="fas fa-code mr-2"></i>Conditional Formatting Formula Examples:</h4>
+                    <div class="space-y-2">
+                        <div><strong>Variance % > 10%:</strong> =ABS(F2/E2)>0.1</div>
+                        <div><strong>Negative Variance:</strong> =F2<0</div>
+                        <div><strong>Budget vs Actual:</strong> =IF(E2>D2,"Over","Under")</div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 4: Revenue Tracking and Categorization -->
+            <section id="revenue" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-dollar-sign mr-3"></i>Revenue Tracking & Categorization</h2>
+                
+                <div class="best-practice">
+                    <h4 class="font-semibold text-green-800 mb-2"><i class="fas fa-chart-line mr-2"></i>Revenue Categorization Strategy</h4>
+                    <p class="text-green-700">Organize revenue by predictability and control: Recurring vs. one-time, controllable vs. market-driven, and core vs. ancillary business lines.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Revenue Classification Framework</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Comprehensive Revenue Budget Example</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Revenue Category</th>
+                                <th>Revenue Type</th>
+                                <th>Predictability</th>
+                                <th>Jan Budget</th>
+                                <th>Jan Actual</th>
+                                <th>YTD Budget</th>
+                                <th>YTD Actual</th>
+                                <th>Forecast Method</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-blue-50">
+                                <td rowspan="3" class="font-semibold">CORE PRODUCTS</td>
+                                <td>Subscription Revenue</td>
+                                <td class="text-green-600">High</td>
+                                <td class="number">$45,000</td>
+                                <td class="number">$47,200</td>
+                                <td class="number">$45,000</td>
+                                <td class="number">$47,200</td>
+                                <td>Trend + Growth Rate</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td>Product Sales</td>
+                                <td class="text-yellow-600">Medium</td>
+                                <td class="number">$65,000</td>
+                                <td class="number">$62,800</td>
+                                <td class="number">$65,000</td>
+                                <td class="number">$62,800</td>
+                                <td>Seasonal Patterns</td>
+                            </tr>
+                            <tr class="bg-blue-50">
+                                <td>Licensing Fees</td>
+                                <td class="text-green-600">High</td>
+                                <td class="number">$12,000</td>
+                                <td class="number">$12,000</td>
+                                <td class="number">$12,000</td>
+                                <td class="number">$12,000</td>
+                                <td>Contract-based</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td rowspan="2" class="font-semibold">SERVICES</td>
+                                <td>Consulting</td>
+                                <td class="text-yellow-600">Medium</td>
+                                <td class="number">$25,000</td>
+                                <td class="number">$28,500</td>
+                                <td class="number">$25,000</td>
+                                <td class="number">$28,500</td>
+                                <td>Pipeline Analysis</td>
+                            </tr>
+                            <tr class="bg-green-50">
+                                <td>Training Services</td>
+                                <td class="text-red-600">Low</td>
+                                <td class="number">$8,000</td>
+                                <td class="number">$6,200</td>
+                                <td class="number">$8,000</td>
+                                <td class="number">$6,200</td>
+                                <td>Market-driven</td>
+                            </tr>
+                            <tr class="bg-yellow-50">
+                                <td rowspan="2" class="font-semibold">OTHER REVENUE</td>
+                                <td>Investment Income</td>
+                                <td class="text-red-600">Low</td>
+                                <td class="number">$2,500</td>
+                                <td class="number">$3,100</td>
+                                <td class="number">$2,500</td>
+                                <td class="number">$3,100</td>
+                                <td>Market Rates</td>
+                            </tr>
+                            <tr class="bg-yellow-50">
+                                <td>One-time Projects</td>
+                                <td class="text-red-600">Low</td>
+                                <td class="number">$5,000</td>
+                                <td class="number">$8,200</td>
+                                <td class="number">$5,000</td>
+                                <td class="number">$8,200</td>
+                                <td>Opportunity-based</td>
+                            </tr>
+                            <tr class="bg-gray-100 font-bold">
+                                <td colspan="3">TOTAL REVENUE</td>
+                                <td class="number">$162,500</td>
+                                <td class="number">$168,000</td>
+                                <td class="number">$162,500</td>
+                                <td class="number">$168,000</td>
+                                <td>Composite Model</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-sync-alt mr-2"></i>Recurring Revenue Tracking</h4>
+                        <div class="formula-box">
+                            <strong>Monthly Recurring Revenue (MRR):</strong><br>
+                            =SUMIF(Revenue_Type,"Subscription",Monthly_Amount)
+                        </div>
+                        <ul class="mt-4 space-y-2 text-gray-700">
+                            <li>• Track subscription growth rates</li>
+                            <li>• Monitor churn and expansion</li>
+                            <li>• Calculate customer lifetime value</li>
+                            <li>• Forecast with confidence intervals</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-3"><i class="fas fa-calendar-check mr-2"></i>Seasonal Adjustments</h4>
+                        <div class="formula-box">
+                            <strong>Seasonal Factor:</strong><br>
+                            =Monthly_Actual/AVERAGE(Year_Actuals)*12
+                        </div>
+                        <ul class="mt-4 space-y-2 text-gray-700">
+                            <li>• Calculate historical seasonality</li>
+                            <li>• Apply factors to budget periods</li>
+                            <li>• Adjust for known changes</li>
+                            <li>• Monitor pattern deviations</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 5: Expense Management and Classification -->
+            <section id="expenses" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-receipt mr-3"></i>Expense Management & Classification</h2>
+                
+                <div class="warning-box">
+                    <h4 class="font-semibold text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Common Expense Pitfall</h4>
+                    <p class="text-red-700">Many budgets fail because expenses are too broadly categorized. Detailed classification enables better control and more accurate forecasting.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Strategic Expense Classification</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Complete Expense Budget Framework</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Category</th>
+                                <th>Expense Item</th>
+                                <th>Type</th>
+                                <th>Budget</th>
+                                <th>Actual</th>
+                                <th>Variance</th>
+                                <th>Control Level</th>
+                                <th>Driver</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr class="bg-red-50">
+                                <td rowspan="4" class="font-semibold">PERSONNEL</td>
+                                <td>Base Salaries</td>
+                                <td>Fixed</td>
+                                <td class="number">$85,000</td>
+                                <td class="number">$85,000</td>
+                                <td class="number">$0</td>
+                                <td class="text-green-600">Full</td>
+                                <td>Headcount</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td>Benefits & Payroll Tax</td>
+                                <td>Semi-Variable</td>
+                                <td class="number">$21,250</td>
+                                <td class="number">$21,890</td>
+                                <td class="number negative-variance">($640)</td>
+                                <td class="text-yellow-600">Partial</td>
+                                <td>Salary %</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td>Commission</td>
+                                <td>Variable</td>
+                                <td class="number">$12,000</td>
+                                <td class="number">$13,440</td>
+                                <td class="number negative-variance">($1,440)</td>
+                                <td class="text-red-600">Limited</td>
+                                <td>Revenue %</td>
+                            </tr>
+                            <tr class="bg-red-50">
+                                <td>Training & Development</td>
+                                <td>Discretionary</td>
+                                <td class="number">$3,500</td>
+                                <td class="number">$2,800</td>
+                                <td class="number positive-variance">$700</td>
+                                <td class="text-green-600">Full</td>
+                                <td>Budget Decision</td>
+                            </tr>
+                            <tr class="bg-orange-50">
+                                <td rowspan="3" class="font-semibold">OPERATIONS</td>
+                                <td>Rent & Utilities</td>
+                                <td>Fixed</td>
+                                <td class="number">$8,500</td>
+                                <td class="number">$8,650</td>
+                                <td class="number negative-variance">($150)</td>
+                                <td class="text-red-600">None</td>
+                                <td>Contract/Usage</td>
+                            </tr>
+                            <tr class="bg-orange-50">
+                                <td>Office Supplies</td>
+                                <td>Variable</td>
+                                <td class="number">$1,200</td>
+                                <td class="number">$890</td>
+                                <td class="number positive-variance">$310</td>
+                                <td class="text-green-600">Full</td>
+                                <td>Activity Level</td>
+                            </tr>
+                            <tr class="bg-orange-50">
+                                <td>Technology/Software</td>
+                                <td>Step-Fixed</td>
+                                <td class="number">$4,200</td>
+                                <td class="number">$4,580</td>
+                                <td class="number negative-variance">($380)</td>
+                                <td class="text-yellow-600">Partial</td>
+                                <td>User Licenses</td>
+                            </tr>
+                            <tr class="bg-purple-50">
+                                <td rowspan="2" class="font-semibold">MARKETING</td>
+                                <td>Digital Advertising</td>
+                                <td>Variable</td>
+                                <td class="number">$8,000</td>
+                                <td class="number">$9,200</td>
+                                <td class="number negative-variance">($1,200)</td>
+                                <td class="text-green-600">Full</td>
+                                <td>Campaign ROI</td>
+                            </tr>
+                            <tr class="bg-purple-50">
+                                <td>Trade Shows/Events</td>
+                                <td>Project-based</td>
+                                <td class="number">$5,000</td>
+                                <td class="number">$4,200</td>
+                                <td class="number positive-variance">$800</td>
+                                <td class="text-green-600">Full</td>
+                                <td>Event Schedule</td>
+                            </tr>
+                            <tr class="bg-gray-100 font-bold">
+                                <td colspan="3">TOTAL EXPENSES</td>
+                                <td class="number">$148,650</td>
+                                <td class="number">$150,650</td>
+                                <td class="number negative-variance">($2,000)</td>
+                                <td>Mixed</td>
+                                <td>Composite</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-red-600 mb-3"><i class="fas fa-anchor mr-2"></i>Fixed Costs</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Rent and lease payments</li>
+                            <li>• Insurance premiums</li>
+                            <li>• Base salaries</li>
+                            <li>• Loan payments</li>
+                            <li>• Software subscriptions</li>
+                        </ul>
+                        <div class="formula-box mt-4">
+                            <strong>Fixed Cost Ratio:</strong><br>
+                            =Fixed_Costs/Total_Revenue
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-chart-line mr-2"></i>Variable Costs</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Materials and supplies</li>
+                            <li>• Sales commissions</li>
+                            <li>• Utilities (usage-based)</li>
+                            <li>• Shipping costs</li>
+                            <li>• Transaction fees</li>
+                        </ul>
+                        <div class="formula-box mt-4">
+                            <strong>Variable Rate:</strong><br>
+                            =Variable_Costs/Revenue_Driver
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-3"><i class="fas fa-sliders-h mr-2"></i>Discretionary</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Marketing campaigns</li>
+                            <li>• Training programs</li>
+                            <li>• Research & development</li>
+                            <li>• Equipment upgrades</li>
+                            <li>• Consulting services</li>
+                        </ul>
+                        <div class="formula-box mt-4">
+                            <strong>Discretionary %:</strong><br>
+                            =Discretionary/Total_Expenses
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 6: Variance Analysis Techniques -->
+            <section id="variance" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-balance-scale mr-3"></i>Variance Analysis Techniques</h2>
+                
+                <div class="best-practice">
+                    <h4 class="font-semibold text-green-800 mb-2"><i class="fas fa-microscope mr-2"></i>Variance Analysis Best Practice</h4>
+                    <p class="text-green-700">Effective variance analysis goes beyond simple budget vs. actual comparisons. It identifies root causes, trends, and actionable insights for future decision-making.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Multi-Dimensional Variance Analysis</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Comprehensive Variance Dashboard</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Budget</th>
+                                <th>Actual</th>
+                                <th>$ Variance</th>
+                                <th>% Variance</th>
+                                <th>YTD Trend</th>
+                                <th>Significance</th>
+                                <th>Action Required</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product Revenue</td>
+                                <td class="number">$125,000</td>
+                                <td class="number">$132,000</td>
+                                <td class="number positive-variance">$7,000</td>
+                                <td class="number positive-variance">5.6%</td>
+                                <td class="text-green-600">↗ Improving</td>
+                                <td class="bg-green-200">Favorable</td>
+                                <td>Monitor sustainability</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Spend</td>
+                                <td class="number">$8,000</td>
+                                <td class="number">$11,500</td>
+                                <td class="number negative-variance">($3,500)</td>
+                                <td class="number negative-variance">43.8%</td>
+                                <td class="text-red-600">↗ Worsening</td>
+                                <td class="bg-red-200">Critical</td>
+                                <td>Immediate review</td>
+                            </tr>
+                            <tr>
+                                <td>Payroll Taxes</td>
+                                <td class="number">$6,800</td>
+                                <td class="number">$7,200</td>
+                                <td class="number negative-variance">($400)</td>
+                                <td class="number negative-variance">5.9%</td>
+                                <td class="text-yellow-600">→ Stable</td>
+                                <td class="bg-yellow-200">Caution</td>
+                                <td>Verify calculations</td>
+                            </tr>
+                            <tr>
+                                <td>Office Supplies</td>
+                                <td class="number">$1,200</td>
+                                <td class="number">$890</td>
+                                <td class="number positive-variance">$310</td>
+                                <td class="number positive-variance">25.8%</td>
+                                <td class="text-green-600">↘ Improving</td>
+                                <td class="bg-green-200">Favorable</td>
+                                <td>None required</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-4"><i class="fas fa-calculator mr-2"></i>Key Variance Formulas</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Absolute Variance:</strong><br>
+                                =Actual - Budget
+                            </div>
+                            <div class="formula-box">
+                                <strong>Percentage Variance:</strong><br>
+                                =(Actual - Budget) / Budget * 100
+                            </div>
+                            <div class="formula-box">
+                                <strong>Variance Significance:</strong><br>
+                                =IF(ABS(Variance%) > 10%, "Critical", 
+                                IF(ABS(Variance%) > 5%, "Review", "Normal"))
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-orange-600 mb-4"><i class="fas fa-chart-area mr-2"></i>Trend Analysis</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>3-Month Trend:</strong><br>
+                                =SLOPE(Actual_Range, Month_Range)
+                            </div>
+                            <div class="formula-box">
+                                <strong>Variance Volatility:</strong><br>
+                                =STDEV(Variance_Range)
+                            </div>
+                            <div class="formula-box">
+                                <strong>Rolling Average:</strong><br>
+                                =AVERAGE(OFFSET(Current_Cell, -2, 0, 3, 1))
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Variance Analysis Chart -->
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4"><i class="fas fa-chart-bar mr-2"></i>Variance Trend Visualization</h4>
+                    <div style="height: 400px;">
+                        <canvas id="varianceChart"></canvas>
+                    </div>
+                </div>
+
+                <div class="tip-box">
+                    <h4 class="font-semibold text-yellow-800 mb-2"><i class="fas fa-lightbulb mr-2"></i>Advanced Variance Insights</h4>
+                    <p class="text-yellow-700">Use statistical techniques like correlation analysis to identify relationships between variances across different accounts. This reveals systemic issues that might not be apparent from individual account analysis.</p>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 7: Projection and Forecasting Methods -->
+            <section id="projections" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-crystal-ball mr-3"></i>Projection & Forecasting Methods</h2>
+                
+                <div class="warning-box">
+                    <h4 class="font-semibold text-red-800 mb-2"><i class="fas fa-exclamation-triangle mr-2"></i>Forecasting Reality Check</h4>
+                    <p class="text-red-700">No forecast is perfect. The goal is to create the most accurate prediction possible given available data, while building in appropriate scenario planning and risk assessment.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Multiple Forecasting Approaches</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Forecast Comparison Table</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Historical Avg</th>
+                                <th>Trend Method</th>
+                                <th>Seasonal Adj</th>
+                                <th>Driver-Based</th>
+                                <th>Final Forecast</th>
+                                <th>Confidence</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product Sales</td>
+                                <td class="number">$128,000</td>
+                                <td class="number">$135,000</td>
+                                <td class="number">$142,000</td>
+                                <td class="number">$138,000</td>
+                                <td class="number">$138,000</td>
+                                <td class="text-green-600">High</td>
+                            </tr>
+                            <tr>
+                                <td>Service Revenue</td>
+                                <td class="number">$48,000</td>
+                                <td class="number">$52,000</td>
+                                <td class="number">$49,000</td>
+                                <td class="number">$51,500</td>
+                                <td class="number">$50,000</td>
+                                <td class="text-yellow-600">Medium</td>
+                            </tr>
+                            <tr>
+                                <td>Consulting</td>
+                                <td class="number">$38,000</td>
+                                <td class="number">$45,000</td>
+                                <td class="number">$40,000</td>
+                                <td class="number">$43,000</td>
+                                <td class="number">$42,000</td>
+                                <td class="text-red-600">Low</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Costs</td>
+                                <td class="number">$9,200</td>
+                                <td class="number">$9,800</td>
+                                <td class="number">$9,500</td>
+                                <td class="number">$9,660</td>
+                                <td class="number">$9,600</td>
+                                <td class="text-green-600">High</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-4"><i class="fas fa-chart-line mr-2"></i>Trend-Based Forecasting</h4>
+                        <div class="formula-box mb-4">
+                            <strong>Linear Trend:</strong><br>
+                            =FORECAST(Period, Historical_Values, Period_Numbers)
+                        </div>
+                        <div class="formula-box mb-4">
+                            <strong>Growth Rate Method:</strong><br>
+                            =Last_Period * (1 + Growth_Rate) ^ Periods
+                        </div>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Best for stable, trending data</li>
+                            <li>• Requires at least 12 periods</li>
+                            <li>• Consider external factors</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-4"><i class="fas fa-calendar-alt mr-2"></i>Seasonal Adjustments</h4>
+                        <div class="formula-box mb-4">
+                            <strong>Seasonal Index:</strong><br>
+                            =Period_Average / Annual_Average
+                        </div>
+                        <div class="formula-box mb-4">
+                            <strong>Seasonally Adjusted:</strong><br>
+                            =Base_Forecast * Seasonal_Index
+                        </div>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Calculate historical patterns</li>
+                            <li>• Apply to trend forecasts</li>
+                            <li>• Adjust for known changes</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <!-- Forecasting Chart -->
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4"><i class="fas fa-chart-area mr-2"></i>Forecast vs Actual Comparison</h4>
+                    <div style="height: 400px;">
+                        <canvas id="forecastChart"></canvas>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Driver-Based Forecasting</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Key Performance Driver Analysis</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Revenue Stream</th>
+                                <th>Primary Driver</th>
+                                <th>Historical Rate</th>
+                                <th>Projected Driver</th>
+                                <th>Forecast Formula</th>
+                                <th>Result</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Product Sales</td>
+                                <td>Units Sold</td>
+                                <td class="number">$125/unit</td>
+                                <td class="number">1,100 units</td>
+                                <td>=Units * Avg_Price</td>
+                                <td class="number">$137,500</td>
+                            </tr>
+                            <tr>
+                                <td>Service Revenue</td>
+                                <td>Billable Hours</td>
+                                <td class="number">$150/hour</td>
+                                <td class="number">320 hours</td>
+                                <td>=Hours * Hourly_Rate</td>
+                                <td class="number">$48,000</td>
+                            </tr>
+                            <tr>
+                                <td>Subscription</td>
+                                <td>Active Customers</td>
+                                <td class="number">$450/customer</td>
+                                <td class="number">285 customers</td>
+                                <td>=Customers * Monthly_Rate * 12</td>
+                                <td class="number">$128,250</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-3"><i class="fas fa-bullseye mr-2"></i>Best Case Scenario</h4>
+                        <div class="formula-box mb-4">
+                            <strong>Optimistic Forecast:</strong><br>
+                            =Base_Forecast * 1.15
+                        </div>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Market conditions improve</li>
+                            <li>• All initiatives succeed</li>
+                            <li>• No major disruptions</li>
+                            <li>• Competitive advantages</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-crosshairs mr-2"></i>Most Likely</h4>
+                        <div class="formula-box mb-4">
+                            <strong>Realistic Forecast:</strong><br>
+                            =Weighted_Average(Methods)
+                        </div>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Current trends continue</li>
+                            <li>• Normal market conditions</li>
+                            <li>• Planned initiatives proceed</li>
+                            <li>• Historical patterns hold</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-red-600 mb-3"><i class="fas fa-exclamation-triangle mr-2"></i>Worst Case</h4>
+                        <div class="formula-box mb-4">
+                            <strong>Conservative Forecast:</strong><br>
+                            =Base_Forecast * 0.85
+                        </div>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Economic downturn</li>
+                            <li>• Initiative failures</li>
+                            <li>• Increased competition</li>
+                            <li>• Operational challenges</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 8: Advanced Excel Techniques for Budgeting -->
+            <section id="advanced" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-cogs mr-3"></i>Advanced Excel Techniques for Budgeting</h2>
+                
+                <div class="best-practice">
+                    <h4 class="font-semibold text-green-800 mb-2"><i class="fas fa-rocket mr-2"></i>Excel Power User Tip</h4>
+                    <p class="text-green-700">Master these advanced techniques to create dynamic, self-updating budgets that save hours of manual work and reduce errors significantly.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Dynamic Budget Formulas</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-4"><i class="fas fa-code mr-2"></i>Essential Budget Formulas</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Dynamic Variance Analysis:</strong><br>
+                                =IF(Budget=0, "N/A", (Actual-Budget)/ABS(Budget))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Rolling Forecast:</strong><br>
+                                =AVERAGE(OFFSET(INDIRECT(CELL("address")), -11, 0, 12, 1))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Conditional Formatting Rule:</strong><br>
+                                =AND($F2<>0, ABS($F2/$E2)>0.1)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-4"><i class="fas fa-table mr-2"></i>Advanced Lookup Functions</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Multi-Criteria Lookup:</strong><br>
+                                =INDEX(Data, MATCH(1, (Criteria1=Range1)*(Criteria2=Range2), 0))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Dynamic SUMIFS:</strong><br>
+                                =SUMIFS(Amounts, Dates, ">="&StartDate, Dates, "<="&EndDate)
+                            </div>
+                            <div class="formula-box">
+                                <strong>Hierarchical Totals:</strong><br>
+                                =SUMIF(Categories, LEFT(Category,3)&"*", Values)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Data Validation & Error Prevention</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Budget Data Validation Rules</h4>
+                    <table class="excel-table w-full">
+                        <thead>
+                            <tr>
+                                <th>Field Type</th>
+                                <th>Validation Rule</th>
+                                <th>Error Message</th>
+                                <th>Business Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Budget Amounts</td>
+                                <td>Decimal, ≥ 0</td>
+                                <td>"Budget amounts must be positive numbers"</td>
+                                <td>Prevent negative budgets</td>
+                            </tr>
+                            <tr>
+                                <td>Percentage Variances</td>
+                                <td>Custom: =-100%</td>
+                                <td>"Variance cannot exceed -100%"</td>
+                                <td>Logical boundary check</td>
+                            </tr>
+                            <tr>
+                                <td>Account Categories</td>
+                                <td>List: Predefined options</td>
+                                <td>"Select from approved category list"</td>
+                                <td>Maintain consistency</td>
+                            </tr>
+                            <tr>
+                                <td>Date Ranges</td>
+                                <td>Date, within fiscal year</td>
+                                <td>"Date must be within current fiscal year"</td>
+                                <td>Prevent timing errors</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-4"><i class="fas fa-shield-alt mr-2"></i>Error Handling Formulas</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Safe Division:</strong><br>
+                                =IFERROR(Actual/Budget-1, "N/A")
+                            </div>
+                            <div class="formula-box">
+                                <strong>Null Value Check:</strong><br>
+                                =IF(ISBLANK(Budget), 0, Budget)
+                            </div>
+                            <div class="formula-box">
+                                <strong>Data Type Validation:</strong><br>
+                                =IF(ISNUMBER(Input), Input, "Invalid Entry")
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-orange-600 mb-4"><i class="fas fa-link mr-2"></i>Dynamic Referencing</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Dynamic Column Reference:</strong><br>
+                                =INDEX(Data, ROW(), MATCH(MonthName, Headers, 0))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Expandable Range:</strong><br>
+                                =SUM(OFFSET(StartCell, 0, 0, COUNTA(Column), 1))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Flexible Period Selection:</strong><br>
+                                =SUMPRODUCT((Period>=Start)*(Period<=End)*Values)
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Automation with Macros & Power Query</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-lg font-semibold mb-4"><i class="fas fa-robot mr-2"></i>Budget Automation Opportunities</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h5 class="font-semibold text-blue-600 mb-2">Data Import</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Automated ERP imports</li>
+                                <li>• Web data connections</li>
+                                <li>• CSV file processing</li>
+                                <li>• Database queries</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-green-600 mb-2">Report Generation</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Monthly variance reports</li>
+                                <li>• Executive dashboards</li>
+                                <li>• Budget vs actual charts</li>
+                                <li>• Exception reporting</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-purple-600 mb-2">Data Validation</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Balance sheet checks</li>
+                                <li>• Logic validation</li>
+                                <li>• Duplicate detection</li>
+                                <li>• Completeness audits</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 9: Dashboard Creation and Visualization -->
+            <section id="dashboard" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-tachometer-alt mr-3"></i>Dashboard Creation & Visualization</h2>
+                
+                <div class="tip-box">
+                    <h4 class="font-semibold text-yellow-800 mb-2"><i class="fas fa-eye mr-2"></i>Dashboard Design Principle</h4>
+                    <p class="text-yellow-700">A great budget dashboard tells a story at first glance, highlights exceptions for immediate attention, and provides drill-down capability for detailed analysis.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Executive Budget Dashboard</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <!-- Dashboard KPIs -->
+                    <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-6">
+                        <div class="bg-gradient-to-r from-blue-500 to-blue-600 text-white p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold">$221,700</div>
+                            <div class="text-blue-100">YTD Revenue</div>
+                            <div class="text-sm text-blue-200">+4.3% vs Budget</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-red-500 to-red-600 text-white p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold">$150,650</div>
+                            <div class="text-red-100">YTD Expenses</div>
+                            <div class="text-sm text-red-200">-1.3% vs Budget</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-green-500 to-green-600 text-white p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold">$71,050</div>
+                            <div class="text-green-100">Net Income</div>
+                            <div class="text-sm text-green-200">+15.8% vs Budget</div>
+                        </div>
+                        <div class="bg-gradient-to-r from-purple-500 to-purple-600 text-white p-4 rounded-lg text-center">
+                            <div class="text-2xl font-bold">32.0%</div>
+                            <div class="text-purple-100">Profit Margin</div>
+                            <div class="text-sm text-purple-200">Target: 28%</div>
+                        </div>
+                    </div>
+
+                    <!-- Budget Performance Chart -->
+                    <div class="mb-6">
+                        <h4 class="text-lg font-semibold mb-4"><i class="fas fa-chart-line mr-2"></i>Monthly Budget Performance</h4>
+                        <div style="height: 300px;">
+                            <canvas id="budgetPerformanceChart"></canvas>
+                        </div>
+                    </div>
+
+                    <!-- Variance Analysis -->
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4"><i class="fas fa-exclamation-circle mr-2"></i>Top Variances (Absolute)</h4>
+                            <div style="height: 250px;">
+                                <canvas id="varianceBarChart"></canvas>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold mb-4"><i class="fas fa-percentage mr-2"></i>Variance Distribution</h4>
+                            <div style="height: 250px;">
+                                <canvas id="variancePieChart"></canvas>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Interactive Dashboard Elements</h3>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-4"><i class="fas fa-sliders-h mr-2"></i>Dynamic Controls</h4>
+                        <div class="space-y-4">
+                            <div class="formula-box">
+                                <strong>Period Selector:</strong><br>
+                                =INDEX(Data, MATCH(Selected_Period, Periods, 0))
+                            </div>
+                            <div class="formula-box">
+                                <strong>Department Filter:</strong><br>
+                                =SUMIFS(Amounts, Departments, Selected_Dept)
+                            </div>
+                            <div class="formula-box">
+                                <strong>Scenario Comparison:</strong><br>
+                                =CHOOSE(Scenario, Optimistic, Realistic, Conservative)
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-4"><i class="fas fa-chart-pie mr-2"></i>Visual Elements</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-traffic-light text-yellow-500 mr-2"></i>Traffic light indicators for KPIs</li>
+                            <li><i class="fas fa-chart-bar text-blue-500 mr-2"></i>Sparklines for trend visualization</li>
+                            <li><i class="fas fa-thermometer-half text-red-500 mr-2"></i>Progress bars for goal achievement</li>
+                            <li><i class="fas fa-exclamation-triangle text-orange-500 mr-2"></i>Alert symbols for exceptions</li>
+                            <li><i class="fas fa-arrows-alt text-purple-500 mr-2"></i>Interactive drill-down capability</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-lg font-semibold mb-4"><i class="fas fa-mobile-alt mr-2"></i>Dashboard Best Practices</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div>
+                            <h5 class="font-semibold text-blue-600 mb-2">Layout & Design</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Most important metrics first</li>
+                                <li>• Consistent color schemes</li>
+                                <li>• White space for clarity</li>
+                                <li>• Logical information hierarchy</li>
+                                <li>• Mobile-friendly design</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-green-600 mb-2">Functionality</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Real-time data updates</li>
+                                <li>• Interactive filtering</li>
+                                <li>• Export capabilities</li>
+                                <li>• Drill-down options</li>
+                                <li>• Historical comparisons</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-purple-600 mb-2">User Experience</h5>
+                            <ul class="space-y-1 text-gray-700 text-sm">
+                                <li>• Intuitive navigation</li>
+                                <li>• Fast loading times</li>
+                                <li>• Clear data labels</li>
+                                <li>• Consistent formatting</li>
+                                <li>• Error handling</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 10: Best Practices and Common Pitfalls -->
+            <section id="best-practices" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-star mr-3"></i>Best Practices & Common Pitfalls</h2>
+                
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="best-practice">
+                        <h4 class="font-semibold text-green-800 mb-4"><i class="fas fa-trophy mr-2"></i>Best Practices</h4>
+                        <ul class="space-y-3 text-green-700">
+                            <li><i class="fas fa-check-circle mr-2"></i><strong>Start with Structure:</strong> Design your budget framework before entering data</li>
+                            <li><i class="fas fa-check-circle mr-2"></i><strong>Version Control:</strong> Maintain clear versioning and backup procedures</li>
+                            <li><i class="fas fa-check-circle mr-2"></i><strong>Documentation:</strong> Document all assumptions and methodology</li>
+                            <li><i class="fas fa-check-circle mr-2"></i><strong>Regular Reviews:</strong> Schedule monthly variance analysis sessions</li>
+                            <li><i class="fas fa-check-circle mr-2"></i><strong>Stakeholder Input:</strong> Involve department heads in budget creation</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="warning-box">
+                        <h4 class="font-semibold text-red-800 mb-4"><i class="fas fa-exclamation-triangle mr-2"></i>Common Pitfalls</h4>
+                        <ul class="space-y-3 text-red-700">
+                            <li><i class="fas fa-times-circle mr-2"></i><strong>Over-Complexity:</strong> Making budgets too detailed for practical use</li>
+                            <li><i class="fas fa-times-circle mr-2"></i><strong>Static Thinking:</strong> Not updating assumptions as conditions change</li>
+                            <li><i class="fas fa-times-circle mr-2"></i><strong>Formula Errors:</strong> Broken links and circular references</li>
+                            <li><i class="fas fa-times-circle mr-2"></i><strong>Poor Formatting:</strong> Inconsistent or confusing presentation</li>
+                            <li><i class="fas fa-times-circle mr-2"></i><strong>No Validation:</strong> Missing error checks and data validation</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Professional Budget Checklist</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <div class="grid md:grid-cols-2 gap-8">
+                        <div>
+                            <h4 class="text-lg font-semibold text-blue-600 mb-4"><i class="fas fa-list-check mr-2"></i>Technical Quality</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-blue-600" checked>
+                                    <span class="text-gray-700">All formulas are working correctly</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-blue-600" checked>
+                                    <span class="text-gray-700">No circular references or errors</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-blue-600">
+                                    <span class="text-gray-700">Data validation rules in place</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-blue-600">
+                                    <span class="text-gray-700">Consistent formatting applied</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-blue-600">
+                                    <span class="text-gray-700">Protection and security implemented</span>
+                                </label>
+                            </div>
+                        </div>
+                        <div>
+                            <h4 class="text-lg font-semibold text-green-600 mb-4"><i class="fas fa-business-time mr-2"></i>Business Quality</h4>
+                            <div class="space-y-3">
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-green-600" checked>
+                                    <span class="text-gray-700">Realistic assumptions documented</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-green-600">
+                                    <span class="text-gray-700">Variance analysis methodology clear</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-green-600">
+                                    <span class="text-gray-700">Scenarios and sensitivities included</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-green-600">
+                                    <span class="text-gray-700">Regular update process defined</span>
+                                </label>
+                                <label class="flex items-center">
+                                    <input type="checkbox" class="mr-3 text-green-600">
+                                    <span class="text-gray-700">Stakeholder sign-off obtained</span>
+                                </label>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Budget Maintenance Strategy</h3>
+
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-blue-600 mb-3"><i class="fas fa-calendar-week mr-2"></i>Weekly Tasks</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Update actual data</li>
+                            <li>• Review exception reports</li>
+                            <li>• Check formula integrity</li>
+                            <li>• Backup current version</li>
+                            <li>• Validate data imports</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-green-600 mb-3"><i class="fas fa-calendar-alt mr-2"></i>Monthly Tasks</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Complete variance analysis</li>
+                            <li>• Update forecasts</li>
+                            <li>• Review assumptions</li>
+                            <li>• Generate management reports</li>
+                            <li>• Conduct budget meetings</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-lg font-semibold text-purple-600 mb-3"><i class="fas fa-calendar mr-2"></i>Quarterly Tasks</h4>
+                        <ul class="space-y-2 text-gray-700 text-sm">
+                            <li>• Comprehensive budget review</li>
+                            <li>• Reforecast remaining periods</li>
+                            <li>• Update business drivers</li>
+                            <li>• Assess process improvements</li>
+                            <li>• Plan next budget cycle</li>
+                        </ul>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 11: Practical Exercises and Examples -->
+            <section id="exercises" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-dumbbell mr-3"></i>Practical Exercises & Examples</h2>
+                
+                <div class="tip-box">
+                    <h4 class="font-semibold text-yellow-800 mb-2"><i class="fas fa-hands-helping mr-2"></i>Learning by Doing</h4>
+                    <p class="text-yellow-700">These exercises are designed to reinforce key concepts and provide hands-on experience with real-world budgeting scenarios.</p>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Exercise 1: Build a Complete Budget Model</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Scenario: Small Marketing Agency</h4>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-semibold text-blue-600 mb-3">Given Information:</h5>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• 8 employees (avg salary $65,000)</li>
+                                <li>• Office rent: $4,500/month</li>
+                                <li>• Historical revenue growth: 15% annually</li>
+                                <li>• Last year revenue: $850,000</li>
+                                <li>• Benefits cost: 25% of salaries</li>
+                                <li>• Target profit margin: 20%</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-green-600 mb-3">Your Task:</h5>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>1. Create annual revenue forecast</li>
+                                <li>2. Build expense budget by category</li>
+                                <li>3. Set up monthly tracking</li>
+                                <li>4. Add variance analysis</li>
+                                <li>5. Create dashboard KPIs</li>
+                                <li>6. Implement conditional formatting</li>
+                            </ul>
+                        </div>
+                    </div>
+
+                    <div class="mt-6 p-4 bg-blue-50 rounded-lg">
+                        <h5 class="font-semibold text-blue-800 mb-2">Solution Framework:</h5>
+                        <div class="formula-box">
+                            <strong>Revenue Forecast:</strong> =850000 * 1.15<br>
+                            <strong>Personnel Costs:</strong> =8 * 65000 * 1.25<br>
+                            <strong>Monthly Rent:</strong> =4500 * 12<br>
+                            <strong>Target Profit:</strong> =Revenue * 0.20
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Exercise 2: Variance Analysis Deep Dive</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-lg font-semibold mb-4">Sample Data for Analysis</h4>
+                    <table class="excel-table w-full mb-4">
+                        <thead>
+                            <tr>
+                                <th>Account</th>
+                                <th>Budget</th>
+                                <th>Actual</th>
+                                <th>Your Analysis</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Sales Revenue</td>
+                                <td class="number">$125,000</td>
+                                <td class="number">$118,500</td>
+                                <td class="bg-yellow-50">Calculate variance & investigate</td>
+                            </tr>
+                            <tr>
+                                <td>Marketing Spend</td>
+                                <td class="number">$15,000</td>
+                                <td class="number">$22,800</td>
+                                <td class="bg-yellow-50">Determine if justified by results</td>
+                            </tr>
+                            <tr>
+                                <td>Office Supplies</td>
+                                <td class="number">$800</td>
+                                <td class="number">$1,950</td>
+                                <td class="bg-yellow-50">Identify root cause</td>
+                            </tr>
+                        </tbody>
+                    </table>
+
+                    <div class="interactive-element bg-blue-50 p-4 rounded-lg cursor-pointer">
+                        <h5 class="font-semibold text-blue-800 mb-2">Interactive Challenge:</h5>
+                        <p class="text-blue-700 mb-2">Click to reveal analysis questions:</p>
+                        <div class="hidden analysis-questions">
+                            <ul class="space-y-2 text-blue-700 text-sm">
+                                <li>1. What's the percentage variance for each account?</li>
+                                <li>2. Which variances require immediate attention?</li>
+                                <li>3. What questions would you ask management?</li>
+                                <li>4. How would you forecast the next period?</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <h3 class="text-2xl font-semibold mb-4">Exercise 3: Forecasting Challenge</h3>
+
+                <div class="bg-white rounded-lg shadow-lg p-6">
+                    <h4 class="text-lg font-semibold mb-4">Historical Sales Data</h4>
+                    <div style="height: 300px;">
+                        <canvas id="forecastExerciseChart"></canvas>
+                    </div>
+
+                    <div class="mt-6 grid md:grid-cols-2 gap-6">
+                        <div>
+                            <h5 class="font-semibold text-purple-600 mb-3">Your Mission:</h5>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>1. Identify the trend pattern</li>
+                                <li>2. Calculate seasonal factors</li>
+                                <li>3. Create 6-month forecast</li>
+                                <li>4. Assess forecast confidence</li>
+                                <li>5. Build scenario models</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold text-orange-600 mb-3">Bonus Points:</h5>
+                            <ul class="space-y-2 text-gray-700 text-sm">
+                                <li>• Use multiple forecasting methods</li>
+                                <li>• Create confidence intervals</li>
+                                <li>• Add external factor adjustments</li>
+                                <li>• Build sensitivity analysis</li>
+                                <li>• Design forecast accuracy tracking</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <div class="section-divider"></div>
+
+            <!-- Section 12: Summary and Key Takeaways -->
+            <section id="summary" class="mb-12">
+                <h2 class="text-3xl font-bold text-gray-800 mb-6"><i class="fas fa-check-circle mr-3"></i>Summary & Key Takeaways</h2>
+                
+                <div class="bg-gradient-to-r from-green-50 to-blue-50 p-8 rounded-lg mb-6">
+                    <h3 class="text-2xl font-semibold text-center mb-6">🎉 Congratulations! You've Mastered Excel Budgeting</h3>
+                    <p class="text-lg text-gray-700 text-center mb-6">
+                        You now have the skills to create professional-grade budgets that drive business success and support strategic decision-making.
+                    </p>
+                </div>
+
+                <div class="grid md:grid-cols-2 gap-6 mb-6">
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-semibold text-blue-600 mb-4"><i class="fas fa-brain mr-2"></i>What You've Learned</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Professional budget structure and formatting</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Advanced variance analysis techniques</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Dynamic forecasting and projection methods</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Dashboard creation and visualization</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Excel automation and advanced formulas</li>
+                            <li><i class="fas fa-check text-green-500 mr-2"></i>Best practices and error prevention</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="bg-white p-6 rounded-lg shadow-lg">
+                        <h4 class="text-xl font-semibold text-purple-600 mb-4"><i class="fas fa-rocket mr-2"></i>Next Steps</h4>
+                        <ul class="space-y-3 text-gray-700">
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Practice with your organization's data</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Implement automated reporting systems</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Explore Power BI integration</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Develop rolling forecast processes</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Create budget training for your team</li>
+                            <li><i class="fas fa-arrow-right text-blue-500 mr-2"></i>Build scenario planning models</li>
+                        </ul>
+                    </div>
+                </div>
+
+                <div class="bg-white rounded-lg shadow-lg p-6 mb-6">
+                    <h4 class="text-xl font-semibold text-center mb-6"><i class="fas fa-key mr-2"></i>Key Success Factors</h4>
+                    <div class="grid md:grid-cols-3 gap-6">
+                        <div class="text-center">
+                            <div class="text-4xl text-blue-500 mb-3"><i class="fas fa-structure"></i></div>
+                            <h5 class="font-semibold text-blue-600 mb-2">Structure First</h5>
+                            <p class="text-gray-700 text-sm">Always design your budget framework before entering data. Good structure enables everything else.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl text-green-500 mb-3"><i class="fas fa-sync-alt"></i></div>
+                            <h5 class="font-semibold text-green-600 mb-2">Stay Dynamic</h5>
+                            <p class="text-gray-700 text-sm">Build budgets that adapt to changing conditions. Static budgets become obsolete quickly.</p>
+                        </div>
+                        <div class="text-center">
+                            <div class="text-4xl text-purple-500 mb-3"><i class="fas fa-users"></i></div>
+                            <h5 class="font-semibold text-purple-600 mb-2">Engage Stakeholders</h5>
+                            <p class="text-gray-700 text-sm">Involve key stakeholders in budget creation and review. Buy-in ensures budget success.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-gradient-to-r from-blue-600 to-purple-600 text-white p-6 rounded-lg">
+                    <h4 class="text-xl font-semibold text-center mb-4">🎯 Your Budget Mastery Toolkit</h4>
+                    <div class="grid md:grid-cols-2 gap-6 text-sm">
+                        <div>
+                            <h5 class="font-semibold mb-2">Essential Formulas Mastered:</h5>
+                            <ul class="space-y-1 text-blue-100">
+                                <li>• SUMIFS, INDEX/MATCH combinations</li>
+                                <li>• FORECAST and trend analysis</li>
+                                <li>• IFERROR and validation functions</li>
+                                <li>• Conditional formatting rules</li>
+                                <li>• Dynamic referencing techniques</li>
+                            </ul>
+                        </div>
+                        <div>
+                            <h5 class="font-semibold mb-2">Professional Skills Developed:</h5>
+                            <ul class="space-y-1 text-blue-100">
+                                <li>• Strategic budget planning</li>
+                                <li>• Variance analysis expertise</li>
+                                <li>• Dashboard design principles</li>
+                                <li>• Forecasting methodologies</li>
+                                <li>• Stakeholder communication</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </section>
+        </div>
+
+        <!-- Footer -->
+        <footer class="bg-gray-800 text-white p-6 text-center">
+            <div class="mb-4">
+                <i class="fas fa-graduation-cap text-2xl text-blue-400 mb-2"></i>
+                <h3 class="text-lg font-semibold">Excel Budgeting Mastery Complete</h3>
+            </div>
+            <p class="text-gray-300 mb-4">
+                You're now equipped with professional-grade Excel budgeting skills. Apply these techniques to drive better financial outcomes in your organization.
+            </p>
+            <div class="text-sm text-gray-400">
+                <p>Created for intermediate Excel users | Professional training module</p>
+            </div>
+        </footer>
+    </div>
+
+    <script>
+        // Initialize charts
+        document.addEventListener('DOMContentLoaded', function() {
+            // Variance Analysis Chart
+            const varianceCtx = document.getElementById('varianceChart').getContext('2d');
+            new Chart(varianceCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun'],
+                    datasets: [{
+                        label: 'Budget',
+                        data: [125000, 130000, 128000, 135000, 132000, 140000],
+                        borderColor: 'rgb(59, 130, 246)',
+                        backgroundColor: 'rgba(59, 130, 246, 0.1)',
+                        tension: 0.4
+                    }, {
+                        label: 'Actual',
+                        data: [132000, 125000, 135000, 142000, 128000, 145000],
+                        borderColor: 'rgb(16, 185, 129)',
+                        backgroundColor: 'rgba(16, 185, 129, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Budget vs Actual Trend'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            beginAtZero: false,
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Forecast Chart
+            const forecastCtx = document.getElementById('forecastChart').getContext('2d');
+            new Chart(forecastCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep'],
+                    datasets: [{
+                        label: 'Historical',
+                        data: [120000, 125000, 128000, 135000, 132000, 140000, null, null, null],
+                        borderColor: 'rgb(99, 102, 241)',
+                        backgroundColor: 'rgba(99, 102, 241, 0.1)'
+                    }, {
+                        label: 'Forecast',
+                        data: [null, null, null, null, null, 140000, 145000, 148000, 152000],
+                        borderColor: 'rgb(239, 68, 68)',
+                        backgroundColor: 'rgba(239, 68, 68, 0.1)',
+                        borderDash: [5, 5]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Historical Data vs Forecast'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Budget Performance Chart
+            const performanceCtx = document.getElementById('budgetPerformanceChart').getContext('2d');
+            new Chart(performanceCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Q1', 'Q2', 'Q3', 'Q4'],
+                    datasets: [{
+                        label: 'Budget',
+                        data: [212500, 220000, 225000, 230000],
+                        backgroundColor: 'rgba(59, 130, 246, 0.7)'
+                    }, {
+                        label: 'Actual',
+                        data: [221700, 218500, null, null],
+                        backgroundColor: 'rgba(16, 185, 129, 0.7)'
+                    }, {
+                        label: 'Forecast',
+                        data: [null, null, 228000, 235000],
+                        backgroundColor: 'rgba(239, 68, 68, 0.7)'
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Variance Bar Chart
+            const varianceBarCtx = document.getElementById('varianceBarChart').getContext('2d');
+            new Chart(varianceBarCtx, {
+                type: 'bar',
+                data: {
+                    labels: ['Product Sales', 'Marketing', 'Payroll Tax', 'Office Supplies'],
+                    datasets: [{
+                        label: 'Variance ($)',
+                        data: [7000, -3500, -400, 310],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(16, 185, 129, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + value.toLocaleString();
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Variance Pie Chart
+            const variancePieCtx = document.getElementById('variancePieChart').getContext('2d');
+            new Chart(variancePieCtx, {
+                type: 'doughnut',
+                data: {
+                    labels: ['Favorable', 'Unfavorable', 'Neutral'],
+                    datasets: [{
+                        data: [65, 25, 10],
+                        backgroundColor: [
+                            'rgba(16, 185, 129, 0.7)',
+                            'rgba(239, 68, 68, 0.7)',
+                            'rgba(156, 163, 175, 0.7)'
+                        ]
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        legend: {
+                            position: 'bottom'
+                        }
+                    }
+                }
+            });
+
+            // Forecast Exercise Chart
+            const forecastExerciseCtx = document.getElementById('forecastExerciseChart').getContext('2d');
+            new Chart(forecastExerciseCtx, {
+                type: 'line',
+                data: {
+                    labels: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+                    datasets: [{
+                        label: 'Monthly Sales',
+                        data: [85000, 92000, 88000, 95000, 102000, 98000, 105000, 112000, 108000, 115000, 122000, 118000],
+                        borderColor: 'rgb(147, 51, 234)',
+                        backgroundColor: 'rgba(147, 51, 234, 0.1)',
+                        tension: 0.4
+                    }]
+                },
+                options: {
+                    responsive: true,
+                    maintainAspectRatio: false,
+                    plugins: {
+                        title: {
+                            display: true,
+                            text: 'Historical Sales Data - What Pattern Do You See?'
+                        }
+                    },
+                    scales: {
+                        y: {
+                            ticks: {
+                                callback: function(value) {
+                                    return '$' + (value / 1000) + 'K';
+                                }
+                            }
+                        }
+                    }
+                }
+            });
+
+            // Interactive elements
+            document.querySelectorAll('.interactive-element').forEach(element => {
+                element.addEventListener('click', function() {
+                    const questions = this.querySelector('.analysis-questions');
+                    if (questions) {
+                        questions.classList.toggle('hidden');
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
