@@ -1,38 +1,161 @@
+
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <title>GECCA Training Materials</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>GECCA Technology Training Portal</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;500;700&display=swap" rel="stylesheet">
   <style>
     body {
-      font-family: sans-serif;
-      background-color: #f8f8f8;
-      padding: 40px;
+      font-family: 'Poppins', sans-serif;
+      background-color: #f0f2f5;
+      color: #333;
+      margin: 0;
+      padding: 0;
+    }
+    header {
+      background-color: #1e2a38;
+      color: white;
+      padding: 20px;
+      text-align: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+    }
+    main {
+      padding: 40px 20px;
+      max-width: 800px;
+      margin: auto;
+      background-color: white;
+      border-radius: 8px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.05);
     }
     h1 {
-      color: #333;
+      font-weight: 700;
+      margin-bottom: 0.5em;
+      color: #1e2a38;
+    }
+    h2 {
+      color: #1e2a38;
+    }
+    h3 {
+      margin-top: 2em;
+      color: #2a3b4c;
+    }
+    input[type="email"] {
+      padding: 10px;
+      font-size: 1em;
+      width: 60%;
+      max-width: 300px;
+      margin-right: 10px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+    }
+    button {
+      padding: 10px 15px;
+      font-size: 1em;
+      background-color: #4267b2;
+      color: white;
+      border: none;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #365899;
     }
     ul {
-      line-height: 1.8;
+      list-style-type: none;
+      padding-left: 0;
+    }
+    li {
+      margin: 8px 0;
     }
     a {
+      color: #1e2a38;
       text-decoration: none;
-      color: #0066cc;
     }
     a:hover {
       text-decoration: underline;
     }
+    #main-content, #error {
+      display: none;
+    }
+    footer {
+      margin-top: 40px;
+      text-align: center;
+      font-size: 0.9em;
+      color: #666;
+    }
   </style>
 </head>
 <body>
-  <h1>GECCA AI Training Materials</h1>
-  <ul>
-    <li><a href="chatgpt-ai-tools.html">ChatGPT AI Tools</a></li>
-    <li><a href="chatgpt-ai-training.html">ChatGPT AI Training</a></li>
-    <li><a href="excel-training-module.html">Intermediate Excel Training</a></li>
-    <li><a href="ultimate-song-writing-guide.html">Ultimate Song Writing Guide</a></li>
-    <li><a href="digital-safety-training-2.html">Digital Safety Training (Part 2)</a></li>
-    <li><a href="mobile-app-safety.html">Digital Safety Training (Mobile Apps)</a></li>
-  </ul>
+  <header>
+    <h1>GECCA Technology Training Portal</h1>
+    <p>Instructor: Tim Baza | <a href="mailto:timbaza@gmail.com" style="color:#aad;">timbaza@gmail.com</a> | 671-488-2292</p>
+  </header>
+
+  <main>
+    <div id="email-gate">
+      <h2>Access Your Training Materials</h2>
+      <p>Enter your email address to see the modules available to you.</p>
+      <input type="email" id="email-input" placeholder="you@example.com" />
+      <button onclick="unlockAccess()">Submit</button>
+      <p id="error" style="color:red;"></p>
+    </div>
+
+    <div id="main-content">
+      <h2>Available Modules</h2>
+      <div id="materials-list"></div>
+    </div>
+  </main>
+
+  <footer>
+    &copy; 2025 GECCA | Guam Early Childhood & Caregivers Academy
+  </footer>
+
+  <script>
+    async function unlockAccess() {
+      const email = document.getElementById("email-input").value.trim().toLowerCase();
+      const [usersRes, coursesRes] = await Promise.all([
+        fetch("users.json"),
+        fetch("courses.json")
+      ]);
+      const users = await usersRes.json();
+      const courses = await coursesRes.json();
+
+      const user = users.find(u => u.email.toLowerCase() === email);
+
+      if (!user) {
+        document.getElementById("error").textContent = "Email not recognized. Please contact support.";
+        return;
+      }
+
+      const container = document.getElementById("materials-list");
+      container.innerHTML = "";
+
+      user.courses.forEach(courseName => {
+        const courseGroup = courses[courseName];
+        if (courseGroup && courseGroup.length > 0) {
+          const header = document.createElement("h3");
+          header.textContent = courseName;
+          container.appendChild(header);
+
+          const ul = document.createElement("ul");
+          courseGroup.forEach(item => {
+            const li = document.createElement("li");
+            const link = document.createElement("a");
+            link.href = item.file;
+            link.textContent = item.title;
+            link.target = "_blank"; // open in new tab
+            li.appendChild(link);
+            ul.appendChild(li);
+          });
+          container.appendChild(ul);
+        }
+      });
+
+      document.getElementById("email-gate").style.display = "none";
+      document.getElementById("main-content").style.display = "block";
+    }
+  </script>
 </body>
 </html>
