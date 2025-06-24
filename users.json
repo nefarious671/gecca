@@ -16,5 +16,11 @@
       "ChatGPT AI Training",
       "Song Writing Training"
     ]
+  },
+  {
+    "email": "temp@temp.com",
+    "courses": [
+      "Intermediate Excel Training"
+    ]
   }
 ]
