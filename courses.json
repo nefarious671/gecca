@@ -6,8 +6,7 @@
   "Intermediate Excel Training": [
     { "title": "Intermediate Excel Training", "file": "excel-training-module.html" },
     { "title": "Intermediate Excel Training Budget Mastery", "file": "excel-training-budget.html" },
-    { "title": "Intermediate Excel Training Chart Mastery", "file": "excel-training-charts.html" },
-    { "title": "Intermediate Excel Training Data Prep Mastery", "file": "excel-training-dataprep.html" }
+    { "title": "Intermediate Excel Training Chart Mastery", "file": "excel-training-charts.html" }
   ],
   "ChatGPT AI Training": [
     { "title": "ChatGPT AI Tools", "file": "chatgpt-ai-tools.html" },
