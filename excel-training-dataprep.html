@@ -1,0 +1,628 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data Extraction & Preparation for Daycare Professionals</title>
+    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@fortawesome/fontawesome-free@6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            line-height: 1.6;
+        }
+        .gradient-bg {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+        }
+        .card-shadow {
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        .progress-bar {
+            background: linear-gradient(90deg, #10b981 0%, #059669 100%);
+        }
+        .icon-circle {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+        }
+        .section-bg {
+            background: linear-gradient(135deg, #f6f9fc 0%, #e9f4f7 100%);
+        }
+    </style>
+</head>
+<body class="bg-gray-50">
+    <!-- Header -->
+    <div class="gradient-bg text-white py-8">
+        <div class="max-w-6xl mx-auto px-6">
+            <div class="text-center">
+                <div class="flex justify-center mb-4">
+                    <div class="bg-white bg-opacity-20 rounded-full p-4">
+                        <i class="fas fa-chart-line text-3xl"></i>
+                    </div>
+                </div>
+                <h1 class="text-4xl font-bold mb-2">Data Extraction & Preparation</h1>
+                <p class="text-xl opacity-90">Excel Training Module for Daycare Professionals</p>
+                <div class="mt-6 flex justify-center items-center space-x-4">
+                    <div class="flex items-center">
+                        <i class="fas fa-clock mr-2"></i>
+                        <span>10 Minutes</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-users mr-2"></i>
+                        <span>Directors & Owners</span>
+                    </div>
+                    <div class="flex items-center">
+                        <i class="fas fa-star mr-2"></i>
+                        <span>Essential Skills</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Progress Bar -->
+    <div class="bg-white border-b">
+        <div class="max-w-6xl mx-auto px-6 py-4">
+            <div class="flex items-center justify-between">
+                <span class="text-sm font-medium text-gray-600">Training Progress</span>
+                <span id="progressText" class="text-sm font-medium text-gray-600">0% Complete</span>
+            </div>
+            <div class="w-full bg-gray-200 rounded-full h-2 mt-2">
+                <div class="progress-bar h-2 rounded-full w-0 transition-all duration-300" id="progressBar"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Content -->
+    <div class="max-w-6xl mx-auto px-6 py-12">
+        
+        <!-- Learning Objectives -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="icon-circle rounded-full p-3 mr-4">
+                    <i class="fas fa-bullseye text-white"></i>
+                </div>
+                Learning Objectives
+            </h2>
+            <div class="grid md:grid-cols-2 gap-6">
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span>Identify your daycare's specific data requirements</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span>Extract data from financial software and bank statements</span>
+                    </div>
+                </div>
+                <div class="space-y-4">
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span>Leverage surveys for parent and staff feedback</span>
+                    </div>
+                    <div class="flex items-start">
+                        <i class="fas fa-check-circle text-green-500 mt-1 mr-3"></i>
+                        <span>Prepare clean, organized data for Excel analysis</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 1: Understanding Data Requirements -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-blue-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-lightbulb text-white"></i>
+                </div>
+                Step 1: Understanding Your Data Requirements
+            </h2>
+            
+            <div class="mb-8">
+                <p class="text-gray-600 mb-6 text-lg">Before opening Excel, successful daycare managers first identify what questions they need to answer with their data.</p>
+                
+                <div class="section-bg rounded-lg p-6 mb-6">
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Questions to Ask Yourself:</h3>
+                    <div class="grid md:grid-cols-2 gap-6">
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-dollar-sign text-green-600 mt-1 mr-3"></i>
+                                <span><strong>Financial:</strong> What are my monthly expenses vs. revenue?</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-child text-blue-600 mt-1 mr-3"></i>
+                                <span><strong>Enrollment:</strong> How many children are enrolled by age group?</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-user-tie text-purple-600 mt-1 mr-3"></i>
+                                <span><strong>Staffing:</strong> What's my staff-to-child ratio?</span>
+                            </div>
+                        </div>
+                        <div class="space-y-3">
+                            <div class="flex items-start">
+                                <i class="fas fa-heart text-red-600 mt-1 mr-3"></i>
+                                <span><strong>Satisfaction:</strong> How satisfied are parents with our services?</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-chart-line text-orange-600 mt-1 mr-3"></i>
+                                <span><strong>Trends:</strong> What patterns do I see over time?</span>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-exclamation-triangle text-yellow-600 mt-1 mr-3"></i>
+                                <span><strong>Compliance:</strong> Am I meeting regulatory requirements?</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="bg-yellow-50 border-l-4 border-yellow-400 p-4 rounded">
+                    <div class="flex">
+                        <i class="fas fa-exclamation-triangle text-yellow-400 mr-3 mt-1"></i>
+                        <div>
+                            <p class="text-sm font-medium text-yellow-800">Pro Tip:</p>
+                            <p class="text-sm text-yellow-700">Write down your specific questions before collecting data. This prevents information overload and keeps you focused on actionable insights.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 2: Financial Software & Bank Statements -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-green-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-university text-white"></i>
+                </div>
+                Step 2: Financial Software & Bank Statement Data
+            </h2>
+            
+            <div class="grid md:grid-cols-2 gap-8">
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Common Financial Software</h3>
+                    <div class="space-y-4">
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-file-excel text-green-600 mr-3"></i>
+                                <strong>QuickBooks</strong>
+                            </div>
+                            <p class="text-sm text-gray-600">Export: Reports → Export to Excel</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-chart-pie text-blue-600 mr-3"></i>
+                                <strong>Xero</strong>
+                            </div>
+                            <p class="text-sm text-gray-600">Export: Reports → Export → Excel</p>
+                        </div>
+                        <div class="bg-gray-50 rounded-lg p-4">
+                            <div class="flex items-center mb-2">
+                                <i class="fas fa-calculator text-purple-600 mr-3"></i>
+                                <strong>FreshBooks</strong>
+                            </div>
+                            <p class="text-sm text-gray-600">Export: Reports → Download as CSV</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div>
+                    <h3 class="text-xl font-semibold text-gray-800 mb-4">Bank Statement Extraction</h3>
+                    <div class="space-y-4">
+                        <div class="bg-blue-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-blue-800 mb-2">Online Banking</h4>
+                            <ul class="text-sm text-blue-700 space-y-1">
+                                <li>• Log into your online banking</li>
+                                <li>• Select "Statements" or "Download"</li>
+                                <li>• Choose CSV or Excel format</li>
+                                <li>• Select date range (monthly/quarterly)</li>
+                            </ul>
+                        </div>
+                        <div class="bg-green-50 rounded-lg p-4">
+                            <h4 class="font-semibold text-green-800 mb-2">What to Extract</h4>
+                            <ul class="text-sm text-green-700 space-y-1">
+                                <li>• Transaction dates</li>
+                                <li>• Amounts (debits/credits)</li>
+                                <li>• Descriptions</li>
+                                <li>• Categories (if available)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 bg-green-50 border-l-4 border-green-400 p-4 rounded">
+                <div class="flex">
+                    <i class="fas fa-shield-alt text-green-400 mr-3 mt-1"></i>
+                    <div>
+                        <p class="text-sm font-medium text-green-800">Security Reminder:</p>
+                        <p class="text-sm text-green-700">Always use secure connections and protect sensitive financial data. Consider using dedicated computers for financial tasks.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 3: Survey Data Collection -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-purple-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-poll text-white"></i>
+                </div>
+                Step 3: Survey Data Collection
+            </h2>
+            
+            <div class="mb-8">
+                <p class="text-gray-600 mb-6 text-lg">Surveys are goldmines of data for daycare professionals, helping you understand parent satisfaction, staff feedback, and operational improvements.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fab fa-google text-blue-500 mr-3"></i>
+                            Google Forms
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-blue-800 mb-2">Setup Process</h4>
+                                <ol class="text-sm text-blue-700 space-y-1">
+                                    <li>1. Create form at forms.google.com</li>
+                                    <li>2. Add questions relevant to your daycare</li>
+                                    <li>3. Share link with parents/staff</li>
+                                    <li>4. Responses → Create Spreadsheet</li>
+                                </ol>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Best for:</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Parent satisfaction surveys</li>
+                                    <li>• Registration forms</li>
+                                    <li>• Event feedback</li>
+                                    <li>• Staff evaluations</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4 flex items-center">
+                            <i class="fab fa-microsoft text-blue-600 mr-3"></i>
+                            Microsoft Forms
+                        </h3>
+                        <div class="space-y-4">
+                            <div class="bg-blue-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-blue-800 mb-2">Setup Process</h4>
+                                <ol class="text-sm text-blue-700 space-y-1">
+                                    <li>1. Access forms.microsoft.com</li>
+                                    <li>2. Create new form</li>
+                                    <li>3. Design questions</li>
+                                    <li>4. Responses → Open in Excel</li>
+                                </ol>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Advantages:</h4>
+                                <ul class="text-sm text-gray-600 space-y-1">
+                                    <li>• Direct Excel integration</li>
+                                    <li>• Real-time updates</li>
+                                    <li>• Professional templates</li>
+                                    <li>• Advanced analytics</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="section-bg rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Survey Ideas for Daycare Professionals</h3>
+                <div class="grid md:grid-cols-3 gap-6">
+                    <div class="bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-orange-600 mb-3 flex items-center">
+                            <i class="fas fa-heart mr-2"></i>
+                            Parent Feedback
+                        </h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Overall satisfaction rating</li>
+                            <li>• Communication effectiveness</li>
+                            <li>• Child's happiness level</li>
+                            <li>• Facility cleanliness</li>
+                            <li>• Staff friendliness</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-blue-600 mb-3 flex items-center">
+                            <i class="fas fa-users mr-2"></i>
+                            Staff Feedback
+                        </h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Job satisfaction</li>
+                            <li>• Training needs</li>
+                            <li>• Workplace safety</li>
+                            <li>• Management support</li>
+                            <li>• Improvement suggestions</li>
+                        </ul>
+                    </div>
+                    <div class="bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-green-600 mb-3 flex items-center">
+                            <i class="fas fa-cogs mr-2"></i>
+                            Operations
+                        </h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Pickup/dropoff times</li>
+                            <li>• Meal preferences</li>
+                            <li>• Activity preferences</li>
+                            <li>• Special needs tracking</li>
+                            <li>• Emergency contacts</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 4: Data Preparation -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-red-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-broom text-white"></i>
+                </div>
+                Step 4: Data Preparation for Excel
+            </h2>
+            
+            <div class="mb-8">
+                <p class="text-gray-600 mb-6 text-lg">Clean, well-organized data is the foundation of effective Excel analysis. Here's how to prepare your extracted data.</p>
+                
+                <div class="grid md:grid-cols-2 gap-8">
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Data Cleaning Checklist</h3>
+                        <div class="space-y-4">
+                            <div class="flex items-start">
+                                <i class="fas fa-check-square text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>Remove Duplicates</strong>
+                                    <p class="text-sm text-gray-600">Check for repeated entries, especially in financial data</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-square text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>Standardize Formats</strong>
+                                    <p class="text-sm text-gray-600">Ensure dates, currencies, and text are consistent</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-square text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>Handle Missing Data</strong>
+                                    <p class="text-sm text-gray-600">Decide how to treat blank cells or incomplete records</p>
+                                </div>
+                            </div>
+                            <div class="flex items-start">
+                                <i class="fas fa-check-square text-green-500 mt-1 mr-3"></i>
+                                <div>
+                                    <strong>Create Categories</strong>
+                                    <p class="text-sm text-gray-600">Group similar items for easier analysis</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div>
+                        <h3 class="text-xl font-semibold text-gray-800 mb-4">Organization Best Practices</h3>
+                        <div class="space-y-4">
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Column Headers</h4>
+                                <p class="text-sm text-gray-600">Use clear, descriptive names without spaces or special characters</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Data Types</h4>
+                                <p class="text-sm text-gray-600">Keep numbers as numbers, dates as dates, text as text</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">One Data Type Per Column</h4>
+                                <p class="text-sm text-gray-600">Don't mix numbers and text in the same column</p>
+                            </div>
+                            <div class="bg-gray-50 rounded-lg p-4">
+                                <h4 class="font-semibold text-gray-800 mb-2">Backup Original Data</h4>
+                                <p class="text-sm text-gray-600">Always keep a copy of your raw data before cleaning</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-indigo-50 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-indigo-800 mb-4">Quick Data Prep Example</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div>
+                        <h4 class="font-semibold text-red-600 mb-2">❌ Before (Messy Data)</h4>
+                        <div class="bg-white rounded border p-3 text-sm">
+                            <div class="font-mono">
+                                Date | Amount | Description<br>
+                                3/15/2024 | $1,200.00 | Tuition - Smith<br>
+                                03-16-24 | 1200 | Tuition-Jones<br>
+                                March 17 | $1,200 | TUITION - Brown<br>
+                                3/18/2024 | | Tuition - Wilson
+                            </div>
+                        </div>
+                    </div>
+                    <div>
+                        <h4 class="font-semibold text-green-600 mb-2">✅ After (Clean Data)</h4>
+                        <div class="bg-white rounded border p-3 text-sm">
+                            <div class="font-mono">
+                                Date | Amount | Category | Family<br>
+                                2024-03-15 | 1200.00 | Tuition | Smith<br>
+                                2024-03-16 | 1200.00 | Tuition | Jones<br>
+                                2024-03-17 | 1200.00 | Tuition | Brown<br>
+                                2024-03-18 | 1200.00 | Tuition | Wilson
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Section 5: Why This Matters -->
+        <div class="bg-white rounded-lg card-shadow p-8 mb-12">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-yellow-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-star text-white"></i>
+                </div>
+                Why This Approach Works for Daycare Professionals
+            </h2>
+            
+            <div class="grid md:grid-cols-3 gap-8">
+                <div class="text-center">
+                    <div class="bg-blue-100 rounded-full p-6 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-clock text-blue-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Saves Time</h3>
+                    <p class="text-gray-600 text-sm">Automated data collection reduces manual entry by 70%, giving you more time for children and families.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-green-100 rounded-full p-6 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-chart-line text-green-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Better Decisions</h3>
+                    <p class="text-gray-600 text-sm">Data-driven insights help you make informed decisions about staffing, pricing, and program improvements.</p>
+                </div>
+                
+                <div class="text-center">
+                    <div class="bg-purple-100 rounded-full p-6 w-20 h-20 mx-auto mb-4 flex items-center justify-center">
+                        <i class="fas fa-shield-alt text-purple-600 text-2xl"></i>
+                    </div>
+                    <h3 class="text-lg font-semibold text-gray-800 mb-2">Compliance Ready</h3>
+                    <p class="text-gray-600 text-sm">Organized data makes licensing visits, financial audits, and regulatory reporting much easier.</p>
+                </div>
+            </div>
+
+            <div class="mt-12 bg-gradient-to-r from-blue-50 to-indigo-50 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Real-World Impact</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-blue-600 mb-2">Case Study: Sunny Days Daycare</h4>
+                        <p class="text-sm text-gray-600 mb-2">"By implementing systematic data collection, we identified that our highest costs occurred during summer months due to increased field trips and activities."</p>
+                        <p class="text-xs text-gray-500 italic">- Sarah M., Director</p>
+                    </div>
+                    <div class="bg-white rounded-lg p-4">
+                        <h4 class="font-semibold text-green-600 mb-2">Result</h4>
+                        <ul class="text-sm text-gray-600 space-y-1">
+                            <li>• Adjusted summer pricing by 15%</li>
+                            <li>• Improved profit margins by 23%</li>
+                            <li>• Maintained parent satisfaction scores</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Summary & Next Steps -->
+        <div class="bg-white rounded-lg card-shadow p-8">
+            <h2 class="text-2xl font-bold text-gray-800 mb-6 flex items-center">
+                <div class="bg-indigo-500 rounded-full p-3 mr-4">
+                    <i class="fas fa-rocket text-white"></i>
+                </div>
+                Summary & Next Steps
+            </h2>
+            
+            <div class="mb-8">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Key Takeaways</h3>
+                <div class="grid md:grid-cols-2 gap-6">
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-lightbulb text-yellow-500 mt-1 mr-3"></i>
+                            <span><strong>Think First:</strong> Identify your data needs before collecting</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-download text-blue-500 mt-1 mr-3"></i>
+                            <span><strong>Extract Smart:</strong> Use existing software export features</span>
+                        </div>
+                    </div>
+                    <div class="space-y-3">
+                        <div class="flex items-start">
+                            <i class="fas fa-poll text-purple-500 mt-1 mr-3"></i>
+                            <span><strong>Survey Often:</strong> Regular feedback provides valuable insights</span>
+                        </div>
+                        <div class="flex items-start">
+                            <i class="fas fa-broom text-green-500 mt-1 mr-3"></i>
+                            <span><strong>Clean Always:</strong> Organized data leads to better analysis</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg-gradient-to-r from-green-50 to-blue-50 rounded-lg p-6">
+                <h3 class="text-xl font-semibold text-gray-800 mb-4">Your Action Plan</h3>
+                <div class="space-y-4">
+                    <div class="flex items-center">
+                        <div class="bg-green-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 text-sm font-bold">1</div>
+                        <span>This week: List 3 key questions you want your data to answer</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-blue-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 text-sm font-bold">2</div>
+                        <span>Next week: Export one month of financial data from your accounting software</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-purple-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 text-sm font-bold">3</div>
+                        <span>Week 3: Create your first parent satisfaction survey using Google Forms or Microsoft Forms</span>
+                    </div>
+                    <div class="flex items-center">
+                        <div class="bg-orange-500 text-white rounded-full w-8 h-8 flex items-center justify-center mr-4 text-sm font-bold">4</div>
+                        <span>Week 4: Practice cleaning and organizing your data before importing to Excel</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="mt-8 text-center">
+                <div class="bg-gray-50 rounded-lg p-6">
+                    <p class="text-gray-600 mb-4">Ready to continue your Excel journey?</p>
+                    <div class="space-y-2">
+                        <p class="text-sm font-medium text-gray-800">Next Module: "Excel Fundamentals for Daycare Data Analysis"</p>
+                        <p class="text-xs text-gray-500">Learn pivot tables, charts, and formulas specifically for daycare management</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <div class="bg-gray-800 text-white py-8">
+        <div class="max-w-6xl mx-auto px-6 text-center">
+            <div class="mb-4">
+                <i class="fas fa-graduation-cap text-3xl mb-2"></i>
+                <p class="text-lg font-medium">Training Complete!</p>
+            </div>
+            <p class="text-gray-300 mb-4">You've successfully completed the Data Extraction & Preparation module.</p>
+            <div class="flex justify-center items-center space-x-6 text-sm">
+                <div class="flex items-center">
+                    <i class="fas fa-clock mr-2"></i>
+                    <span>10 Minutes Completed</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-check-circle mr-2"></i>
+                    <span>4 Key Skills Learned</span>
+                </div>
+                <div class="flex items-center">
+                    <i class="fas fa-star mr-2"></i>
+                    <span>Ready for Next Level</span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+document.addEventListener('DOMContentLoaded', () => {
+    const progressBar = document.getElementById('progressBar');
+    const progressText = document.getElementById('progressText');
+    let progress = 0;
+
+    const interval = setInterval(() => {
+        progress += 1;
+        if (progress >= 100) {
+            progress = 100;
+            clearInterval(interval);
+        }
+        progressBar.style.width = progress + '%';
+        progressText.textContent = progress + '% Complete';
+    }, 100);
+
+    // Smooth scrolling for better reading experience
+    document.documentElement.style.scrollBehavior = 'smooth';
+});
+</script>
+</body>
+</html>
