@@ -1,18 +1,46 @@
 {
   "Digital Safety Training": [
-    { "title": "Digital Safety Training (Part 2)", "file": "digital-safety-training-2.html" },
-    { "title": "Digital Safety Training (Mobile Apps)", "file": "mobile-app-safety.html" }
+    {
+      "title": "Digital Safety Training (Part 2)",
+      "file": "digital-safety-training-2.html"
+    },
+    {
+      "title": "Digital Safety Training (Mobile Apps)",
+      "file": "mobile-app-safety.html"
+    }
   ],
   "Intermediate Excel Training": [
-    { "title": "Intermediate Excel Training", "file": "excel-training-module.html" },
-    { "title": "Intermediate Excel Training Budget Mastery", "file": "excel-training-budget.html" },
-    { "title": "Intermediate Excel Training Chart Mastery", "file": "excel-training-charts.html" }
+    {
+      "title": "Intermediate Excel Training",
+      "file": "excel-training-module.html"
+    },
+    {
+      "title": "Intermediate Excel Training Budget Mastery",
+      "file": "excel-training-budget.html"
+    },
+    {
+      "title": "Intermediate Excel Training Chart Mastery",
+      "file": "excel-training-charts.html"
+    },
+    {
+      "title": "Download Excel Examples",
+      "file": "Excel-Examples.zip"
+    }
   ],
   "ChatGPT AI Training": [
-    { "title": "ChatGPT AI Tools", "file": "chatgpt-ai-tools.html" },
-    { "title": "ChatGPT AI Training", "file": "chatgpt-ai-training.html" }
+    {
+      "title": "ChatGPT AI Tools",
+      "file": "chatgpt-ai-tools.html"
+    },
+    {
+      "title": "ChatGPT AI Training",
+      "file": "chatgpt-ai-training.html"
+    }
   ],
   "Song Writing Training": [
-    { "title": "Ultimate Song Writing Guide", "file": "ultimate-song-writing-guide.html" }
+    {
+      "title": "Ultimate Song Writing Guide",
+      "file": "ultimate-song-writing-guide.html"
+    }
   ]
 }
