@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NULL-NET</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <style>
+        :root { --accent: #00ff9d; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
+        #gallery { margin-top: 10px; display: grid; gap: 10px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; }
+        .card:hover { border-color: var(--accent); background: #161616; }
+        .status { color: var(--accent); font-size: 0.8em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SYSTEM_STATUS: ONLINE // V11</div>
+    
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="TITLE..." style="flex-grow:1;" onkeydown="if(event.key==='Enter') doSearch()">
+        <button onclick="doSearch()">EXECUTE</button>
+        <div style="width:100%; display:flex; gap:10px; align-items:center; margin-top:10px;">
+            <label>LANG:</label><input type="text" id="lang" value="en" style="width:30px;">
+            <label>S:</label><input type="number" id="season" value="1" style="width:40px;">
+            <label>E:</label><input type="number" id="episode" value="1" style="width:40px;">
+        </div>
+    </div>
+
+    <div id="status_bar" class="status">Awaiting target coordinates...</div>
+
+    <div id="gallery"></div>
+</div>
+    
+<script>
+    const MIRRORS = [
+        "https://vidsrc.net",
+        "https://vidsrc-embed.ru",
+        "https://vsembed.ru",
+        "https://vidsrc.me"
+    ];
+
+    async function doSearch() {
+        const query = document.getElementById('searchBox').value;
+        if (!query) return;
+        
+        const gallery = document.getElementById('gallery');
+        const status = document.getElementById('status_bar');
+        
+        status.innerText = `SCANNING MIRROR CLUSTERS: ${query.toUpperCase()}...`;
+        gallery.innerHTML = "";
+
+        try {
+            const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
+            const response = await puter.net.fetch(url);
+            const data = await response.json();
+            
+            if (!data.d) {
+                status.innerText = "NO_RESULTS_FOUND";
+                return;
+            }
+
+            data.d.forEach(item => {
+                if (!item.id?.startsWith('tt')) return;
+                const card = document.createElement('div');
+                card.className = 'card';
+                // Force a default type so it never passes undefined
+                const type = item.q || 'feature'; 
+                card.innerHTML = `<strong>${item.l} (${item.y || '????'})</strong> - ${type.toUpperCase()}`;
+                card.onclick = () => attemptExtraction(item.id, type);
+                gallery.appendChild(card);
+            });
+        } catch (e) { status.innerText = "DB_OFFLINE"; }
+    }
+
+
+    async function executeMission(id, type) {
+        const s = document.getElementById('season').value || 1;
+        const e = document.getElementById('episode').value || 1;
+        const l = document.getElementById('lang').value || 'en';
+        const isTV = type.toLowerCase().includes('tv');
+        const status = document.getElementById('status_bar');
+
+        const endpoint = isTV ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
+        
+        let extractionSuccess = false;
+
+        for (let m = 0; m < MIRRORS.length; m++) {
+            if (extractionSuccess) break;
+            const targetUrl = `${MIRRORS[m]}/embed/${endpoint}&ds_lang=${l}`;
+
+            for (let p = 0; p < PROXIES.length; p++) {
+                try {
+                    status.innerText = `[ INFILTRATING LAYER 1: WRAPPER... ]`;
+                    console.log(`--- STARTING EXTRACTION VIA ${PROXIES[p]} ---`);
+                    
+                    // LAYER 1: The Wrapper (vidsrc)
+                    let currentUrl = targetUrl;
+                    let html = await fetchHtmlViaProxy(currentUrl, PROXIES[p]);
+                    
+                    // LAYER 2: The /rcp/ Iframe
+                    let engineMatch = html.match(/src="([^"]*\/rcp\/[^"]+)"/);
+                    if (!engineMatch) throw new Error("Layer 2 (/rcp/) not found.");
+                    
+                    let layer2Url = formatUrl(engineMatch[1]);
+                    console.log("🔓 LAYER 2 UNLOCKED (/rcp/):", layer2Url);
+                    status.innerText = `[ INFILTRATING LAYER 2: /rcp/... ]`;
+                    
+                    html = await fetchHtmlViaProxy(layer2Url, PROXIES[p]);
+
+                    // LAYER 3: The /prorcp/ Iframe (The Matryoshka doll you found)
+                    let proMatch = html.match(/src="([^"]*\/prorcp\/[^"]+)"/);
+                    if (!proMatch) {
+                        console.log("No /prorcp/ found. This might be the bottom.");
+                        window.open(layer2Url, '_blank', 'noopener,noreferrer');
+                        extractionSuccess = true;
+                        break;
+                    }
+
+                    let layer3Url = formatUrl(proMatch[1], "https://cloudnestra.com");
+                    console.log("🔓 LAYER 3 UNLOCKED (/prorcp/):", layer3Url);
+                    status.innerText = `[ INFILTRATING LAYER 3: /prorcp/... ]`;
+
+                    html = await fetchHtmlViaProxy(layer3Url, PROXIES[p]);
+
+                    // LAYER 4: THE CORE (Looking for the .m3u8 stream or final token)
+                    // The video file is usually passed into a player setup script
+                    let m3u8Match = html.match(/(https:\/\/[^"']*\.m3u8[^"']*)/);
+                    
+                    if (m3u8Match) {
+                        console.log("💀 CORE UNLOCKED (RAW STREAM):", m3u8Match[1]);
+                        status.innerText = `[ MISSION ACCOMPLISHED: RAW STREAM CAPTURED ]`;
+                        
+                        // We found the raw video file! You could pass this to a custom 
+                        // video.js player on your own site, but for now we'll just open it.
+                        window.open(m3u8Match[1], '_blank');
+                    } else {
+                        console.log("Raw stream is obfuscated by AES. Opening Layer 3 Player.");
+                        status.innerText = `[ LAYER 3 CAPTURED. ENGINE LAUNCHING... ]`;
+                        window.open(layer3Url, '_blank', 'noopener,noreferrer');
+                    }
+
+                    extractionSuccess = true;
+                    break; 
+
+                } catch (err) {
+                    console.warn(`Extraction path failed:`, err.message);
+                }
+            }
+        }
+
+        if (!extractionSuccess) {
+            status.innerText = `[ EXTRACTION_FAILED. ]`;
+        }
+    }
+
+    // Helper Function to cleanly fetch through the proxy
+    async function fetchHtmlViaProxy(url, proxy) {
+        const proxyUrl = proxy + encodeURIComponent(url);
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error(`Proxy blocked fetching: ${url}`);
+        const data = await response.text();
+        // If using allorigins, parse the JSON. Otherwise return raw text.
+        try { return JSON.parse(data).contents; } catch(e) { return data; }
+    }
+
+    // Helper Function to fix missing HTTP prefixes
+    function formatUrl(url, domain = "") {
+        if (url.startsWith('//')) return 'https:' + url;
+        if (url.startsWith('/')) return domain + url;
+        return url;
+    }
+</script>
+</body>
+</html>
