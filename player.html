@@ -1,44 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NULL-NET // V8 // MIRROR_COMMAND</title>
-    <script src="https://js.puter.com/v2/"></script>
-    <style>
-        :root { --accent: #00ff9d; --bg: #0a0a0a; }
-        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
-        .container { max-width: 900px; margin: 0 auto; }
-        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
-        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
-        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
-        #gallery { margin-top: 10px; display: grid; gap: 10px; }
-        .card { border: 1px solid #222; padding: 15px; cursor: pointer; }
-        .card:hover { border-color: var(--accent); background: #161616; }
-        .status { color: var(--accent); font-size: 0.8em; margin-top: 10px; }
-    </style>
-</head>
-<body>
-
-<div class="container">
-    <div class="header">SYSTEM_STATUS: ONLINE // V8.1_PATCHED</div>
-    
-    <div class="controls">
-        <input type="text" id="searchBox" placeholder="TITLE..." style="flex-grow:1;" onkeydown="if(event.key==='Enter') doSearch()">
-        <button onclick="doSearch()">EXECUTE</button>
-        <div style="width:100%; display:flex; gap:10px; align-items:center; margin-top:10px;">
-            <label>LANG:</label><input type="text" id="lang" value="en" style="width:30px;">
-            <label>S:</label><input type="number" id="season" value="1" style="width:40px;">
-            <label>E:</label><input type="number" id="episode" value="1" style="width:40px;">
-        </div>
-    </div>
-
-    <div id="status_bar" class="status">Awaiting target coordinates...</div>
-
-    <div id="gallery"></div>
-</div>
-    
 <script>
     const MIRRORS = [
         "https://vidsrc.net",
@@ -50,12 +9,13 @@
     async function doSearch() {
         const query = document.getElementById('searchBox').value;
         if (!query) return;
+        
         const gallery = document.getElementById('gallery');
-        const status = document.getElementById('status_bar'); // Target by ID
+        const status = document.getElementById('status_bar');
         
         status.innerText = `SCANNING MIRROR CLUSTERS: ${query.toUpperCase()}...`;
-        gallery.innerHTML = ""; // Now it only clears results, not the status bar
-    
+        gallery.innerHTML = "";
+
         try {
             const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
             const response = await puter.net.fetch(url);
@@ -65,54 +25,70 @@
                 status.innerText = "NO_RESULTS_FOUND";
                 return;
             }
-    
+
             data.d.forEach(item => {
                 if (!item.id?.startsWith('tt')) return;
                 const card = document.createElement('div');
                 card.className = 'card';
-                card.innerHTML = `<strong>${item.l} (${item.y || '????'})</strong> - ${item.q?.toUpperCase() || 'VIDEO'}`;
-                card.onclick = () => attemptExtraction(item.id, item.q);
+                // Force a default type so it never passes undefined
+                const type = item.q || 'feature'; 
+                card.innerHTML = `<strong>${item.l} (${item.y || '????'})</strong> - ${type.toUpperCase()}`;
+                card.onclick = () => attemptExtraction(item.id, type);
                 gallery.appendChild(card);
             });
         } catch (e) { status.innerText = "DB_OFFLINE"; }
     }
 
     async function attemptExtraction(id, type, mirrorIndex = 0) {
+        const s = document.getElementById('season').value || 1;
+        const e = document.getElementById('episode').value || 1;
+        const l = document.getElementById('lang').value || 'en';
+        
+        // Safely check type
+        const isTV = type.toLowerCase().includes('tv');
+        
+        // Bulletproof Fallback URL construction using query parameters
+        const fallbackUrl = isTV 
+            ? `${MIRRORS[0]}/embed/tv?imdb=${id}&season=${s}&episode=${e}&ds_lang=${l}`
+            : `${MIRRORS[0]}/embed/movie?imdb=${id}&ds_lang=${l}`;
+
         if (mirrorIndex >= MIRRORS.length) {
-            window.open(`${MIRRORS[0]}/embed/${type.includes('tv')?'tv':'movie'}/${id}`, '_blank');
+            console.log("All mirrors blocked extraction. Launching Wrapper...");
+            window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
             return;
         }
-    
-        const status = document.getElementById('status_bar'); // Target by ID
+
+        const status = document.getElementById('status_bar');
         status.innerText = `[ MIRROR_${mirrorIndex + 1}: EXTRACTING_CORE... ]`;
 
-        const s = document.getElementById('season').value;
-        const e = document.getElementById('episode').value;
-        const l = document.getElementById('lang').value;
-        const endpoint = type.toLowerCase().includes('tv') ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
+        const endpoint = isTV ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
         const targetUrl = `${MIRRORS[mirrorIndex]}/embed/${endpoint}&ds_lang=${l}`;
 
         try {
-            // Using puter.http.get instead of fetch to bypass socket closures
-            const response = await puter.http.get(targetUrl);
-            const html = response.data;
+            // Use AllOrigins CORS proxy to mask the fetch request from the Russian firewall
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+            const response = await fetch(proxyUrl);
+            
+            if (!response.ok) throw new Error("Proxy connection failed.");
+            
+            const data = await response.json();
+            const html = data.contents;
 
-            // Look for the Cloudnestra engine in the source code
+            // Look for the Cloudnestra engine
             const engineMatch = html.match(/src="([^"]*cloudnestra\.com\/rcp\/[^"]+)"/);
 
             if (engineMatch && engineMatch[1]) {
                 let engineUrl = engineMatch[1].startsWith('//') ? 'https:' + engineMatch[1] : engineMatch[1];
+                status.innerText = `[ EXTRACTION SUCCESSFUL ]`;
                 console.log("CORE_SNATCHED:", engineUrl);
                 window.open(engineUrl, '_blank', 'noopener,noreferrer');
             } else {
                 throw new Error("No engine found on this mirror.");
             }
         } catch (err) {
-            console.warn(`Mirror ${mirrorIndex + 1} failed, cycling...`, err);
-            // Cycle to the next mirror if the current one fails or closes the socket
+            console.warn(`Mirror ${mirrorIndex + 1} extraction failed, cycling...`, err);
+            // Cycle to the next mirror
             attemptExtraction(id, type, mirrorIndex + 1);
         }
     }
 </script>
-</body>
-</html>
