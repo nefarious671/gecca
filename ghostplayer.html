@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NULL-NET // V16 // VALIDATED_SWARM</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <style>
+        :root { --accent: #00ff9d; --error: #ff4444; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
+        button:hover { filter: brightness(1.2); }
+        
+        #status_bar { color: var(--accent); font-size: 0.9em; margin-bottom: 5px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        
+        #terminal { background: #000; border: 1px solid #222; padding: 10px; font-size: 0.8em; height: 150px; overflow-y: auto; margin-bottom: 15px; display: none; }
+        .log-info { color: #888; }
+        .log-success { color: var(--accent); font-weight: bold; }
+        .log-error { color: var(--error); }
+
+        #gallery { display: grid; gap: 10px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; transition: 0.2s; }
+        .card:hover { border-color: var(--accent); background: #161616; }
+        .card strong { color: #eee; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SYSTEM_STATUS: ONLINE // V16: VALIDATED_SWARM</div>
+    
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="TARGET_TITLE..." style="flex-grow:1;" onkeydown="if(event.key==='Enter') doSearch()">
+        <button onclick="doSearch()">EXECUTE</button>
+        <div style="width:100%; display:flex; gap:10px; align-items:center; margin-top:5px;">
+            <label style="font-size:0.8em;">LANG:</label><input type="text" id="lang" value="en" style="width:40px;">
+            <label style="font-size:0.8em;">S:</label><input type="number" id="season" value="1" style="width:50px;">
+            <label style="font-size:0.8em;">E:</label><input type="number" id="episode" value="1" style="width:50px;">
+        </div>
+    </div>
+
+    <div id="status_bar">Awaiting target coordinates...</div>
+    <div id="terminal"></div>
+    <div id="gallery"></div>
+</div>
+
+<script>
+    const MIRRORS = [
+        "https://vidsrc.net",
+        "https://vidsrc-embed.ru",
+        "https://vsembed.ru"
+    ];
+
+    const PROXY_SWARM = [
+        { id: "P_CORSProxy", url: "https://corsproxy.io/?", type: "raw" },
+        { id: "P_AllOrigins", url: "https://api.allorigins.win/get?url=", type: "json" },
+        { id: "P_CodeTabs", url: "https://api.codetabs.com/v1/proxy/?quest=", type: "raw" },
+        { id: "P_ThingProxy", url: "https://thingproxy.freeboard.io/fetch/", type: "raw" }
+    ];
+
+    function logTerm(msg, type="info") {
+        const term = document.getElementById('terminal');
+        term.style.display = "block";
+        const cssClass = type === "error" ? "log-error" : type === "success" ? "log-success" : "log-info";
+        term.innerHTML += `<div class="${cssClass}">> ${msg}</div>`;
+        term.scrollTop = term.scrollHeight;
+    }
+
+    async function doSearch() {
+        const query = document.getElementById('searchBox').value;
+        if (!query) return;
+        
+        const gallery = document.getElementById('gallery');
+        const status = document.getElementById('status_bar');
+        const term = document.getElementById('terminal');
+        
+        term.innerHTML = "";
+        term.style.display = "none";
+        status.innerText = `[ SCANNING IMDB DATABASE VIA PUTER: ${query.toUpperCase()}... ]`;
+        gallery.innerHTML = "";
+
+        try {
+            const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
+            const response = await puter.net.fetch(url);
+            const data = await response.json();
+            
+            if (!data.d) {
+                status.innerText = "[ NO_RESULTS_FOUND ]";
+                return;
+            }
+
+            status.innerText = "[ TARGETS ACQUIRED. AWAITING SELECTION. ]";
+
+            data.d.forEach(item => {
+                if (!item.id?.startsWith('tt')) return;
+                const card = document.createElement('div');
+                card.className = 'card';
+                const type = item.q || 'feature'; 
+                card.innerHTML = `<strong>${item.l} (${item.y || '????'})</strong> - <span style="color:var(--accent); font-size:0.8em;">${type.toUpperCase()}</span>`;
+                card.onclick = () => executeMission(item.id, type);
+                gallery.appendChild(card);
+            });
+        } catch (e) { status.innerText = "[ DB_OFFLINE ]"; }
+    }
+
+    async function executeMission(id, type) {
+        const s = document.getElementById('season').value || 1;
+        const e = document.getElementById('episode').value || 1;
+        const l = document.getElementById('lang').value || 'en';
+        const isTV = type.toLowerCase().includes('tv');
+        const status = document.getElementById('status_bar');
+        const gallery = document.getElementById('gallery');
+        
+        document.getElementById('terminal').innerHTML = ""; 
+        logTerm(`Initiating Move-By-Wire protocol for ${id}...`, "success");
+
+        const endpoint = isTV ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
+        let extractionSuccess = false;
+
+        // REGEX VALIDATORS
+        const rcpRegex = /src="([^"]*\/rcp\/[^"]+)"/;
+        const prorcpRegex = /src="([^"]*\/prorcp\/[^"]+)"/;
+        const m3u8Regex = /file:\s*["'](https:\/\/[^"']+\.m3u8[^"']*)["']/;
+
+        for (let m = 0; m < MIRRORS.length; m++) {
+            if (extractionSuccess) break;
+            const targetUrl = `${MIRRORS[m]}/embed/${endpoint}&ds_lang=${l}`;
+
+            status.innerText = `[ DEPLOYING PROXY SWARM TO MIRROR ${m+1}... ]`;
+            logTerm(`--- TARGET: MIRROR ${m+1} ---`, "info");
+
+            try {
+                // RACE 1: Must contain the /rcp/ layer
+                let missionsL1 = PROXY_SWARM.map(p => swarmMission(targetUrl, p, `Layer 1`, rcpRegex));
+                let htmlL1 = await Promise.any(missionsL1); 
+                
+                let engineMatch = htmlL1.match(rcpRegex);
+                let currentUrl = formatUrl(engineMatch[1]);
+                logTerm(`Layer 2 coordinates acquired: ${currentUrl.substring(0, 50)}...`, "success");
+                
+                // RACE 2: Must contain either the /prorcp/ layer OR the m3u8 file
+                // We use a combined regex so the agent accepts either one
+                let validL2Regex = new RegExp(`${prorcpRegex.source}|${m3u8Regex.source}`);
+                let missionsL2 = PROXY_SWARM.map(p => swarmMission(currentUrl, p, `Layer 2 (/rcp/)`, validL2Regex));
+                let htmlL2 = await Promise.any(missionsL2);
+
+                let vlcLink = extractVlcLink(htmlL2);
+                
+                if (!vlcLink) {
+                    let proMatch = htmlL2.match(prorcpRegex);
+                    if (proMatch) {
+                        logTerm(`Digging to Layer 3...`, "info");
+                        currentUrl = formatUrl(proMatch[1], "https://cloudnestra.com");
+                        
+                        // RACE 3: Must contain the m3u8 file
+                        let missionsL3 = PROXY_SWARM.map(p => swarmMission(currentUrl, p, `Layer 3 (/prorcp/)`, m3u8Regex));
+                        let htmlL3 = await Promise.any(missionsL3);
+                        vlcLink = extractVlcLink(htmlL3);
+                    }
+                }
+
+                if (vlcLink) {
+                    launchVlcUI(vlcLink, gallery, status);
+                    extractionSuccess = true;
+                    break; 
+                } else {
+                    throw new Error("M3U8 Payload not found.");
+                }
+
+            } catch (aggregateError) {
+                logTerm(`MIRROR ${m+1} DEFLECTED ALL SWARM ATTACKS. CYCLING...`, "error");
+            }
+        }
+
+        if (!extractionSuccess) {
+            status.innerText = `[ EXTRACTION FAILED. ALL PROXIES BLOCKED. LAUNCHING WRAPPER... ]`;
+            const fallbackUrl = isTV 
+                ? `${MIRRORS[0]}/embed/tv?imdb=${id}&season=${s}&episode=${e}&ds_lang=${l}`
+                : `${MIRRORS[0]}/embed/movie?imdb=${id}&ds_lang=${l}`;
+            window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+    }
+
+    // --- SWARM AGENT LOGIC (NOW WITH VALIDATION) ---
+    async function swarmMission(targetUrl, proxy, layerName, validationRegex) {
+        logTerm(`[${proxy.id}] Infiltrating ${layerName}...`);
+        
+        const controller = new AbortController();
+        const timeoutId = setTimeout(() => controller.abort(), 10000);
+
+        try {
+            const proxyUrl = proxy.url + encodeURIComponent(targetUrl);
+            const response = await fetch(proxyUrl, { signal: controller.signal });
+            clearTimeout(timeoutId);
+
+            if (!response.ok) throw new Error(`HTTP ${response.status}`);
+            
+            const data = await response.text();
+            let html = proxy.type === "json" ? JSON.parse(data).contents : data; 
+
+            // THE CRITICAL FIX: If the HTML doesn't have what we need, throw an error!
+            if (!html.match(validationRegex)) {
+                throw new Error("Honeypot Detected (No Payload)");
+            }
+
+            logTerm(`[${proxy.id}] ${layerName} BREACHED! PAYLOAD SNATCHED.`, "success");
+            return html;
+
+        } catch (e) {
+            clearTimeout(timeoutId);
+            logTerm(`[${proxy.id}] ${layerName} Failed: ICE/Honeypot.`, "error");
+            throw e; 
+        }
+    }
+
+    // --- THE EXTRACTION ENGINE ---
+    function extractVlcLink(html) {
+        let fileMatch = html.match(/file:\s*["'](https:\/\/[^"']+\.m3u8[^"']*)["']/);
+        if (!fileMatch) return null;
+        
+        let firstLink = fileMatch[1].split(' or ')[0]; 
+        let domainsMatch = html.match(/var test_doms\s*=\s*\[([\s\S]+?)\]/);
+        
+        if (domainsMatch) {
+            let firstDomain = domainsMatch[1].match(/["']([^"']+)["']/)[1];
+            return firstLink.replace(/^https?:\/\/[^\/]+/, firstDomain);
+        }
+        return firstLink;
+    }
+
+    function launchVlcUI(link, gallery, status) {
+        status.innerText = `[ MISSION ACCOMPLISHED: VLC LINK SECURED ]`;
+        logTerm(`[ EXTRACTION COMPLETE. UNPLUGGING FROM MATRIX. ]`, "success");
+        gallery.innerHTML = `
+            <div style="border: 1px solid var(--accent); padding: 20px; background: #001100; margin-top:10px;">
+                <strong style="color:var(--accent);">RAW HLS STREAM CAPTURED:</strong><br><br>
+                <input type="text" value="${link}" style="width:100%; margin-bottom: 10px; padding:8px; background:#000; color:var(--accent); border:1px solid #333;" readonly onclick="this.select();">
+                <p style="font-size: 0.85em; color: #888; margin:0;">Paste this link directly into VLC Media Player (Media > Open Network Stream) to watch completely off-grid.</p>
+            </div>
+        `;
+    }
+
+    function formatUrl(url, domain = "") {
+        if (url.startsWith('//')) return 'https:' + url;
+        if (url.startsWith('/')) return domain + url;
+        return url;
+    }
+</script>
+</body>
+</html>
