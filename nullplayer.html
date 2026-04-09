@@ -80,6 +80,58 @@
         } catch (e) { status.innerText = "DB_OFFLINE"; }
     }
 
+    async function attemptExtraction(id, type, mirrorIndex = 0) {
+        const s = document.getElementById('season').value || 1;
+        const e = document.getElementById('episode').value || 1;
+        const l = document.getElementById('lang').value || 'en';
+        
+        // Safely check type
+        const isTV = type.toLowerCase().includes('tv');
+        
+        // Bulletproof Fallback URL construction using query parameters
+        const fallbackUrl = isTV 
+            ? `${MIRRORS[0]}/embed/tv?imdb=${id}&season=${s}&episode=${e}&ds_lang=${l}`
+            : `${MIRRORS[0]}/embed/movie?imdb=${id}&ds_lang=${l}`;
+
+        if (mirrorIndex >= MIRRORS.length) {
+            console.log("All mirrors blocked extraction. Launching Wrapper...");
+            window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+            return;
+        }
+
+        const status = document.getElementById('status_bar');
+        status.innerText = `[ MIRROR_${mirrorIndex + 1}: EXTRACTING_CORE... ]`;
+
+        const endpoint = isTV ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
+        const targetUrl = `${MIRRORS[mirrorIndex]}/embed/${endpoint}&ds_lang=${l}`;
+
+        try {
+            // Use AllOrigins CORS proxy to mask the fetch request from the Russian firewall
+            const proxyUrl = `https://api.allorigins.win/get?url=${encodeURIComponent(targetUrl)}`;
+            const response = await fetch(proxyUrl);
+            
+            if (!response.ok) throw new Error("Proxy connection failed.");
+            
+            const data = await response.json();
+            const html = data.contents;
+
+            // Look for the Cloudnestra engine
+            const engineMatch = html.match(/src="([^"]*cloudnestra\.com\/rcp\/[^"]+)"/);
+
+            if (engineMatch && engineMatch[1]) {
+                let engineUrl = engineMatch[1].startsWith('//') ? 'https:' + engineMatch[1] : engineMatch[1];
+                status.innerText = `[ EXTRACTION SUCCESSFUL ]`;
+                console.log("CORE_SNATCHED:", engineUrl);
+                window.open(engineUrl, '_blank', 'noopener,noreferrer');
+            } else {
+                throw new Error("No engine found on this mirror.");
+            }
+        } catch (err) {
+            console.warn(`Mirror ${mirrorIndex + 1} extraction failed, cycling...`, err);
+            // Cycle to the next mirror
+            attemptExtraction(id, type, mirrorIndex + 1);
+        }
+    }
 
     async function executeMission(id, type) {
         const s = document.getElementById('season').value || 1;
