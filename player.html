@@ -1,3 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NULL-NET // V8 // MIRROR_COMMAND</title>
+    <script src="https://js.puter.com/v2/"></script>
+    <style>
+        :root { --accent: #00ff9d; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
+        #gallery { margin-top: 10px; display: grid; gap: 10px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; }
+        .card:hover { border-color: var(--accent); background: #161616; }
+        .status { color: var(--accent); font-size: 0.8em; margin-top: 10px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SYSTEM_STATUS: ONLINE // V9</div>
+    
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="TITLE..." style="flex-grow:1;" onkeydown="if(event.key==='Enter') doSearch()">
+        <button onclick="doSearch()">EXECUTE</button>
+        <div style="width:100%; display:flex; gap:10px; align-items:center; margin-top:10px;">
+            <label>LANG:</label><input type="text" id="lang" value="en" style="width:30px;">
+            <label>S:</label><input type="number" id="season" value="1" style="width:40px;">
+            <label>E:</label><input type="number" id="episode" value="1" style="width:40px;">
+        </div>
+    </div>
+
+    <div id="status_bar" class="status">Awaiting target coordinates...</div>
+
+    <div id="gallery"></div>
+</div>
+    
 <script>
     const MIRRORS = [
         "https://vidsrc.net",
@@ -92,3 +133,6 @@
         }
     }
 </script>
+
+</body>
+</html>
