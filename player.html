@@ -49,52 +49,59 @@
     (async () => {
         try { await puter.init(); } catch (e) { console.error("Puter Error:", e); }
     })();
-
+    
     async function doSearch() {
         const query = document.getElementById('searchBox').value;
         if (!query) return;
         const gallery = document.getElementById('gallery');
-        gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center;">Querying databases...</div>`;
-
+        gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--accent);">[ STATUS: SCRAPING IMDB... ]</div>`;
+    
         try {
-            // IMDB Suggestion API - usually allows cross-origin on HTTPS
             const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
             const response = await puter.net.fetch(url);
             const data = await response.json();
             
             gallery.innerHTML = "";
+            if (!data.d) return;
+    
             data.d.forEach(item => {
-                if (!item.id.startsWith('tt')) return; // Filter for actual IMDB IDs
+                if (!item.id || !item.id.startsWith('tt')) return;
+                
                 const card = document.createElement('div');
                 card.className = 'card';
-                const poster = (item.i) ? item.i[0] : 'https://via.placeholder.com/300x450?text=No+Poster';
+                // Removing the <img> tag entirely for a clean, text-based UI
+                card.style.height = "auto";
+                card.style.padding = "20px";
                 
                 card.innerHTML = `
-                    <img src="${poster}" loading="lazy">
-                    <div class="card-info">
-                        <strong>${item.l}</strong><br>
-                        ${item.y || ''}
+                    <div style="color: var(--accent); font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
+                        ${item.l}
+                    </div>
+                    <div style="color: #888; font-size: 0.9em;">
+                        ID: ${item.id} | YEAR: ${item.y || 'N/A'}<br>
+                        TYPE: ${item.q || 'Unknown'}
+                    </div>
+                    <div style="margin-top: 15px; font-size: 0.7em; color: var(--accent); opacity: 0.6;">
+                        [ CLICK TO INITIALIZE BYPASS ]
                     </div>
                 `;
                 card.onclick = () => launchPlayer(item.id, item.q);
                 gallery.appendChild(card);
             });
         } catch (e) {
-            gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #ff4444;">Search failed. Try again?</div>`;
+            gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #ff4444;">[ BYPASS FAILED: CHECK CONSOLE ]</div>`;
         }
     }
-
+    
     function launchPlayer(id, type) {
-        const overlay = document.getElementById('player-overlay');
-        const player = document.getElementById('mainPlayer');
-        
-        // Dynamic endpoint selection
         const isTV = (type && type.toLowerCase().includes('tv'));
         const endpoint = isTV ? 'tv' : 'movie';
         
-        // Bypass URL construction
-        player.src = `https://vidsrc-embed.ru/embed/${endpoint}/${id}`;
-        overlay.style.display = 'block';
+        // We'll use your preferred source and bypass the overlay entirely for better fullscreen
+        const targetUrl = `https://vidsrc.net/embed/${endpoint}/${id}`;
+        
+        // This is the true bypass: opening it in a fresh window
+        window.open(targetUrl, '_blank', 'noopener,noreferrer');
     }
 
     function closePlayer() {
