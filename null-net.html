@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>NULL-NET // V14 // ADAPTIVE_GHOST</title>
+    <style>
+        :root { --accent: #00ff9d; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .container { max-width: 900px; margin: 0 auto; }
+        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
+        button:hover { filter: brightness(1.2); }
+        
+        #status_bar { color: var(--accent); font-size: 0.9em; margin-bottom: 15px; border-left: 3px solid var(--accent); padding-left: 10px; }
+        
+        #gallery { display: grid; gap: 10px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; transition: 0.2s; }
+        .card:hover { border-color: var(--accent); background: #161616; }
+        .card strong { color: #eee; display: block; margin-bottom: 5px; }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <div class="header">SYSTEM_STATUS: LOCAL_GHOST // ADAPTIVE_EXTRACTION_ACTIVE</div>
+    
+    <div class="controls">
+        <input type="text" id="searchBox" placeholder="TARGET_TITLE..." style="flex-grow:1;" onkeydown="if(event.key==='Enter') doSearch()">
+        <button onclick="doSearch()">EXECUTE</button>
+        <div style="width:100%; display:flex; gap:10px; align-items:center; margin-top:5px;">
+            <label style="font-size:0.8em;">LANG:</label><input type="text" id="lang" value="en" style="width:40px;">
+            <label style="font-size:0.8em;">S:</label><input type="number" id="season" value="1" style="width:50px;">
+            <label style="font-size:0.8em;">E:</label><input type="number" id="episode" value="1" style="width:50px;">
+        </div>
+    </div>
+
+    <div id="status_bar">Awaiting target coordinates...</div>
+    <div id="gallery"></div>
+</div>
+
+<script>
+    const MIRRORS = [
+        "https://vidsrc.net",
+        "https://vidsrc-embed.ru",
+        "https://vsembed.ru"
+    ];
+
+    const PROXIES = [
+        "https://api.allorigins.win/get?url=",
+        "https://api.codetabs.com/v1/proxy/?quest="
+    ];
+
+    // --- PHASE 1: STEALTH RECONNAISSANCE ---
+    async function doSearch() {
+        const query = document.getElementById('searchBox').value;
+        if (!query) return;
+        
+        const gallery = document.getElementById('gallery');
+        const status = document.getElementById('status_bar');
+        
+        status.innerText = `[ SCANNING IMDB DATABASE VIA PROXY: ${query.toUpperCase()}... ]`;
+        gallery.innerHTML = "";
+
+        try {
+            const imdbUrl = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
+            const proxyUrl = PROXIES[0] + encodeURIComponent(imdbUrl); 
+            
+            const response = await fetch(proxyUrl);
+            const rawData = await response.json();
+            const data = JSON.parse(rawData.contents || JSON.stringify(rawData)); 
+            
+            if (!data.d) {
+                status.innerText = "[ NO_RESULTS_FOUND ]";
+                return;
+            }
+
+            status.innerText = "[ TARGETS ACQUIRED. AWAITING SELECTION. ]";
+
+            data.d.forEach(item => {
+                if (!item.id?.startsWith('tt')) return;
+                const card = document.createElement('div');
+                card.className = 'card';
+                const type = item.q || 'feature'; 
+                card.innerHTML = `<strong>${item.l} (${item.y || '????'})</strong> - <span style="color:var(--accent); font-size:0.8em;">${type.toUpperCase()}</span>`;
+                card.onclick = () => executeMission(item.id, type);
+                gallery.appendChild(card);
+            });
+        } catch (e) { 
+            status.innerText = "[ DB_OFFLINE. PROXY REJECTED. ]"; 
+        }
+    }
+
+    // --- PHASE 2: ADAPTIVE DEEP EXTRACTION ---
+    async function executeMission(id, type) {
+        const s = document.getElementById('season').value || 1;
+        const e = document.getElementById('episode').value || 1;
+        const l = document.getElementById('lang').value || 'en';
+        const isTV = type.toLowerCase().includes('tv');
+        const status = document.getElementById('status_bar');
+        const gallery = document.getElementById('gallery');
+
+        const endpoint = isTV ? `tv?imdb=${id}&season=${s}&episode=${e}` : `movie?imdb=${id}`;
+        let extractionSuccess = false;
+
+        for (let m = 0; m < MIRRORS.length; m++) {
+            if (extractionSuccess) break;
+            const targetUrl = `${MIRRORS[m]}/embed/${endpoint}&ds_lang=${l}`;
+
+            for (let p = 0; p < PROXIES.length; p++) {
+                try {
+                    status.innerText = `[ INFILTRATING LAYER 1 (WRAPPER) VIA P${p+1}/M${m+1}... ]`;
+                    console.log(`--- INITIATING DEEP DIVE: M${m+1} P${p+1} ---`);
+                    
+                    let html = await fetchHtmlViaProxy(targetUrl, PROXIES[p]);
+                    
+                    let engineMatch = html.match(/src="([^"]*\/rcp\/[^"]+)"/);
+                    if (!engineMatch) throw new Error("Layer 2 (/rcp/) missing.");
+                    
+                    let currentUrl = formatUrl(engineMatch[1]);
+                    console.log("🔓 L2 UNLOCKED:", currentUrl);
+                    status.innerText = `[ INFILTRATING LAYER 2 (/rcp/)... ]`;
+                    
+                    html = await fetchHtmlViaProxy(currentUrl, PROXIES[p]);
+
+                    // ADAPTIVE CHECK: Is the payload already sitting in Layer 2?
+                    let vlcLink = extractVlcLink(html);
+                    
+                    if (vlcLink) {
+                        launchVlcUI(vlcLink, gallery, status);
+                        extractionSuccess = true;
+                        break;
+                    }
+                    
+                    // If not found in Layer 2, dig into Layer 3
+                    let proMatch = html.match(/src="([^"]*\/prorcp\/[^"]+)"/);
+                    if (proMatch) {
+                        currentUrl = formatUrl(proMatch[1], "https://cloudnestra.com");
+                        console.log("🔓 L3 UNLOCKED:", currentUrl);
+                        status.innerText = `[ INFILTRATING LAYER 3 (/prorcp/)... ]`;
+                        
+                        html = await fetchHtmlViaProxy(currentUrl, PROXIES[p]);
+                        vlcLink = extractVlcLink(html);
+                        
+                        if (vlcLink) {
+                            launchVlcUI(vlcLink, gallery, status);
+                            extractionSuccess = true;
+                            break;
+                        }
+                    }
+                    
+                    throw new Error("Core Payload not found in any layer.");
+
+                } catch (err) {
+                    console.warn(`Path M${m+1} P${p+1} failed:`, err.message);
+                }
+            }
+        }
+
+        if (!extractionSuccess) {
+            status.innerText = `[ EXTRACTION FAILED. CLOUDFLARE LOCKDOWN. LAUNCHING FALLBACK... ]`;
+            const fallbackUrl = isTV 
+                ? `${MIRRORS[0]}/embed/tv?imdb=${id}&season=${s}&episode=${e}&ds_lang=${l}`
+                : `${MIRRORS[0]}/embed/movie?imdb=${id}&ds_lang=${l}`;
+            window.open(fallbackUrl, '_blank', 'noopener,noreferrer');
+        }
+    }
+
+    // --- THE EXTRACTION ENGINE ---
+    function extractVlcLink(html) {
+        // Find the Playerjs file parameter
+        let fileMatch = html.match(/file:\s*["'](https:\/\/[^"']+\.m3u8[^"']*)["']/);
+        if (!fileMatch) return null;
+        
+        // Split the " or " fallback URLs to grab the primary link
+        let firstLink = fileMatch[1].split(' or ')[0]; 
+        
+        // Find the test_doms array to get the active burner domain
+        let domainsMatch = html.match(/var test_doms\s*=\s*\[([\s\S]+?)\]/);
+        
+        if (domainsMatch) {
+            // Regex to safely grab the first domain string whether they use single or double quotes
+            let firstDomain = domainsMatch[1].match(/["']([^"']+)["']/)[1];
+            // Replace the {v1} placeholder with the real domain
+            return firstLink.replace(/^https?:\/\/[^\/]+/, firstDomain);
+        }
+        
+        return firstLink;
+    }
+
+    function launchVlcUI(link, gallery, status) {
+        console.log("💀 CORE UNLOCKED (VLC READY):", link);
+        status.innerText = `[ MISSION ACCOMPLISHED: VLC LINK SECURED ]`;
+        gallery.innerHTML = `
+            <div style="border: 1px solid var(--accent); padding: 20px; background: #001100; margin-top:10px;">
+                <strong style="color:var(--accent);">RAW HLS STREAM CAPTURED:</strong><br><br>
+                <input type="text" value="${link}" style="width:100%; margin-bottom: 10px; padding:8px; background:#000; color:var(--accent); border:1px solid #333;" readonly onclick="this.select();">
+                <p style="font-size: 0.85em; color: #888; margin:0;">Paste this link directly into VLC Media Player (Media > Open Network Stream) to watch completely off-grid.</p>
+            </div>
+        `;
+    }
+
+    // Helper: Safely fetch and parse HTML through proxies
+    async function fetchHtmlViaProxy(url, proxy) {
+        const proxyUrl = proxy + encodeURIComponent(url);
+        const response = await fetch(proxyUrl);
+        if (!response.ok) throw new Error(`Proxy blocked fetching: ${url}`);
+        const data = await response.text();
+        
+        try { return JSON.parse(data).contents; } 
+        catch(e) { return data; }
+    }
+
+    function formatUrl(url, domain = "") {
+        if (url.startsWith('//')) return 'https:' + url;
+        if (url.startsWith('/')) return domain + url;
+        return url;
+    }
+</script>
+</body>
+</html>
