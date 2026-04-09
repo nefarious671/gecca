@@ -3,111 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Bypass Suite v3</title>
+    <title>NULL-NET // V5</title>
     <script src="https://js.puter.com/v2/"></script>
     <style>
-        :root { --accent: #00ff9d; --bg: #0d0d0d; }
-        body { background: var(--bg); color: white; font-family: 'Inter', -apple-system, sans-serif; margin: 0; overflow: hidden; display: flex; flex-direction: column; height: 100vh; }
-        #header { padding: 15px 25px; background: #161616; display: flex; gap: 15px; border-bottom: 1px solid #333; align-items: center; box-shadow: 0 4px 10px rgba(0,0,0,0.5); }
-        input { background: #000; border: 1px solid #444; color: white; padding: 10px 15px; width: 320px; border-radius: 6px; }
-        button { background: var(--accent); color: #000; border: none; padding: 10px 20px; border-radius: 6px; cursor: pointer; font-weight: 600; transition: 0.2s; }
-        button:hover { filter: brightness(1.1); transform: translateY(-1px); }
-        
-        #gallery { display: grid; grid-template-columns: repeat(auto-fill, minmax(180px, 1fr)); gap: 20px; padding: 25px; overflow-y: auto; flex-grow: 1; }
-        .card { background: #1a1a1a; border-radius: 10px; overflow: hidden; transition: 0.3s; cursor: pointer; border: 1px solid #222; position: relative; }
-        .card:hover { border-color: var(--accent); transform: scale(1.03); }
-        .card img { width: 100%; height: 270px; object-fit: cover; display: block; }
-        .card-info { padding: 12px; font-size: 0.85em; text-align: center; background: linear-gradient(transparent, rgba(0,0,0,0.9)); position: absolute; bottom: 0; width: 100%; box-sizing: border-box; }
-        
-        #player-overlay { display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: #000; z-index: 9999; }
-        .close-btn { position: absolute; top: 20px; right: 30px; color: white; font-size: 45px; cursor: pointer; z-index: 10000; opacity: 0.7; }
-        .close-btn:hover { opacity: 1; }
-        iframe { width: 100%; height: 100%; border: none; }
+        :root { --accent: #00ff9d; --bg: #0a0a0a; }
+        body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
+        .container { max-width: 800px; margin: 0 auto; }
+        .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
+        input { background: #111; border: 1px solid #333; color: var(--accent); padding: 10px; width: 70%; outline: none; }
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
+        #gallery { margin-top: 30px; display: grid; gap: 15px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; transition: 0.2s; }
+        .card:hover { border-color: var(--accent); background: #111; }
+        .card strong { color: #eee; display: block; margin-bottom: 5px; }
+        .status { color: var(--accent); font-size: 0.8em; }
     </style>
 </head>
 <body>
 
-<div id="header">
-    <div style="font-weight: 900; letter-spacing: 1px; color: var(--accent);">NULL-NET</div>
-    <input type="text" id="searchBox" placeholder="Search movies or TV shows..." onkeydown="if(event.key==='Enter') doSearch()">
-    <button onclick="doSearch()">SEARCH</button>
-</div>
+<div class="container">
+    <div class="header">SYSTEM_STATUS: ONLINE // BYPASS_READY</div>
+    
+    <input type="text" id="searchBox" placeholder="ENTER_TITLE..." onkeydown="if(event.key==='Enter') doSearch()">
+    <button onclick="doSearch()">EXECUTE</button>
 
-<div id="gallery">
-    <div style="grid-column: 1/-1; text-align: center; margin-top: 15vh; opacity: 0.5;">
-        <h2>The bypass is ready.</h2>
-        <p>Type a title above to begin the extraction.</p>
+    <div id="gallery">
+        <div class="status">Waiting for input...</div>
     </div>
 </div>
 
-<div id="player-overlay">
-    <span class="close-btn" onclick="closePlayer()">&times;</span>
-    <iframe id="mainPlayer" allowfullscreen allow="autoplay; fullscreen"></iframe>
-</div>
-
 <script>
-    (async () => {
-        try { await puter.init(); } catch (e) { console.error("Puter Error:", e); }
-    })();
-    
+    // No puter.init() needed here. The SDK handles it.
+
     async function doSearch() {
         const query = document.getElementById('searchBox').value;
         if (!query) return;
         const gallery = document.getElementById('gallery');
-        gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: var(--accent);">[ STATUS: SCRAPING IMDB... ]</div>`;
-    
+        gallery.innerHTML = `<div class="status">QUERYING_DB: ${query.toUpperCase()}...</div>`;
+
         try {
             const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
+            
+            // Direct fetch via Puter network bypass
             const response = await puter.net.fetch(url);
             const data = await response.json();
             
             gallery.innerHTML = "";
-            if (!data.d) return;
-    
+            if (!data.d) {
+                gallery.innerHTML = `<div class="status">NO_RESULTS_FOUND</div>`;
+                return;
+            }
+
             data.d.forEach(item => {
                 if (!item.id || !item.id.startsWith('tt')) return;
                 
                 const card = document.createElement('div');
                 card.className = 'card';
-                // Removing the <img> tag entirely for a clean, text-based UI
-                card.style.height = "auto";
-                card.style.padding = "20px";
-                
                 card.innerHTML = `
-                    <div style="color: var(--accent); font-size: 1.2em; font-weight: bold; margin-bottom: 5px;">
-                        ${item.l}
-                    </div>
-                    <div style="color: #888; font-size: 0.9em;">
-                        ID: ${item.id} | YEAR: ${item.y || 'N/A'}<br>
-                        TYPE: ${item.q || 'Unknown'}
-                    </div>
-                    <div style="margin-top: 15px; font-size: 0.7em; color: var(--accent); opacity: 0.6;">
-                        [ CLICK TO INITIALIZE BYPASS ]
-                    </div>
+                    <strong>${item.l} (${item.y || '????'})</strong>
+                    <span>TYPE: ${item.q || 'N/A'} // IMDB_ID: ${item.id}</span>
                 `;
                 card.onclick = () => launchPlayer(item.id, item.q);
                 gallery.appendChild(card);
             });
         } catch (e) {
-            gallery.innerHTML = `<div style="grid-column: 1/-1; text-align: center; color: #ff4444;">[ BYPASS FAILED: CHECK CONSOLE ]</div>`;
+            console.error(e);
+            gallery.innerHTML = `<div class="status" style="color:red">ERROR_INITIALIZING_PUTER_NETWORK</div>`;
         }
     }
-    
+
     function launchPlayer(id, type) {
+        // Handle logic for movies vs TV endpoints
         const isTV = (type && type.toLowerCase().includes('tv'));
         const endpoint = isTV ? 'tv' : 'movie';
         
-        // We'll use your preferred source and bypass the overlay entirely for better fullscreen
-        const targetUrl = `https://vidsrc.net/embed/${endpoint}/${id}`;
+        // Final destination URL (using the vidsrc.net source you verified)
+        const target = `https://vidsrc.net/embed/${endpoint}/${id}`;
         
-        // This is the true bypass: opening it in a fresh window
-        window.open(targetUrl, '_blank', 'noopener,noreferrer');
-    }
-
-    function closePlayer() {
-        document.getElementById('player-overlay').style.display = 'none';
-        document.getElementById('mainPlayer').src = 'about:blank';
+        // Open in new window to bypass all iframe/sandbox malarky
+        window.open(target, '_blank', 'noopener,noreferrer');
     }
 </script>
+
 </body>
 </html>
