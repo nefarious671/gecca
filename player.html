@@ -3,29 +3,62 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>NULL-NET // V5</title>
+    <title>NULL-NET // V6 // CONTROLLER</title>
     <script src="https://js.puter.com/v2/"></script>
     <style>
         :root { --accent: #00ff9d; --bg: #0a0a0a; }
         body { background: var(--bg); color: #888; font-family: 'Courier New', monospace; margin: 0; padding: 20px; }
-        .container { max-width: 800px; margin: 0 auto; }
+        .container { max-width: 900px; margin: 0 auto; }
         .header { color: var(--accent); font-weight: bold; margin-bottom: 20px; border-bottom: 1px solid #333; padding-bottom: 10px; }
-        input { background: #111; border: 1px solid #333; color: var(--accent); padding: 10px; width: 70%; outline: none; }
-        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; }
-        #gallery { margin-top: 30px; display: grid; gap: 15px; }
-        .card { border: 1px solid #222; padding: 15px; cursor: pointer; transition: 0.2s; }
-        .card:hover { border-color: var(--accent); background: #111; }
+        
+        .controls { display: flex; flex-wrap: wrap; gap: 10px; background: #111; padding: 15px; border: 1px solid #222; margin-bottom: 20px; }
+        .control-group { display: flex; align-items: center; gap: 5px; }
+        
+        input, select { background: #000; border: 1px solid #333; color: var(--accent); padding: 8px; outline: none; font-family: monospace; }
+        input[type="number"] { width: 50px; }
+        .search-main { width: 100%; margin-bottom: 10px; display: flex; gap: 10px; }
+        .search-main input { flex-grow: 1; }
+        
+        button { background: var(--accent); border: none; padding: 10px 20px; cursor: pointer; font-weight: bold; color: #000; }
+        button:hover { filter: brightness(1.2); }
+
+        #gallery { margin-top: 10px; display: grid; gap: 10px; }
+        .card { border: 1px solid #222; padding: 15px; cursor: pointer; transition: 0.2s; position: relative; }
+        .card:hover { border-color: var(--accent); background: #161616; }
         .card strong { color: #eee; display: block; margin-bottom: 5px; }
-        .status { color: var(--accent); font-size: 0.8em; }
+        .type-tag { font-size: 0.7em; background: #222; padding: 2px 5px; border-radius: 3px; color: var(--accent); }
+        .status { color: var(--accent); font-size: 0.8em; margin-top: 10px; }
+        label { font-size: 0.7em; color: #555; text-transform: uppercase; }
     </style>
 </head>
 <body>
 
 <div class="container">
-    <div class="header">SYSTEM_STATUS: ONLINE // BYPASS_READY</div>
+    <div class="header">SYSTEM_STATUS: ONLINE // CONTROLLER_V6_LOADED</div>
     
-    <input type="text" id="searchBox" placeholder="ENTER_TITLE..." onkeydown="if(event.key==='Enter') doSearch()">
-    <button onclick="doSearch()">EXECUTE</button>
+    <div class="controls">
+        <div class="search-main">
+            <input type="text" id="searchBox" placeholder="SEARCH_TITLE..." onkeydown="if(event.key==='Enter') doSearch()">
+            <button onclick="doSearch()">EXECUTE</button>
+        </div>
+        
+        <div class="control-group">
+            <label>Sub_Lang:</label>
+            <input type="text" id="lang" placeholder="en" value="en" style="width: 30px;">
+        </div>
+        
+        <div class="control-group" id="tv-controls">
+            <label>S:</label>
+            <input type="number" id="season" value="1" min="1">
+            <label>E:</label>
+            <input type="number" id="episode" value="1" min="1">
+        </div>
+
+        <div class="control-group">
+            <label>Autonext:</label>
+            <input type="checkbox" id="autonext" checked>
+        </div>
+    </div>
 
     <div id="gallery">
         <div class="status">Waiting for input...</div>
@@ -33,8 +66,6 @@
 </div>
 
 <script>
-    // No puter.init() needed here. The SDK handles it.
-
     async function doSearch() {
         const query = document.getElementById('searchBox').value;
         if (!query) return;
@@ -43,8 +74,6 @@
 
         try {
             const url = `https://v2.sg.media-imdb.com/suggestion/${query[0].toLowerCase()}/${encodeURIComponent(query)}.json`;
-            
-            // Direct fetch via Puter network bypass
             const response = await puter.net.fetch(url);
             const data = await response.json();
             
@@ -59,28 +88,39 @@
                 
                 const card = document.createElement('div');
                 card.className = 'card';
+                const type = item.q || 'feature';
+                
                 card.innerHTML = `
                     <strong>${item.l} (${item.y || '????'})</strong>
-                    <span>TYPE: ${item.q || 'N/A'} // IMDB_ID: ${item.id}</span>
+                    <span class="type-tag">${type.toUpperCase()}</span>
+                    <span style="font-size: 0.8em; margin-left: 10px;">ID: ${item.id}</span>
                 `;
-                card.onclick = () => launchPlayer(item.id, item.q);
+                card.onclick = () => launchPlayer(item.id, type);
                 gallery.appendChild(card);
             });
         } catch (e) {
-            console.error(e);
-            gallery.innerHTML = `<div class="status" style="color:red">ERROR_INITIALIZING_PUTER_NETWORK</div>`;
+            gallery.innerHTML = `<div class="status" style="color:red">ERROR_INITIALIZING_NETWORK</div>`;
         }
     }
 
     function launchPlayer(id, type) {
-        // Handle logic for movies vs TV endpoints
-        const isTV = (type && type.toLowerCase().includes('tv'));
-        const endpoint = isTV ? 'tv' : 'movie';
+        const lang = document.getElementById('lang').value || 'en';
+        const season = document.getElementById('season').value || 1;
+        const episode = document.getElementById('episode').value || 1;
+        const autonext = document.getElementById('autonext').checked ? 1 : 0;
         
-        // Final destination URL (using the vidsrc.net source you verified)
-        const target = `https://vidsrc.net/embed/${endpoint}/${id}`;
+        const isTV = (type.toLowerCase().includes('tv'));
+        let target;
+
+        if (isTV) {
+            // TV Construction with season/episode/autonext
+            target = `https://vidsrc-embed.ru/embed/tv?imdb=${id}&season=${season}&episode=${episode}&ds_lang=${lang}&autonext=${autonext}&autoplay=1`;
+        } else {
+            // Movie Construction
+            target = `https://vidsrc-embed.ru/embed/movie?imdb=${id}&ds_lang=${lang}&autoplay=1`;
+        }
         
-        // Open in new window to bypass all iframe/sandbox malarky
+        console.log("Bypassing to:", target);
         window.open(target, '_blank', 'noopener,noreferrer');
     }
 </script>
